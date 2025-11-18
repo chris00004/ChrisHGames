@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width = device-width, initial-scale = 1.0">
+        <title>Ascenders | Chris Hamam Game Design Portfolio</title>
+        <link rel="icon" href="icons/flameicon4.ico" type="image/x-icon">
+        <link rel="stylesheet" href="styles/styles.css">
+    </head>
+
+    <body>
+        <!-- navbar -->
+        <nav class="navbar">
+            <div class="navbar-brand">
+                <a href="index.html">
+                    <img src="images/icon-portfolio3.png" class="logo">
+                </a>
+            </div>
+            <div class="navbar-links">
+                <a href="index.html#about">About</a>
+                <a href="index.html#professional-work">Professional Work</a>
+                <a href="index.html#personal-projects">Personal Projects</a>
+                <a href="https://drive.google.com/file/d/1E4d-JTSf7VmOATADfg6IhF1ZT_vMSbrI/view?usp=sharing" target="_blank">Resume</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
+            <div class="menus" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+
+        <!-- MAIN FLEX CONTAINER -->
+        <div class="nav-spacer"></div>
+        <img src="images/headerImages/ascendersheader.png" width = 100%>
+        <div class="flexbox-container">
+
+            <h1>ASCENDERS</h1>
+            <p>Ascenders is a 2D platformer where the player auto-runs, reversing on walls. Moves like jumps, rolls, 
+                and dives interact with terrain to gain height as you scale a vast vertical level.
+            </p>
+
+            <span class="tag-large">Solo Project</span>
+            <span class="tag-large">Software: Game Maker Studio 2, Paint.NET, Audacity </span>
+            <span class="tag-large">Roles: Game Designer, Artist, Programmer, Level Designer</span>
+            <span class="tag-large">Unique Systems: Camera-Node system, Movement System</span>
+
+            <h1>PROCESS & DETAILS</h1>
+            <video class="video" autoplay muted loop playsinline>
+                <source src="videos/ascendersvideonew.mp4" type="video/mp4">
+            </video>
+           
+            <p>I began by programming a simple autorunner, then sketched ideas for level structure and gimmicks. 
+                I aimed to make the environment guide how players approach each area, using framing to highlight 
+                navigable space. To achieve this, I experimented with different camera systems through sketches and code.
+                <!--I began by programming a simple autorunner, then sketched ideas for level structure and gimmicks.<br><br> 
+                 I focused on making the player feel like the environment dictates they way they approach an area. Framing the area 
+                 that the player is in gives a clearer view of the environment for players to work off of. To achieve this,
+                  I expirented with various camera systems through sketches and various different scripts.-->
+            </p>
+
+            <h1>LEVEL DESIGN</h1>
+            <p>
+                Levels are structured as a series of linear, bite-sized challenges that flow together, rewarding skilled, experimental players with shortcuts and skips.
+            </p>
+                <div class = "art-item">
+                    <img src = "images/levelDesigns/ascenders/level design.png" class="thumb">
+                    <p>level design: stage-01</p>
+                </div>
+
+
+            <h1>ARTWORK</h1>
+            <p>
+                The artwork is focused on bouncy, responsive animations for quick feedback and simple, colorful environments to keep traversal clear and engaging.
+            </p>
+            <div class="sub-flex-container">
+                <div class = "art-item">
+                    <img src = "images/artwork/ascenders/art0.png" class="thumb">
+                    <p>sprite work: character sheet</p>
+                </div>
+                <div class = "art-item">
+                    <img src = "images/artwork/ascenders/art1.png" class="thumb">
+                    <p>environment: radio city</p>
+                </div>
+                <div class = "art-item">
+                    <img src = "images/artwork/ascenders/art2.png" class="thumb">
+                    <p>sprite work: character sheet & rails</p>
+                </div>
+                <div class = "art-item">
+                    <img src = "images/artwork/ascenders/art4.png" class="thumb">
+                    <p>environment: grass plains</p>
+                </div>
+                <div class = "art-item">
+                    <img src = "images/artwork/ascenders/art3.png" class="thumb">
+                    <p>sprite work: character sheet</p>
+                </div>
+                <div class = "art-item">
+                    <img src = "images/artwork/ascenders/art5.png" class="thumb">
+                    <p>environment: desert</p>
+                </div>
+                <div class = "art-item">
+                    <img src = "images/artwork/ascenders/art6.png" class="thumb">
+                    <p>environment: snowy mountain</p>
+                </div>
+            </div>
+            <button class="toggleBtn">View More</button>
+
+            <!-- CONTACT -->
+            <h1>GAME PAGE</h1>
+            <a></a>
+            <a href="https://mossgames0.itch.io/ascenders" target="_blank">
+                <div class="contact-item">
+                    <img src="images/buttons/itchSVG.svg" height="70px">
+                </div>
+            </a>
+
+            <footer>&copy; 2025 Chris Hamam | Game Designer</footer>
+
+            <!-- lightbox container (initially hidden) -->
+            <div id="lightbox" class="lightbox" role="dialog" aria-hidden="true">
+            <button class="close" aria-label="Close">&times;</button>
+            <img class="lightbox-img" alt="">
+            </div>
+
+            <!-- Toast Notification -->
+            <div id="toast" class="toast">COPIED TO CLIPBOARD</div>
+
+        </div>
+
+<!-- JAVASCRIPT ---------------------------------------------------------------------------------------------------------------------------->        
+
+    <!-- TOAST -->
+        <script src="js/toast.js" defer></script>
+
+    <!-- NAVBAR -->
+        <script src="js/navbar.js" defer></script>
+
+    <!-- CONTENT PROTECTION -->
+        <script src="js/content-protect.js" defer></script>
+
+    <!-- LIGHTBOX -->
+        <script src="js/lightbox.js" defer></script>
+
+        <script src="js/show-more.js" defer></script>
+
+    </body>
+</html>

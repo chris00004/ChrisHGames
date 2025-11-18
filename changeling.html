@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width = device-width, initial-scale = 1.0">
+        <title>Changeling | Chris Hamam Game Design Portfolio</title>
+        <link rel="icon" href="icons/flameicon4.ico" type="image/x-icon">
+        <link rel="stylesheet" href="styles/styles.css">
+    </head>
+
+    <body>
+        <!-- navbar -->
+        <nav class="navbar">
+            <div class="navbar-brand">
+                <a href="index.html">
+                    <img src="images/icon-portfolio3.png" class="logo">
+                </a>
+            </div>
+            <div class="navbar-links">
+                <a href="index.html#about">About</a>
+                <a href="index.html#professional-work">Professional Work</a>
+                <a href="index.html#personal-projects">Personal Projects</a>
+                <a href="https://drive.google.com/file/d/1E4d-JTSf7VmOATADfg6IhF1ZT_vMSbrI/view?usp=sharing" target="_blank">Resume</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
+            <div class="menus" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+
+        <!-- MAIN FLEX CONTAINER -->
+         <div class="nav-spacer"></div>
+         <img src="images/headerImages/changelingheader.png" width = 100%>
+        <div class="flexbox-container">
+
+            
+
+            <h1>CHANGELING</h1>
+            <p>Changeling VR is a first-person VR mystery where you play as detective Aurelia Walker, 
+                a private eye with the power to dream-walk — seeing the memories of anyone she touches. 
+            </p>
+
+            <span class="tag-large">Team Project</span>
+            <span class="tag-large">Software: Unreal Engine 4, Perforce, ClickUp</span>
+            <span class="tag-large">Roles: Level Designer, Environmental Design</span>
+            <span class="tag-large">Unique Systems: Scripted Subway Sequence</span>
+
+            <h1>PROJECT DETAILS</h1>
+        
+            <video class="video" autoplay muted loop playsinline>
+                <source src="videos/changelingvideo.mp4" type="video/mp4">
+            </video>
+            <p>For Changeling, I redesigned and implemented the “Mother’s Level” in UE4, creating unique setpieces 
+                and concept sketches. As the sole level designer, I rebuilt the stage to reflect the mother’s 
+                reconciliation with her family, emphasizing distinct, intuitive spaces tied to each member’s psyche.
+            </p>
+
+            <h1>CONCEPT SKETCHES</h1>
+            <p>
+                These drawings and notebook sketches detail early level layouts, general design notes, electricity effects, and environmental art direction
+            </p>
+            <div class="sub-flex-container">
+                <div class = "art-item">
+                    <img src = "images/artwork/changeling/earlyinterior.jpg"class="thumb">
+                    <p>early Monelo home intro sequence design</p>
+                </div>
+                <div class = "art-item">
+                    <img src = "images/artwork/changeling/kirstenredesign.jpg"class="thumb">
+                    <p>Kirsten's section initial design</p>
+                </div>
+                <div class = "art-item">
+                    <img src = "images/artwork/changeling/dougssection.jpg"class="thumb">
+                    <p>Dougs's section initial design</p>
+                </div>
+                <div class = "art-item">
+                    <img src = "images/artwork/changeling/gimmicks.jpg"class="thumb">
+                    <p>gimmicks & redesign notes</p>
+                </div>
+                <div class = "art-item">
+                    <img src = "images/artwork/changeling/familyorbredesign.jpg"class="thumb">
+                    <p>family member orb effect sketches</p>
+                </div>
+                <div class = "art-item">
+                    <img src = "images/artwork/changeling/generallevelredesign.jpg"class="thumb">
+                    <p>general visual & structural sketches</p>
+                </div>
+            </div>
+            <button class="toggleBtn">View More</button>
+
+            <h1>LEVEL DESIGN</h1>
+            <p> Levels guide players along a clear path while introducing new mechanics and offering multiple routes for exploration.
+                 Object placement and environment design keep focus on key setpieces.
+            </p>
+            <div class="sub-flex-container">
+                <div class = "art-item">
+                    <img src = "images/levelDesigns/changeling/changeling1.png"class="thumb">
+                    <p>Father's section-01</p>
+                </div>
+                <div class = "art-item">
+                    <img src = "images/levelDesigns/changeling/changeling2.png"class="thumb">
+                    <p>Father's section-02</p>
+                </div>
+                <div class = "art-item">
+                    <img src = "images/levelDesigns/changeling/changeling3.png"class="thumb">
+                    <p>Son's section-01</p>
+                </div>
+                <div class = "art-item">
+                    <img src = "images/levelDesigns/changeling/changeling0.png"class="thumb">
+                    <p>Son's section-02</p>
+                </div>
+                <div class = "art-item">
+                    <img src = "images/levelDesigns/changeling/changeling4.png"class="thumb">
+                    <p>Daughter's section-01</p>
+                </div>
+                <div class = "art-item">
+                    <img src = "images/levelDesigns/changeling/changeling5.png"class="thumb">
+                    <p>Baby's section-01</p>
+                </div>
+                <div class = "art-item">
+                    <img src = "images/levelDesigns/changeling/changeling6.png"class="thumb">
+                    <p>Baby's section-02</p>
+                </div>
+                <div class = "art-item">
+                    <img src = "images/levelDesigns/changeling/changeling7.png"class="thumb">
+                    <p>Baby's section-03</p>
+                </div>
+            </div>
+            <button class="toggleBtn">View More</button>
+
+            <!-- CONTACT -->
+  
+                <h1>EARLY ACCESS PAGE</h1>
+                <a></a>
+                <a href="https://store.steampowered.com/app/3182270/Changeling_VR/" target="_blank">
+                                <div class="contact-item">
+                                    <img src="images/buttons/steamSVG.svg" height="80px">
+                                </div>
+                            </a>
+
+            <footer>&copy; 2025 Chris Hamam | Game Designer</footer>
+
+            <!-- lightbox container (initially hidden) -->
+            <div id="lightbox" class="lightbox" role="dialog" aria-hidden="true">
+            <button class="close" aria-label="Close">&times;</button>
+            <img class="lightbox-img" alt="">
+            </div>
+
+            <!-- Toast Notification -->
+            <div id="toast" class="toast">COPIED TO CLIPBOARD</div>
+
+        </div>
+
+<!-- JAVASCRIPT ---------------------------------------------------------------------------------------------------------------------------->        
+
+    <!-- TOAST -->
+        <script src="js/toast.js" defer></script>
+
+    <!-- NAVBAR -->
+        <script src="js/navbar.js" defer></script>
+
+    <!-- CONTENT PROTECTION -->
+        <script src="js/content-protect.js" defer></script>
+
+    <!-- LIGHTBOX -->
+        <script src="js/lightbox.js" defer></script>
+
+    <!-- SHOW MORE -->
+    <script src="js/show-more.js" defer></script>
+
+    </body>
+</html>

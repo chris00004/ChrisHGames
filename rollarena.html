@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width = device-width, initial-scale = 1.0">
+        <title>Roll Arena | Chris Hamam Game Design Portfolio</title>
+        <link rel="icon" href="icons/flameicon4.ico" type="image/x-icon">
+        <link rel="stylesheet" href="styles/styles.css">
+    </head>
+
+    <body>
+        <!-- navbar -->
+        <nav class="navbar">
+            <div class="navbar-brand">
+                <a href="index.html">
+                    <img src="images/icon-portfolio3.png" class="logo">
+                </a>
+            </div>
+            <div class="navbar-links">
+                <a href="index.html#about">About</a>
+                <a href="index.html#professional-work">Professional Work</a>
+                <a href="index.html#personal-projects">Personal Projects</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
+            <div class="menus" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+
+        <!-- MAIN FLEX CONTAINER -->
+         <div class="nav-spacer"></div>
+         <img src="images/headerImages/rollarenaheader.png" width = 100%>
+        <div class="flexbox-container">
+
+            <h1>ROLL ARENA</h1>
+            <p>Roll Arena is a two player platform-fighting game submitted for the 2022 GMTK Game Jam under the theme: roll of the dice. 
+                Every aspect of the game's setup is up to chance such as character & stage. Two players spike a dice back and forth at each 
+                other as it randomly spins to one of its six sides. If you get hit by it the damage you take is determined by the side the 
+                dice is on. This was my first game jam and it sparked my interest & joy in participating in these events.
+            </p>
+
+            <span class="tag-large">Solo Project</span>
+            <span class="tag-large">2022 GMTK Game Jam</span>
+            <span class="tag-large">Software: Game Maker Studio 2, Paint.NET, Audacity</span>
+            <span class="tag-large">Roles: Game Designer, Artist, Programmer, Level Designer</span>
+            <span class="tag-large">Unique Systems: Combat System, Movement System</span>
+                       
+
+            <h1>PROJECT DETAILS</h1>
+            <video class="video" autoplay muted loop playsinline>
+                <source src="videos/rollarenavideo.mp4" type="video/mp4">
+            </video>
+           
+            <p>To challenge myself, I focused on developing a two player 1v1 game. I developed a system allowing for every combination of 
+                gamepad and keyboard input for both players. This allows both on two gamepads, both on one keyboard, and P1 or P2 on 
+                keyboard or gamepad. I wanted to create a fun & chaotic experience. To achieve this I designed the dice so that each spike 
+                by a player increases the speed of the block slightly. I mixed this idea with the damage system being determined by the randomized
+                rolling of the dice block to both create this sense of choas and fit within the theming of the game jam.
+
+            </p>
+
+            <h1>LEVEL DESIGN</h1>
+            <div class="sub-flex-container">
+                <div class = "art-item">
+                    <img src = "images/levelDesigns/rollarena/rollAreanStage0.png"class="thumb">
+                    <p>level design: arena-01</p>
+                </div>
+                <div class = "art-item">
+                    <img src = "images/levelDesigns/rollarena/rollAreanStage1.png"class="thumb">
+                    <p>level design: arena-02</p>
+                </div>
+                <div class = "art-item">
+                    <img src = "images/levelDesigns/rollarena/rollAreanStage2.png"class="thumb">
+                    <p>level design: arena-03</p>
+                </div>
+                <div class = "art-item">
+                    <img src = "images/levelDesigns/rollarena/rollAreanStage3.png"class="thumb">
+                    <p>level design: arena-04</p>
+                </div>
+                <div class = "art-item">
+                    <img src = "images/levelDesigns/rollarena/rollAreanStage4.png"class="thumb">
+                    <p>level design: arena-05</p>
+                </div>
+                <div class = "art-item">
+                    <img src = "images/levelDesigns/rollarena/rollAreanStage5.png"class="thumb">
+                    <p>level design: arena-06</p>
+                </div>
+                <div class = "art-item">
+                    <img src = "images/levelDesigns/rollarena/rollAreanStage6.png"class="thumb">
+                    <p>level design: arena-07</p>
+                </div>
+                <div class = "art-item">
+                    <img src = "images/levelDesigns/rollarena/rollAreanStage7.png"class="thumb">
+                    <p>level design: arena-08</p>
+                </div>
+                <div class = "art-item">
+                    <img src = "images/levelDesigns/rollarena/rollAreanStage8.png"class="thumb">
+                    <p>level design: arena-09</p>
+                </div>
+                <div class = "art-item">
+                    <img src = "images/levelDesigns/rollarena/stage9.png"class="thumb">
+                    <p>level design: arena-10</p>
+                </div>
+            </div>
+
+            <h1>ARTWORK</h1>
+            <div class="sub-flex-container">
+                <div class = "art-item">
+                    <img src = "images/artwork/rollarena/img0.png"class="thumb">
+                    <p>sprite work: character sheet 1</p>
+                </div>
+                <div class = "art-item">
+                    <img src = "images/artwork/rollarena/img1.png"class="thumb">
+                    <p>sprite work: character sheet 2</p>
+                </div>
+            </div>
+
+            <!-- CONTACT -->
+  
+                <h1>GAME PAGE</h1>
+                <a></a>
+                <a href="https://mossgames0.itch.io/roll-arena" target="_blank">
+                                <div class="contact-item">
+                                    <img src="images/buttons/itchSVG.svg" height="90px">
+                                </div>
+                            </a>
+
+            <footer>&copy; 2025 Chris Hamam | Game Designer</footer>
+
+            <div id="custom-cursor"></div>
+
+            <!-- lightbox container (initially hidden) -->
+            <div id="lightbox" class="lightbox" role="dialog" aria-hidden="true">
+            <button class="close" aria-label="Close">&times;</button>
+            <img class="lightbox-img" alt="">
+            </div>
+
+            <!-- Toast Notification -->
+            <div id="toast" class="toast">Copied to clipboard!</div>
+        </div>
+
+<!-- JAVASCRIPT ---------------------------------------------------------------------------------------------------------------------------->        
+
+    <!-- TOAST -->
+        <script src="js/toast.js" defer></script>
+
+    <!-- NAVBAR -->
+        <script src="js/navbar.js" defer></script>
+
+    <!-- CONTENT PROTECTION -->
+        <script src="js/content-protect.js" defer></script>
+
+    <!-- LIGHTBOX -->
+        <script src="js/lightbox.js" defer></script>
+
+    <!-- CUSTOM MOUSE -->
+        <script src="js/custom-mouse.js" defer></script>
+    </body>
+</html>

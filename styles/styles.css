@@ -1,0 +1,521 @@
+@font-face {
+  font-family: 'WebFont';
+  src: url('../fonts/texgyreadventor-regular.otf') format('opentype');
+}
+
+.sub-flex-container .art-item {
+  display: none; /* hide all by default */
+}
+
+.sub-flex-container .art-item:nth-child(-n+3) {
+  display: block; /* show only the first 3 */
+}
+
+.sub-flex-container.expanded .art-item {
+  display: block; /* show all when expanded */
+}
+
+ p{
+    font-size: 0.9rem;
+    text-align: left;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+.text-short{
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 20px;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+.text-long{
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 20px;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+#about .text-long {
+  display: none;
+}
+
+#about.expanded .text-long {
+  display: block;
+}
+
+#about.expanded .text-short {
+  display: none; /* optional: hide short text when expanded */
+}
+
+.toggleBtn {
+  width: 300px;
+  height: 40px;
+  margin-top: 10px;
+  background-color: #333;
+  font-family: 'WebFont', sans-serif;
+  font-size: 1rem;
+  font-weight: 800;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: transform 0.1s ease;
+}
+
+
+.toggleBtn:hover {
+  background: #000000;
+  color: #5c60ac;
+  transform: scaleX(1.05);
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+.text-link{
+    color: white;
+    text-decoration:underline;
+}
+
+.text-link:hover {
+    color: #5c60ac;
+    text-decoration:underline;
+}
+
+p, ul{
+    font-size: 0.9rem;
+    text-align: left;
+    padding-left: 88px;
+    padding-right: 30px;
+}
+
+.p2{
+      display: inline-block;
+      font-size: 0.9rem;
+      text-align: center;
+      margin-bottom: 8px;
+    }
+
+li{
+  font-size: 0.9rem;
+}
+
+
+
+body {
+    font-family: 'WebFont', sans-serif;
+    font-weight: 600;
+    background-color: #1e1e1e;
+    color: #fff;
+}
+
+h1{
+    display: flex;
+    align-items: center;     /* vertical centering */
+    justify-content: center; /* horizontal centering */
+    text-align: center;      /* keeps text centered if it wraps */
+    background-color: #333;
+    color: #ffffff;
+    font-size: 1.8rem;
+    height: 60px;
+    width: 99%;
+    margin: 15px auto;
+}
+
+#contact {
+  scroll-margin-top: 180px; /* height of fixed navbar */
+}
+
+
+footer{
+    display: flex;
+    align-items: center;     /* vertical centering */
+    justify-content: center; /* horizontal centering */
+    text-align: center;      /* keeps text centered if it wraps */
+}
+
+.logo{
+    width: 320px;
+    display: inline-block;
+    transition: transform 0.1s ease;
+}
+
+.logo:hover{
+    transform: scale(1.05);
+}
+
+.flexbox-container{
+    display: flex;          /* makes it a flex container */
+    flex-direction: column; /* stacks children vertically */
+    justify-content: center; /* optional: centers items vertically within the container */
+    align-items: center;     /* optional: centers items horizontally within the container */
+    gap: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.sub-flex-container{
+    display: flex;
+    flex-wrap: wrap;          /* wrap items to new row */
+    justify-content: center;  /* center items in each row */
+}
+
+.art-item {
+  display: flex;
+  flex-direction: column;
+  width: 30%;      /* controls image+caption width */
+  text-align: center;    /* makes caption centered */
+  margin-left: 15px;
+  margin-right: 15px;
+  margin-bottom: 20px;
+}
+
+.art-item-large{
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  width: 45%;
+  padding: 15px;
+  text-align: center;
+}
+
+.art-item img, .art-item-large img {
+  width: 100%;   /* fill up to max-width of art-item */
+  max-height: 750px;
+  object-fit: contain;
+}
+
+.art-item p, .art-item-large p {
+  text-align: center;
+  padding: 4px;            /* remove inherited padding */
+  margin: 0 auto; 
+}
+
+/* main index page item */
+.item{
+    padding: 20px;
+    text-align: center;
+   /* border-radius: 2px;*/
+    background-color: #333;
+    width: 400px;
+    
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    gap:10px;
+}
+
+.item img {
+    width: 250px;
+    height: auto;
+    display: block;
+    margin: 0 auto 10px auto;
+}
+
+.item p {
+    font-size: 0.9rem;
+}
+
+.item a {
+    display: inline-block;
+    transition: transform 0.1s ease;
+}
+
+.item a:hover {
+    transform: scale(1.05);
+}
+
+/* contact item for contact section */
+.contact-item {
+  min-width: 180px;
+    max-width: 340px;
+  display: flex;
+  flex-direction: column; /* stack image and text vertically */
+  align-items: center;    /* horizontal centering */
+  justify-content: center; /* vertical centering if needed */
+  padding: 15px;
+  cursor: pointer;        /* indicates clickable */
+  text-align: center;     /* center text inside */
+  transition: transform 0.1s ease;
+}
+
+.contact-item:hover{
+    transform: scale(1.075);
+}
+
+/* tags */
+.tag{
+    display: inline-block;
+  font-size: 0.75rem;         /* slightly smaller, more "label-like" */
+  font-weight: 1500;          /* a bit bolder for readability */
+  padding: 4px 10px;         /* breathing room inside */
+  border-radius: 2px;      
+  /*border: 4px solid #757575;   hollow box border */ 
+  border: 4px solid #555;
+  color: #ffffff;   
+  margin: 4px;               
+  letter-spacing: 0.5px;     
+}
+
+.tag-large{
+    display: inline-block;
+  font-size: 0.9rem;         /* slightly smaller, more "label-like" */
+  font-weight: 900;          /* a bit bolder for readability */
+  padding: 4px 10px;         /* breathing room inside */
+  border-radius: 3px;      
+  background-color: #333;
+  color: #ffffff;   
+  margin: 4px;               
+  letter-spacing: 0.5px;     
+}
+
+
+.button{
+    display: inline-block;
+  font-size: 1rem;         /* slightly smaller, more "label-like" */
+  font-weight: 900;          /* a bit bolder for readability */
+  padding: 8px 10px;         /* breathing room inside */
+  border-radius: 3px;       /* pill-like shape */
+  background-color: #555;/* accent color (matches your portfolio’s theme) */
+  color: #ffffff;            /* contrast against background */
+  margin: 4px;               /* spacing between tags */
+  letter-spacing: 0.5px;     /* subtle spacing for readability */
+  transition: transform 0.1s ease;
+}
+
+.button:hover{
+    color: #5c60ac;
+    background-color: black;
+
+    /*box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.6);*/
+    transform: scale(1.05);
+}
+
+/* Navbar Styling */
+.navbar {
+    width: 100%;
+    height: 80px;
+    background-color: #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+.navbar-brand {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.navbar-links {
+    margin-right: 16px;
+    display: flex;
+    gap: 15px;
+}
+
+.navbar-links a {
+    text-decoration: none;
+    color: white;
+    font-size: 0.9rem;
+    max-height: 28px;
+    padding: 10px 20px;
+    background-color: #444;
+    border-radius: 2px;
+    text-align: center;
+    transition: all 0.1s;
+}
+
+.navbar-links a:hover {
+  color: #5c60ac;
+    background-color: #000000;
+    transform: scale(1.05);
+}
+
+.menus {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+}
+
+.menus span {
+    height: 3px;
+    width: 30px;
+    background-color: white;
+    transition: 0.3s;
+}
+
+.nav-spacer {
+    height: 0;
+    transition: height 0.3s ease; /* smooth push-down */
+}
+
+.nav-spacer.active {
+    height: 256px; /* match dropdown height */
+}
+
+/* Toast styles */
+.toast {
+    position: fixed;
+    background-color: #333;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 2px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+    z-index: 1000;
+  }
+
+  .toast.show {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .video
+  {
+    width: 60%;
+  }
+
+    .yt-video
+  {
+    width: 60%;
+    height: 525px;
+  }
+  
+
+.thumb{ 
+  cursor: zoom-in; 
+  width: 100%;   
+  max-height: 750px;
+  object-fit: contain;
+}
+  .lightbox
+  {
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:fixed; inset:0;
+    background:rgba(0,0,0,0.8);
+    z-index:1000;
+    padding:20px;
+    opacity:0; 
+    pointer-events:none;
+    transition:opacity .18s;
+  }
+  .lightbox[aria-hidden="false"]{ 
+    opacity:1; 
+    pointer-events:auto; 
+  }
+.lightbox-img {
+  max-width: 80%;
+  max-height: 85vh;
+  width: auto;
+  height: auto;
+  object-fit: contain; 
+}
+
+  .close{
+    position:absolute; 
+    width: 42px;
+    height: 42px;
+    top:18px; right:18px; 
+    border-radius: 2px;
+    font-size:28px; 
+    background-color: #444;
+    border:none; 
+    color:white; 
+    cursor:pointer;
+    transition: all 0.1s;
+  }
+
+.close:hover {
+    background-color: #000000;
+    color:#5c60ac;
+    transform: scale(1.05);
+}
+
+/* QUERY 1048px --------------------------------------------------- */
+@media (max-width: 1048px) {
+
+    .item {
+
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 1.4rem;
+    }
+
+    p{
+    font-size: 0.9rem;
+    text-align: left;
+    padding-left: 15px;
+    padding-right: 15px;
+    }
+
+    .text-short, .text-long{
+      font-size: 0.9rem;
+    text-align: left;
+    padding-left: 0px;
+    padding-right: 0px;
+    }
+
+    .video
+    {
+      width: 75%;
+    }
+
+    .navbar-links {
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+        background-color: #333;
+        position: absolute;
+        top: 50px;
+        left: 8px;
+        right: -8px;
+        text-align: center;
+    }
+
+    .navbar-links.active {
+        display: flex;
+        margin-top: 38px;
+    }
+
+    .menus {
+        padding-right: 30px;
+        display: flex;
+    }
+
+    .thumb{ 
+  pointer-events:none; 
+  }
+}
+
+@media (max-width: 890px) {
+
+.art-item {
+        width: 85%;
+    }
+      .video
+  {
+    width: 85%;
+  }
+
+  p,  .text-short, .text-long{
+    font-size: 0.8rem;
+  }
+
+
+
+  .tag-large{
+  font-size: 0.75rem;         /* slightly smaller, more "label-like" */  
+}
+  }

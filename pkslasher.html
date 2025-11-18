@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width = device-width, initial-scale = 1.0">
+        <title>Pumpkin Slasher: Bloodbath | Chris Hamam Game Design Portfolio</title>
+        <link rel="icon" href="icons/flameicon4.ico" type="image/x-icon">
+        <link rel="stylesheet" href="styles/styles.css">
+    </head>
+
+    <body>
+        <!-- navbar -->
+        <nav class="navbar">
+            <div class="navbar-brand">
+                <a href="index.html">
+                    <img src="images/icon-portfolio3.png" class="logo">
+                </a>
+            </div>
+            <div class="navbar-links">
+                <a href="index.html#about">About</a>
+                <a href="index.html#professional-work">Professional Work</a>
+                <a href="index.html#personal-projects">Personal Projects</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
+            <div class="menus" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+
+        <!-- MAIN FLEX CONTAINER -->
+        <div class="nav-spacer"></div>
+        <img src="images/headerImages/PKSlasherheader.png" width = 100%>
+        <div class="flexbox-container">
+
+            <h1>PUMPKIN SLASHER: BLOODBATH</h1>
+            <p>Pumpkin Slasher: Bloodbath is a horror-action game submitted to the 2024 Granola.gg X Rit game jam under the theme: nostalgia. 
+                You just got home with the hottest new video game: Pumpkin Slasher Bloodbath. When booting up the cartridge you realize there 
+                is something more sinister lying beneath the surface of the game. Switch between first person and in-game perspectives to fix 
+                bugs and warn off the evil entity haunting the cartridge.
+            </p>
+            
+            <span class="tag-large">Team Project</span>
+            <span class="tag-large">Software: Game Maker Studio 2, Paint.NET, Audacity</span>
+            <span class="tag-large">Roles: Main Game Designer, Main Programmer, Artist</span>
+            <span class="tag-large">Unique Systems: Perspective Switching, Minigames</span>       
+
+            <h1>PROCESS & DETAILS</h1>
+            <video class="video" autoplay muted loop playsinline>
+                <source src="videos/PKslashervideo.mp4" type="video/mp4">
+            </video>
+           
+            <p>Pumpkin Slasher: Bloodbath was a team project of 3. We began by researching & locking down our theming and gameplay style which we decided 
+                to go with an 80s horror styled game where you play as a classic slasher character. We knew that we wanted imagery of CRT tvs and old game 
+                consoles. We thought of having the title screen be a first person perspective where you insert the game cartridge to play. Building on that
+                I presented my teammates with the idea of switching between a first person perspective being a core mechanic. I designed three mingames with 
+                the theme of nostalgia in mind: fixing tv signal, fixing joystick input, and blowing dust off the cartridge. While our team dynamics were 
+                great, I did end up spreading myself too thin acting as the main game designer, main programmer, and an artist. I learned 
+                to not let myself take charge in too many areas and make sure to spread the work more evenly throughout my team.
+            </p>
+
+            <h1>ARTWORK</h1>
+            <div class="sub-flex-container">
+                <div class = "art-item-large">
+                    <img src = "images/artwork/pkSlasher/art0.png"class="thumb">
+                    <p>first person persepctive spritework</p>
+                </div>
+                <div class = "art-item-large">
+                    <img src = "images/artwork/pkSlasher/art1.png"class="thumb">
+                    <p>in-game perspective spritework</p>
+                </div>
+            </div>
+
+            <!-- CONTACT -->
+            <h1>GAME PAGE</h1>
+            <a href="https://mossgames0.itch.io/pumpkin-slasher-bloodbath" target="_blank">
+                <div class="contact-item">
+                    <img src="images/buttons/itchSVG.svg" height="90px">
+                </div>
+            </a>
+
+            <footer>&copy; 2025 Chris Hamam | Game Designer</footer>
+
+            <div id="custom-cursor"></div>
+
+            <!-- lightbox container (initially hidden) -->
+            <div id="lightbox" class="lightbox" role="dialog" aria-hidden="true">
+            <button class="close" aria-label="Close">&times;</button>
+            <img class="lightbox-img" alt="">
+            </div>
+
+            <!-- Toast Notification -->
+            <div id="toast" class="toast">Copied to clipboard!</div>
+
+        </div>
+
+<!-- JAVASCRIPT ---------------------------------------------------------------------------------------------------------------------------->        
+
+    <!-- TOAST -->
+        <script src="js/toast.js" defer></script>
+
+    <!-- NAVBAR -->
+        <script src="js/navbar.js" defer></script>
+
+    <!-- CONTENT PROTECTION -->
+        <script src="js/content-protect.js" defer></script>
+
+    <!-- LIGHTBOX -->
+        <script src="js/lightbox.js" defer></script>
+
+    <!-- CUSTOM MOUSE -->
+        <script src="js/custom-mouse.js" defer></script>
+    </body>
+</html>

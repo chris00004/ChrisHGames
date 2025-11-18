@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width = device-width, initial-scale = 1.0">
+        <title>Stay In The Loop | Chris Hamam Game Design Portfolio</title>
+        <link rel="icon" href="icons/flameicon4.ico" type="image/x-icon">
+        <link rel="stylesheet" href="styles/styles.css">
+    </head>
+
+    <body>
+        <!-- navbar -->
+        <nav class="navbar">
+            <div class="navbar-brand">
+                <a href="index.html">
+                    <img src="images/icon-portfolio3.png" class="logo">
+                </a>
+            </div>
+            <div class="navbar-links">
+                <a href="index.html#about">About</a>
+                <a href="index.html#professional-work">Professional Work</a>
+                <a href="index.html#personal-projects">Personal Projects</a>
+                <a href="https://drive.google.com/file/d/1E4d-JTSf7VmOATADfg6IhF1ZT_vMSbrI/view?usp=sharing" target="_blank">Resume</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
+            <div class="menus" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+
+        <!-- MAIN FLEX CONTAINER -->
+         <div class="nav-spacer"></div>
+         <img src="images/headerImages/stayintheloopheader.png" width = 100%>
+        <div class="flexbox-container">
+
+            
+
+            <h1>STAY IN THE LOOP</h1>
+            <p>
+                Stay In The Loop is a puzzle-platformer in which you are trapped in a time loop. You must spot the one NPC repeating their actions before the timer runs out, collapsing the loop.
+                <!--Stay In The Loop in a puzzle-platformer submitted to the 2024 GMTK Game Jam under the theme: loop. The player is
+                in a time loop with various others wandering around the randomized levels. You must find the single NPC in each
+                level who is also in the timeloop by analyzing all of their movements and finding the one who is repeating the 
+                same set of actions over and over. You must do this before the time limit runs out or else your time loop will break!-->
+            </p>
+
+            <span class="tag-large">Solo Project, 2024 GMTK Game Jam</span>
+            <span class="tag-large">Software: Game Maker Studio 2, Paint.NET, Audacity</span>
+            <span class="tag-large">Roles: Game Designer, Artist, Programmer, Level Designer, UI Designer</span>
+            <span class="tag-large">Unique Systems: NPC Decision Making, Movement System</span>
+
+
+            <h1>PROJECT DETAILS</h1>
+            <video class="video" autoplay muted loop playsinline>
+                <source src="videos/stayintheloopvideo.mp4" type="video/mp4">
+            </video>
+           
+            <p>
+                Stay In The Loop is an infinite high-score game where each loop loads a random preset map with NPCs, their number increasing each loop. 
+                NPCs use three behavior types: preset, random calm, and random energetic. With one always following a looping, predefined moveset. 
+                The minimalist UI keeps focus on tracking NPC movements.
+                <!--Stay In The Loop is structured as an infinite highscore based game where each continued loop is a randomly 
+                picked preset map that is filled with NPCs the quantity of which is based on how high of a loop you are in.
+                The NPC behaviour I developed is split into preset movements, random calm, and random energetic. All NPCs in each 
+                loop are randomly chosen as each of these, and one always has a predetermined moveset that loops and is also chosen 
+                randomly from a list of movesets I defined. I designed the UI to be as simple and transparent as possible to allow 
+                players to focus easier on watching the NPCs movements.-->
+            </p>
+
+            <h1>LEVEL DESIGN</h1>
+            <p>
+                Levels are designed to accommodate many NPCs while allowing the player to move easily and locate the target.
+            </p>
+            <div class="sub-flex-container">
+                <div class = "art-item">
+                    <img src = "images/levelDesigns/stayintheloop/0.png"class="thumb">
+                    <p>level design: loop-01</p>
+                </div>
+                <div class = "art-item">
+                    <img src = "images/levelDesigns/stayintheloop/1.png"class="thumb">
+                    <p>level design: loop-02</p>
+                </div>
+                <div class = "art-item">
+                    <img src = "images/levelDesigns/stayintheloop/2.png"class="thumb">
+                    <p>level design: loop-03</p>
+                </div>
+                <div class = "art-item">
+                    <img src = "images/levelDesigns/stayintheloop/3.png"class="thumb">
+                    <p>level design: loop-04</p>
+                </div>
+                <div class = "art-item">
+                    <img src = "images/levelDesigns/stayintheloop/4.png"class="thumb">
+                    <p>level design: loop-05</p>
+                </div>
+                <div class = "art-item">
+                    <img src = "images/levelDesigns/stayintheloop/5.png"class="thumb">
+                    <p>level design: loop-06</p>
+                </div>
+            </div>
+            <button class="toggleBtn">View More</button>
+
+                <h1>GAME PAGE</h1>
+                <a></a>
+                <a href="https://mossgames0.itch.io/stayintheloop" target="_blank">
+                                <div class="contact-item">
+                                    <img src="images/buttons/itchSVG.svg" height="70px">
+                                </div>
+                            </a>
+
+            <footer>&copy; 2025 Chris Hamam | Game Designer</footer>
+
+            <!-- lightbox container (initially hidden) -->
+            <div id="lightbox" class="lightbox" role="dialog" aria-hidden="true">
+            <button class="close" aria-label="Close">&times;</button>
+            <img class="lightbox-img" alt="">
+            </div>
+
+            <!-- Toast Notification -->
+            <div id="toast" class="toast">COPIED TO CLIPBOARD</div>
+
+        </div>
+
+<!-- JAVASCRIPT ---------------------------------------------------------------------------------------------------------------------------->        
+
+    <!-- TOAST -->
+        <script src="js/toast.js" defer></script>
+
+    <!-- NAVBAR -->
+        <script src="js/navbar.js" defer></script>
+
+    <!-- CONTENT PROTECTION -->
+        <script src="js/content-protect.js" defer></script>
+
+    <!-- LIGHTBOX -->
+        <script src="js/lightbox.js" defer></script>
+
+         <script src="js/show-more.js" defer></script>
+    </body>
+</html>
