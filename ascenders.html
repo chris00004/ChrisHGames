@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width = device-width, initial-scale = 1.0">
         <title>Ascenders | Chris Hamam Game Design Portfolio</title>
-        <link rel="icon" href="icons/flameicon.ico" type="image/x-icon">
+        <link rel="icon" href="icons/flameicon4.ico" type="image/x-icon">
         <link rel="stylesheet" href="styles/styles.css">
     </head>
 
@@ -20,7 +20,7 @@
                 <a href="index.html#about">About</a>
                 <a href="index.html#professional-work">Professional Work</a>
                 <a href="index.html#personal-projects">Personal Projects</a>
-                <a href="https://drive.google.com/file/d/19BFu9rNbxPisLbc_l7tVzo2_o8Cfnv6I/view?usp=sharing" target="_blank">Resume</a>
+                <a href="https://drive.google.com/file/d/1E4d-JTSf7VmOATADfg6IhF1ZT_vMSbrI/view?usp=sharing" target="_blank">Resume</a>
                 <a href="index.html#contact">Contact</a>
             </div>
             <div class="menus" onclick="toggleMenu()">
@@ -36,8 +36,10 @@
         <div class="flexbox-container">
 
             <h1>ASCENDERS</h1>
-            <p>Ascenders is a 2D platformer where the player auto-runs, reversing on walls. Moves like jumps, rolls, 
-                and dives interact with terrain to gain height as you scale a vast vertical level.
+            <p>Ascenders is a 2D platformer where the character auto-runs, reversing on walls upon contact, and the player must take advantage of their 
+            environment to progress up a tall vertical stage. Moves like jumps, rolls, dives, and divekicks all interact with the terrain in unique ways 
+            enabling players to experiment with their movement toolkit. Camera follows character using unqiue node-based teqnique allowing for control over 
+            camera constraints and position.
             </p>
 
             <span class="tag-large">Solo Project</span>
@@ -50,18 +52,96 @@
                 <source src="videos/ascendersvideonew.mp4" type="video/mp4">
             </video>
            
-            <p>I began by programming a simple autorunner, then sketched ideas for level structure and gimmicks. 
-                I aimed to make the environment guide how players approach each area, using framing to highlight 
-                navigable space. To achieve this, I experimented with different camera systems through sketches and code.
-                <!--I began by programming a simple autorunner, then sketched ideas for level structure and gimmicks.<br><br> 
+            <p>
+                <!-- I began by programming a simple autorunner, then sketched ideas for level structure and gimmicks.<br><br> 
                  I focused on making the player feel like the environment dictates they way they approach an area. Framing the area 
                  that the player is in gives a clearer view of the environment for players to work off of. To achieve this,
-                  I expirented with various camera systems through sketches and various different scripts.-->
+                  I expirented with various camera systems through sketches and various different scripts. -->
+                Wanting to up my programming and design skills and make a unique movement system, I began re-using a simple platformer code I had written. 
+                I began thinking and landed on the idea of the action always moving regardless of player input. By forcing the character to run automatically 
+                it makes the player think on the fly and make quick descisions with no time to stop and take things slow. These design descsions revolving around 
+                quick descision making, reaction, and contant flow of action felt core to where my enjoyment of video games lies. <br><br>
+                
+                I kept the auto-running behaviour, disabled left and right input, and made horizontal collision with walls reverse the charcater's speed and direction. 
+                If I placed this character in a traditional horizontal platforming stage, it wouldn't make good use of the wall dependant movement mechanics. I decided on designing 
+                a tall vertical stage with a mix of vertical and horizontal platforming challenges. With that settled, I brainstormed, designed, and developed various vertical movement 
+                options to compliment the horizontal movement in the vertcial space.<br><br>
+                
+                As the environment and level design dictate the way players interact with the game, I placed a strong emphasis on the presentation and framing of the level. 
+                To do this I thought of ways to frame the action to focus directly on a chunk of the level to ensure players get a clear view of the space for them to work off of. 
+                To achieve this, I experimented with various camera systems through sketching and scripting. What I settled on was a node-based camera system with a high degree 
+                of control over framing and camera positioning. 
+                <br><br>
+                
             </p>
+
+            <h1>MECHANICS DESIGN</h1>
+                <div class="sub-flex-container">
+                <div class = "art-item">
+                    <p>[ GROUND MOVEMENT ]</p>
+                    <img src = "images/artwork/ascenders/diagramMove.png"class="thumb">
+                    <p>Upon horizontal collision with a wall while grounded, the character's movement direction reverses. 
+                        Requires players to plan out and be intentional with character movement and alignment.<br></p>
+                </div>
+                <div class = "art-item">
+                    <p>[ WALL SLIDE ]</p>
+                    <img src = "images/artwork/ascenders/diagramWallSlide.png"class="thumb">
+                    <p>Upon horizontal collision with a wall while in air, the character will cling and slide down the surface. 
+                        Allows the player to both have precise control over the character's vertical position and to reverse the character's 
+                        movement direction upon reaching the ground. <br> </p>
+                </div>
+                <div class = "art-item">
+                    <p>[ WALL JUMP ]</p>
+                    <img src = "images/artwork/ascenders/diagramWallJump.png"class="thumb">
+                    <p>when pressing the jump button in wall slide state, the character jumps off the wall, reversing the movement direction. 
+                        Gives player agency over when they want the character to detatch from the wall as well as a vertical boost in the opposite direction.</p>
+                </div>
+                <div class = "art-item">
+                    <p>[ ROLL ]</p>
+                    <img src = "images/artwork/ascenders/diagramRoll.png"class="thumb">
+                    <p>When the action button is pressed while grounded, the character performs a roll that locks character input until they uncurl. 
+                        This move is used to break obstacles and can also bypass a wall slide by rolling off a platform into a wall, instantly 
+                        reversing the character's direction. Skillful use rewards players with access to hidden obstacles, alternate routes, 
+                        and secrets, while the risk is committing to the roll which you can’t jump out of until the timer ends, making hazards 
+                        and falls more dangerous.</p>
+                </div>
+                <div class = "art-item">
+                    <p>[ AIR DIVE ]</p>
+                    <img src = "images/artwork/ascenders/diagramAirDive.png"class="thumb">
+                    <p>Pressing the action button in midair triggers a diving arc in the movement direction, doubling the character’s speed. 
+                        Hitting a wall halves the speed back to normal and forces the character into an air roll, which then transitions into 
+                        a ground roll upon landing. Landing directly on the ground also halves speed and forces an immediate roll. Skillful use allows faster 
+                        traversal, longer jumps, and access to new routes, while reckless use is riskier than a normal roll, increasing the 
+                        chance of hazards or bad landings. This added punishment balances the move, which proved overpowered without limits.</p>
+                </div>
+                <div class = "art-item">
+                    <p>[ DIVE KICK ]</p>
+                    <img src = "images/artwork/ascenders/diagramDiveKick.png"class="thumb">
+                    <p>while in the air dive state, a tightly-timed press of the jump button just before colliding horizontally with a wall, the character performs 
+                another air dive, reversing the movement direction. Allows back and forth chaining of air dives, although timing is very tight. This is essentially a 
+                small extention of the air dive so colliding with a wall or the ground inherets all the same pros and cons.</p>
+                </div>
+            </div>
+            <button class="toggleBtn">View More</button>
+
+            <h1>NODE CAMERA SYSTEM</h1>
+            <p>I designed and developed a node-based camera system that allows me to place node objects, each with their own unique ID, anywhere in the level.
+                Upon a collision between the character and a camera transition trigger object, depending on the direction the character is facing during collision, 
+                the ID of the next or previous node is passed to the camera. The camera then calculates the closest point to the character within the node's bounds, and 
+                smoothly transitions there. This works by checking all four sides of the node, checking whether the character's y position in within the top and bottom y 
+                position of the node and same with the x positions, if true for Y is within  From there the camera tracks the character while staying within the node's bounds. 
+                Scaling the node in the Game Maker Studio 2 room editor directly sets the node's boundaries, allowing me to change the framing of a section simply by moving and scaling that node. 
+                    </p>
+                <div class = "art-item">          
+                    <img src = "images/artwork/ascenders/diagramCam.png"class="thumb">
+                </div>
+            
 
             <h1>LEVEL DESIGN</h1>
             <p>
-                Levels are structured as a series of linear, bite-sized challenges that flow together, rewarding skilled, experimental players with shortcuts and skips.
+                Levels are structured as a series of linear, bite-sized challenges that flow together, rewarding skilled, experimental players with shortcuts and skips. I 
+                wanted to ensure levels were molded around the character's movement mechanics and level terrain to enhance each other. Using my camera system in conjucntion with 
+                Game Maker Studio 2's room editor, I was able to create a large vertical level that feels focused, takes advantage of movement mechanics, and is challenging but fair. 
             </p>
                 <div class = "art-item">
                     <img src = "images/levelDesigns/ascenders/level design.png" class="thumb">
@@ -71,7 +151,8 @@
 
             <h1>ARTWORK</h1>
             <p>
-                The artwork is focused on bouncy, responsive animations for quick feedback and simple, colorful environments to keep traversal clear and engaging.
+                The artwork is focused on bouncy, responsive animations for quick feedback and simple, colorful environments to keep traversal clear and engaging. I made sure to balance 
+                clarity and visual detail by giving all foreground spritework black outlines and higher detail while all background assets are simpler using a less color values.
             </p>
             <div class="sub-flex-container">
                 <div class = "art-item">

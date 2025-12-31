@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width = device-width, initial-scale = 1.0">
         <title>Stay In The Loop | Chris Hamam Game Design Portfolio</title>
-        <link rel="icon" href="icons/flameicon.ico" type="image/x-icon">
+        <link rel="icon" href="icons/flameicon4.ico" type="image/x-icon">
         <link rel="stylesheet" href="styles/styles.css">
     </head>
 
@@ -20,7 +20,7 @@
                 <a href="index.html#about">About</a>
                 <a href="index.html#professional-work">Professional Work</a>
                 <a href="index.html#personal-projects">Personal Projects</a>
-                <a href="https://drive.google.com/file/d/19BFu9rNbxPisLbc_l7tVzo2_o8Cfnv6I/view?usp=sharing" target="_blank">Resume</a>
+                <a href="https://drive.google.com/file/d/1E4d-JTSf7VmOATADfg6IhF1ZT_vMSbrI/view?usp=sharing" target="_blank">Resume</a>
                 <a href="index.html#contact">Contact</a>
             </div>
             <div class="menus" onclick="toggleMenu()">
@@ -39,11 +39,13 @@
 
             <h1>STAY IN THE LOOP</h1>
             <p>
-                Stay In The Loop is a puzzle-platformer in which you are trapped in a time loop. You must spot the one NPC repeating their actions before the timer runs out, collapsing the loop.
-                <!--Stay In The Loop in a puzzle-platformer submitted to the 2024 GMTK Game Jam under the theme: loop. The player is
-                in a time loop with various others wandering around the randomized levels. You must find the single NPC in each
-                level who is also in the timeloop by analyzing all of their movements and finding the one who is repeating the 
-                same set of actions over and over. You must do this before the time limit runs out or else your time loop will break!-->
+                <!-- Stay In The Loop is a puzzle-platformer in which you are trapped in a time loop. You must spot the one NPC repeating 
+                their actions before the timer runs out, collapsing the loop. -->
+                Stay In The Loop in a puzzle-platformer submitted to the 2024 GMTK Game Jam under the theme: loop. The player is
+                in a time loop with various others wandering around the randomized levels. You must find and run into the single NPC in each
+                level who is in the timeloop with you by analyzing everyones movements until you find one repeating the 
+                same set of actions over and over. Avoid running into all other NPCs as they will set you back 15 seconds.
+                 You must do this before the time limit runs out or else your time loop will break!
             </p>
 
             <span class="tag-large">Solo Project, 2024 GMTK Game Jam</span>
@@ -58,20 +60,28 @@
             </video>
            
             <p>
-                Stay In The Loop is an infinite high-score game where each loop loads a random preset map with NPCs, their number increasing each loop. 
+                <!-- Stay In The Loop is an infinite high-score game where each loop loads a random preset map with NPCs, their number increasing each loop. 
                 NPCs use three behavior types: preset, random calm, and random energetic. With one always following a looping, predefined moveset. 
-                The minimalist UI keeps focus on tracking NPC movements.
-                <!--Stay In The Loop is structured as an infinite highscore based game where each continued loop is a randomly 
-                picked preset map that is filled with NPCs the quantity of which is based on how high of a loop you are in.
-                The NPC behaviour I developed is split into preset movements, random calm, and random energetic. All NPCs in each 
-                loop are randomly chosen as each of these, and one always has a predetermined moveset that loops and is also chosen 
-                randomly from a list of movesets I defined. I designed the UI to be as simple and transparent as possible to allow 
-                players to focus easier on watching the NPCs movements.-->
+                The minimalist UI keeps focus on tracking NPC movements. -->
+                The five day development cycle was focused on player movement, NPC behaviour, designing levels, and visuals such as UI and animations. 
+                I needed to make sure players had movement options to accurately avoid the non-loop NPCs. I have the player a jump, walljump, and a grapple 
+                mechanic allowing them to shoot towards grapple points in the level. 
+                The NPC behaviour I developed is split into three types: preset, random calm, and random energetic. All NPCs in each 
+                loop are randomly chosen as each of these, except for the one always has a predetermined moveset that loops. That moveset is chosen 
+                randomly from a list of movements I defined. I designed the UI and visual style to be as simple and responsive as possible to allow 
+                players to focus on watching the NPCs movements. Screen transisitions are fluid from one to the next concealing the seams between levels.
+                <br><br>
+                I learned and grew a lot during this game jam. During game jams I tend to unintentionally leave little to no time for playtesting. 
+                With each game jam I participate in I hold it to myself to break this habit. This time around I managed to hold a couple of playtests 
+                halfway through and on the final day. It's not where I want it yet, but it's an improvement and something I'm excited to keep working on.
             </p>
 
             <h1>LEVEL DESIGN</h1>
             <p>
-                Levels are designed to accommodate many NPCs while allowing the player to move easily and locate the target.
+                Levels are designed to accommodate many NPCs while allowing the player to enjoy traversal and easily and locate the target. I used a grapple point mechanic to allow 
+                players to soar over the NPCs giving them a dynamic traversal option, the choice to stay in the air, and a chance to aim for the right NPC. Grapple points were each 
+                intentionally placed based on many tests on each map to see where I might have a hard time reaching the correct NPC or avoiding the rest of them, and where they were 
+                the most fun to use. 
             </p>
             <div class="sub-flex-container">
                 <div class = "art-item">

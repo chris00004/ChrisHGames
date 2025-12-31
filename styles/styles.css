@@ -17,25 +17,45 @@
 
  p{
     font-size: 0.9rem;
-    text-align: left;
-    padding-left: 30px;
-    padding-right: 30px;
+    padding-left: 50px;
+    padding-right: 50px;
   }
+
+.text-container
+{
+  
+}
+
+.text-center
+{
+    text-align: center;
+    font-size: 0.9rem;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.text-tab
+{
+    text-align: left;
+    font-size: 0.9rem;
+    padding-left: 80px;
+    padding-right: 50px;
+    margin-left: 130;
+    margin-right: 130;
+}
 
 .text-short{
   font-size: 0.9rem;
   font-weight: 600;
-  padding: 20px;
-  margin-left: 50px;
-  margin-right: 50px;
+  padding-left: 50px;
+  padding-right: 50px;
 }
 
 .text-long{
   font-size: 0.9rem;
   font-weight: 600;
-  padding: 20px;
-  margin-left: 50px;
-  margin-right: 50px;
+  padding-left: 50px;
+  padding-right: 50px;
 }
 
 #about .text-long {
@@ -87,11 +107,15 @@ a {
     text-decoration:underline;
 }
 
-p, ul{
+ul{
     font-size: 0.9rem;
     text-align: left;
     padding-left: 88px;
     padding-right: 30px;
+}
+
+ul p{
+  padding-left: 12px;
 }
 
 .p2{
@@ -357,7 +381,7 @@ footer{
 }
 
 .nav-spacer.active {
-    height: 256px; /* match dropdown height */
+    height: 244px; /* match dropdown height */
 }
 
 /* Toast styles */
@@ -450,21 +474,21 @@ footer{
     }
 
     h1 {
-        font-size: 1.4rem;
+        font-size: 1.5rem;
     }
 
     p{
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     text-align: left;
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 12px;
+    padding-right: 12px;
     }
 
     .text-short, .text-long{
-      font-size: 0.9rem;
+      font-size: 0.8rem;
     text-align: left;
-    padding-left: 0px;
-    padding-right: 0px;
+    padding-left: 40px;
+    padding-right: 40px;
     }
 
     .video
@@ -494,28 +518,33 @@ footer{
         display: flex;
     }
 
-    .thumb{ 
-  pointer-events:none; 
-  }
 }
 
 @media (max-width: 890px) {
 
-.art-item {
-        width: 85%;
-    }
-      .video
-  {
+  .art-item {
+    width: 75%;
+  }
+  
+  .video{
     width: 85%;
+  }
+
+  h1{
+    font-size: 1.2rem;
   }
 
   p,  .text-short, .text-long{
     font-size: 0.8rem;
+    padding-left: 20px;
+    padding-right: 20px;
   }
-
-
 
   .tag-large{
   font-size: 0.75rem;         /* slightly smaller, more "label-like" */  
 }
+
+.thumb{ 
+  pointer-events:none; 
   }
+}
