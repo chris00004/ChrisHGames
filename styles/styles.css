@@ -465,6 +465,22 @@ footer{
     transform: scale(1.05);
 }
 
+.resume-container {
+  width: 100%;
+  max-width: 900px;     /* optional – keeps it readable on ultrawide */
+  margin: 0 auto;
+  aspect-ratio: 8.5 / 11; /* standard resume ratio */
+  min-height: 500px;    /* mobile safety */
+}
+
+.resume-container iframe {
+  margin-top: 4%;
+  margin-bottom: 4%;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
 /* QUERY 1048px --------------------------------------------------- */
 @media (max-width: 1048px) {
 
