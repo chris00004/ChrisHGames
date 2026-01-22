@@ -31,7 +31,7 @@ document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLight
 
 // function to toggle lightbox based on window width
 function checkLightboxActive() {
-    lightboxActive = window.innerWidth >= 1068;
+    lightboxActive = window.innerWidth >= 890;
     if (!lightboxActive) closeLightbox(); // ensure it's closed if disabled
 }
 
