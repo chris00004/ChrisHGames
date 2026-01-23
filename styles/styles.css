@@ -17,8 +17,8 @@
 
  p{
     font-size: 0.9rem;
-    padding-left: 50px;
-    padding-right: 50px;
+    padding-left: 350px;
+    padding-right: 350px;
   }
 
 .text-container
@@ -47,15 +47,15 @@
 .text-short{
   font-size: 0.9rem;
   font-weight: 600;
-  padding-left: 50px;
-  padding-right: 50px;
+  padding-left: 350px;
+  padding-right: 350px;
 }
 
 .text-long{
   font-size: 0.9rem;
   font-weight: 600;
-  padding-left: 50px;
-  padding-right: 50px;
+  padding-left: 350px;
+  padding-right: 350px;
 }
 
 #about .text-long {
@@ -496,8 +496,6 @@ footer{
     p{
     font-size: 0.8rem;
     text-align: left;
-    padding-left: 12px;
-    padding-right: 12px;
     }
 
     .text-short, .text-long{
