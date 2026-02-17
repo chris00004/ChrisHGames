@@ -22,6 +22,7 @@ html {
 
 .banner{
   margin-top: 80px;
+  width: 100%;
 }
 
 .banner img{
@@ -45,7 +46,7 @@ html {
     padding-left: 20%;
     padding-right: 20%;
     font-weight: 500;
-    text-shadow: 1px 1px 0 #7c7c7c;
+    text-shadow: 1px 1px 0 #606060;
     /* background-color: #5c60ac; */
   }
 
@@ -70,7 +71,7 @@ html {
     margin-bottom: -16px;
     padding-left: 20%;
     padding-right: 20%;
-    text-shadow: 1px 1px 0 #636363;
+    text-shadow: 1px 1px 0 #606060;
     /* background-color: #5c60ac; */
   }
 
@@ -191,8 +192,6 @@ li{
   font-size: 0.9rem;
 }
 
-
-
 body {
     overflow-x: hidden;
     font-family: 'WebFont', sans-serif;
@@ -210,7 +209,7 @@ body {
     background-color: #c5ff00;
     color: #000000;
     font-size: 2.2rem;
-    text-shadow: 0.5px 0.5px 0 #636363;
+    text-shadow: 0.5px 0.5px 0 #606060;
     height: 60px;
     width: 100%;
     margin: 15px auto;
@@ -544,7 +543,7 @@ footer{
   font-weight: 650;          /* a bit bolder for readability */
   min-height: 16px;
   max-height: 36px;
-  text-shadow: 0.5px 0.5px 0 #636363;
+  text-shadow: 0.5px 0.5px 0 #606060;
   padding: 4px 10px;         /* breathing room inside */
   border-radius: 6px;      
   background-color: #c5ff00;
@@ -632,7 +631,7 @@ footer{
 h1{
   scroll-margin-top: 180px;
   text-align: center;
-  text-shadow: 1px 1px 0 #636363;
+  text-shadow: 1px 1px 0 #606060;
   position: relative;
   font-size: 3rem;
 }
@@ -651,7 +650,9 @@ footer{
     flex-direction: column;
     cursor: pointer;
     gap: 5px;
+    background-color: #5c60ac;
 }
+
 
 .menus span {
     height: 3px;
@@ -756,7 +757,7 @@ footer{
 }
 
 .resume-container {
-  width: 100%;
+  width: 50%;
   max-width: 900px;     /* optional – keeps it readable on ultrawide */
   margin: 0 auto;
   aspect-ratio: 8.5 / 11; /* standard resume ratio */
@@ -851,10 +852,30 @@ footer{
         font-size: 1.5rem;
     }
 
+    .header-label{
+        font-size: 2.2rem;
+      background-position: 
+        -6% 50%,  /* first left image */
+        8% 50%,  /* second left image */
+        92% 50%, /* first right image */
+        106% 50%; /* second right image */
+      background-size: 180px 114px;
+    }
+
     .header-paragraph.home{
       padding-left: 15%;
       padding-right: 15%;
       font-size: 1.5rem;
+    }
+
+    h1{
+      font-size: 2.6rem;
+    }
+
+    p.home{
+      padding-left: 15%;
+      padding-right: 15%;
+      font-size: 1.1rem;
     }
 
     .split-grid-container, .tri-grid-container {
@@ -888,26 +909,6 @@ footer{
   .tilt-img{
     width:180%;
   }
-
-.header-label{
-        font-size: 2.2rem;
-      background-position: 
-        -6% 50%,  /* first left image */
-        8% 50%,  /* second left image */
-        92% 50%, /* first right image */
-        106% 50%; /* second right image */
-      background-size: 180px 114px;
-    }
-
-    h1{
-      font-size: 2.6rem;
-    }
-
-    p.home{
-      padding-left: 15%;
-      padding-right: 15%;
-      font-size: 1.1rem;
-    }
 
     .video
     {
@@ -982,6 +983,22 @@ footer{
     padding-right: 50px;
   }
 
+  .header-paragraph.home{
+      padding-left: 10%;
+      padding-right: 10%;
+      font-size: 1.3rem;
+    }
+
+    h1{
+      font-size: 2.2rem;
+    }
+
+    p.home{
+      padding-left: 10%;
+      padding-right: 10%;
+      font-size: 1rem;
+    }
+
   .tag-large{
   font-size: 0.75rem;         /* slightly smaller, more "label-like" */  
 }
@@ -1011,13 +1028,11 @@ footer{
     }
 
     .contact-grid{
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
     grid-template-areas:
-    "c"
-    "a"
-    "b"
-    "d"
-    "e";
+    "c c"
+    "a b"
+    "d e";
   }
 
   .contact-grid > :nth-child(1){grid-area:a;}
@@ -1034,12 +1049,12 @@ footer{
   }
 
     .contact-item{
-    width:60%;
-    height: 60%;
+    width:50%;
+    height: 50%;
   }
 
   .tilt-img{
-    width:210%;
+    width:160%;
   }
 
  .toggleBtn {
@@ -1067,6 +1082,10 @@ footer{
   font-size: 0.65rem;         /* slightly smaller, more "label-like" */  
 }
 
+.resume-container{
+  width: 100%;
+}
+
 .thumb{ 
   pointer-events:none; 
   }
@@ -1089,7 +1108,30 @@ footer{
 }
 
 .header-label{
-      background-size: 0px 0px;
+  background-position: 
+    -120px 50%,  /* first left image */
+    -140px 50%,  /* second left image */
+    right -120px center, /* first right image */
+    right -140px center; /* second right image */
+  background-size: 188px 90px;
+}
+
+
+
+    .header-paragraph.home{
+      padding-left: 5%;
+      padding-right: 5%;
+      font-size: 1.2rem;
+    }
+
+    h1{
+      font-size: 2rem;
+    }
+
+    p.home{
+      padding-left: 5%;
+      padding-right: 5%;
+      font-size: 0.9rem;
     }
 
 .navbar {
@@ -1120,9 +1162,12 @@ footer{
 }
 
 ul{
-    font-size: 0.8rem;
-    padding-left: 50px;
+    padding-left: 30px;
     padding-right: 20px;
+}
+
+ul li{
+    font-size: 0.8rem;
 }
 
   .art-item {
@@ -1140,7 +1185,7 @@ ul{
   }
 
   p,  .text-short, .text-long{
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     padding-left: 10px;
     padding-right: 10px;
   }
