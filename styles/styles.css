@@ -650,7 +650,6 @@ footer{
     flex-direction: column;
     cursor: pointer;
     gap: 5px;
-    background-color: #5c60ac;
 }
 
 
@@ -933,7 +932,7 @@ footer{
     }
 
     .menus {
-        padding-right: 30px;
+        margin-right: 30px;
         display: flex;
     }
 
