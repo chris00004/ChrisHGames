@@ -32,15 +32,119 @@
             </nav>
 
             <div class="nav-spacer"></div>
+            <div class="adjustable-spacer" style="height: 60px;"></div>
 
         <!-- MAIN FLEX CONTAINER -->
         <div class="flexbox-container">
 
             <!-- RESUME -->
              <!-- height="600px" -->
-              <div class="resume-container">
-                <iframe src="resume/resume.pdf"></iframe> 
+              <div class="header-label">RESUME</div>
+              <div class="resume-container" style="width: 50%;">
+                <iframe src="PDFs/resume.pdf"></iframe> 
               </div>
+              <div class="adjustable-spacer" style="height: 60px;"></div>
+              <div class="header-label"></div>
+            <!-- CONTACT -->
+                    <div id="contact"></div>
+                    <div class="contact-grid" style="margin-top: 50px;">
+                    <!-- PHONE -->
+                    <div class="tilt-wrapper">
+                        <div class="tilt-images">
+                            <img src="images/UI/accent2.png" alt="Image 1" class="tilt-img" data-tilt="60" data-speed="0.05">
+                            <img src="images/UI/accent3.png" alt="Image 2" class="tilt-img" data-tilt="70" data-speed="0.5">
+                        </div>
+                        <div class="contact-item" onclick="copyToClipboard(event, '(240)-401-1911')" title="Click to copy">
+                            <img src="images/contact/phoneblack.png" class="img-default">
+                            <img src="images/contact/phone.png" class="img-hover">
+                            <!-- <div class="p2">(240)-401-1911</div> -->
+                        </div>
+                    </div>
+
+                    <!-- EMAIL -->
+                    <div class="tilt-wrapper">
+                        <div class="tilt-images">
+                            <img src="images/UI/accent2.png" alt="Image 1" class="tilt-img" data-tilt="60" data-speed="0.05">
+                            <img src="images/UI/accent3.png" alt="Image 2" class="tilt-img" data-tilt="70" data-speed="0.5">
+                        </div>
+                        <div class="contact-item" onclick="copyToClipboard(event, 'chrishmets2304@gmail.com')" title="Click to copy">
+                            <img src="images/contact/mailblack.png" class="img-default">
+                            <img src="images/contact/email_561127.png" class="img-hover">
+                            <!-- <div class="p2">chrishmets2304@gmail.com</div> -->
+                        </div>
+                    </div>
+
+                    <!-- CENTER -->
+                    <div class="tilt-wrapper">
+                        
+                        <div class="contact-item">
+                            <a href="https://mossgames0.itch.io/" target="_blank">
+                                <img src="images/buttons/itchblackbase.png" class="img-default">
+                                <img src="images/buttons/itchgreenbase.jpg" class="img-hover">
+                            </a>
+                        </div>
+                    </div>
+                    
+
+                    <!-- LINKEDIN -->
+                    <div class="tilt-wrapper">
+                        <div class="tilt-images">
+                            <img src="images/UI/accent2.png" alt="Image 1" class="tilt-img" data-tilt="60" data-speed="0.05">
+                            <img src="images/UI/accent3.png" alt="Image 2" class="tilt-img" data-tilt="70" data-speed="0.5">
+                        </div>
+                        <div class="contact-item">
+                            <a href="https://www.linkedin.com/in/chris-hamam" target="_blank">
+                                <img src="images/contact/linkedinblack.png" class="img-default">
+                                <img src="images/contact/linkedin.png" class="img-hover">
+                                <!-- <div class="p2">LinkedIn Profile</div> -->
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- RESUME -->
+                    <div class="tilt-wrapper">
+                        <div class="tilt-images">
+                            <img src="images/UI/accent2.png" alt="Image 1" class="tilt-img" data-tilt="60" data-speed="0.05">
+                            <img src="images/UI/accent3.png" alt="Image 2" class="tilt-img" data-tilt="70" data-speed="0.5">
+                        </div>
+                        <div class="contact-item">
+                            <a href="resume.html">
+                                <img src="images/contact/resumeblack.png" class="img-default">
+                                <img src="images/contact/resume_4824445.png" class="img-hover">
+                                <!-- <div class="p2">Resume</div> -->
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <footer>&copy; 2026 Chris Hamam | Game Designer</footer>
+        </div>
+
+        <!-- Left Side -->
+        <div class="deco scroll-rotate slow-L" style="left: -250px; top: 160px;">
+            <img src="images/UI/accent0.png" class="accent-XL">
+        </div>
+        <div class="deco scroll-rotate fast-R" style="left: -250px; top: 160px;">
+            <img src="images/UI/accent1.png" class="accent-L">
+        </div>
+        <div class="deco scroll-rotate faster-R" style="left: -50px; top: 0px;">
+            <img src="images/UI/accent1.png" class="accent-S">
+        </div>
+        <div class="deco scroll-rotate slow-R" style="left: -100px; top: 500px;">
+            <img src="images/UI/accent1.png" class="accent-L">
+        </div>
+
+        <!-- Right Side -->
+        <div class="deco scroll-rotate fast-R" style="right: -50px; top: 200px;">
+            <img src="images/UI/accent1.png" class="accent-L">
+        </div>
+        <div class="deco scroll-rotate slow-L" style="right: -250px; top: 560px;">
+            <img src="images/UI/accent0.png" class="accent-XL">
+        </div>
+        <div class="deco scroll-rotate fast-R" style="right: -250px; top: 560px;">
+            <img src="images/UI/accent1.png" class="accent-L">
+        </div>
+        <div class="deco scroll-rotate faster-L" style="right: -50px; top: 900px;">
+            <img src="images/UI/accent1.png" class="accent-S">
         </div>
 
         
@@ -56,6 +160,12 @@
         <script src="js/content-protect.js" defer></script>
 
         <script src="js/show-more.js" defer></script>
+
+    <!-- DECORATIVE SCROLLING IMAGES -->
+        <script src="js/deco-scroll.js" defer></script>
+    
+    <!-- TILT EFFECT -->
+        <script src="js/image-tilt-3D.js" defer></script>
 
     </body>
 </html>

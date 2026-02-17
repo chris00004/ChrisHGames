@@ -8,12 +8,18 @@ document.querySelectorAll('.toggleBtn').forEach(button => {
     } else {
       button.textContent = "View More";
 
-      // Scroll the container into view smoothly
-      container.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
+      const offset = 220; // pixels above the element (adjust to taste)
+      const y =
+        container.getBoundingClientRect().top +
+        window.pageYOffset -
+        offset;
+
+      window.scrollTo({
+        top: y,
+        behavior: "smooth"
       });
     }
   });
 });
+
 

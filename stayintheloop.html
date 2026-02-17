@@ -32,57 +32,84 @@
 
         <!-- MAIN FLEX CONTAINER -->
          <div class="nav-spacer"></div>
-         <img src="images/headerImages/stayintheloopheader.png" width = 100%>
+         <div class="banner"><img src="images/headerImages/stayintheloopheader.png"></div>
         <div class="flexbox-container">
-
             
 
-            <h1>STAY IN THE LOOP</h1>
-            <p>
-                <!-- Stay In The Loop is a puzzle-platformer in which you are trapped in a time loop. You must spot the one NPC repeating 
-                their actions before the timer runs out, collapsing the loop. -->
-                Stay In The Loop in a puzzle-platformer submitted to the 2024 GMTK Game Jam under the theme: loop. The player is
-                in a time loop with various others wandering around the randomized levels. You must find and run into the single NPC in each
-                level who is in the timeloop with you by analyzing everyones movements until you find one repeating the 
-                same set of actions over and over. Avoid running into all other NPCs as they will set you back 15 seconds.
-                 You must do this before the time limit runs out or else your time loop will break!
-            </p>
+            <!-- GAME OVERVIEW ------------------------------------------------------------------------------------------------------>
+            <div class="header-label">STAY IN THE LOOP</div>
+            <div class="split-grid-container">
 
-            <span class="tag-large">Solo Project, 2024 GMTK Game Jam</span>
-            <span class="tag-large">Software: Game Maker Studio 2, Paint.NET, Audacity</span>
-            <span class="tag-large">Roles: Game Designer, Artist, Programmer, Level Designer, UI Designer</span>
-            <span class="tag-large">Unique Systems: NPC Decision Making, Movement System</span>
+                <!-- LEFT GRID CELL -->
+                <div class="grid-cell">
+                    <video class="video" autoplay muted loop playsinline>
+                        <source src="videos/stayintheloopvideo.mp4" type="video/mp4">
+                    </video>
+                </div>
 
+                <!-- RIGHT GRID CELL -->
+                <div class="grid-cell">
+                    <!-- TAGS -->
+                    <span class="tag-large">Solo Project, 2024 GMTK Game Jam</span>
+                    <span class="tag-large">Software: Game Maker Studio 2, Paint.NET, Audacity</span>
+                    <span class="tag-large">Roles: Game Designer, Artist, Programmer, Level Designer, UI Designer</span>
+                    <span class="tag-large">Unique Systems: NPC Decision Making, Movement System</span>
 
-            <h1>PROJECT DETAILS</h1>
-            <video class="video" autoplay muted loop playsinline>
-                <source src="videos/stayintheloopvideo.mp4" type="video/mp4">
-            </video>
-           
-            <p>
-                <!-- Stay In The Loop is an infinite high-score game where each loop loads a random preset map with NPCs, their number increasing each loop. 
-                NPCs use three behavior types: preset, random calm, and random energetic. With one always following a looping, predefined moveset. 
-                The minimalist UI keeps focus on tracking NPC movements. -->
-                The five day development cycle was focused on player movement, NPC behaviour, designing levels, and visuals such as UI and animations. 
-                I needed to make sure players had movement options to accurately avoid the non-loop NPCs. I have the player a jump, walljump, and a grapple 
-                mechanic allowing them to shoot towards grapple points in the level. 
-                The NPC behaviour I developed is split into three types: preset, random calm, and random energetic. All NPCs in each 
-                loop are randomly chosen as each of these, except for the one always has a predetermined moveset that loops. That moveset is chosen 
-                randomly from a list of movements I defined. I designed the UI and visual style to be as simple and responsive as possible to allow 
-                players to focus on watching the NPCs movements. Screen transisitions are fluid from one to the next concealing the seams between levels.
-                <br><br>
-                I learned and grew a lot during this game jam. During game jams I tend to unintentionally leave little to no time for playtesting. 
-                With each game jam I participate in I hold it to myself to break this habit. This time around I managed to hold a couple of playtests 
-                halfway through and on the final day. It's not where I want it yet, but it's an improvement and something I'm excited to keep working on.
-            </p>
+                    <!-- PROJECT OVERVIEW -->
+                    <div class="header-paragraph"><img src="images/UI/pointerGreen.png">PROJECT OVERVIEW</div>
+                    <p>Stay In The Loop in a puzzle-platformer submitted to the 2024 GMTK Game Jam under the theme: loop. The player is
+                    in a time loop with various others wandering around the randomized levels. You must find and run into the single NPC in each
+                    level who is in the timeloop with you by analyzing everyones movements until you find one repeating the 
+                    same set of actions over and over. Avoid running into all other NPCs as they will set you back 15 seconds.
+                    You must do this before the time limit runs out or else your time loop will break!</p>
+                </div>
+                <div class="adjustable-spacer" style="height: 60px;"></div>
+            </div>
 
-            <h1>LEVEL DESIGN</h1>
-            <p>
-                Levels are designed to accommodate many NPCs while allowing the player to enjoy traversal and easily and locate the target. I used a grapple point mechanic to allow 
-                players to soar over the NPCs giving them a dynamic traversal option, the choice to stay in the air, and a chance to aim for the right NPC. Grapple points were each 
-                intentionally placed based on many tests on each map to see where I might have a hard time reaching the correct NPC or avoiding the rest of them, and where they were 
-                the most fun to use. 
-            </p>
+            <!-- PROCESS & DETALS ------------------------------------------------------------------------------------------------------>
+            <div class="header-label">PROCESS & DETAILS</div>
+            <div class="split-grid-container">
+                <!-- LEFT GRID CELL -->
+                <div class="grid-cell">
+                    <div class="header-paragraph"><img src="images/UI/pointerGreen.png">GAME ELEMENTS</div>
+                    <p> The five day development cycle was focused on player movement, NPC behavior, designing levels, and visuals such as UI and animations. 
+                    I needed to make sure players had movement options to accurately avoid the non-loop NPCs. I have the player a jump, wall jump, and a 
+                    grapple mechanic allowing them to shoot towards grapple points in the level. The NPC behavior I developed is split into three types: 
+                    preset, random calm, and random energetic. All NPCs in each loop are randomly chosen as each of these, except for the one always has a 
+                    predetermined move set that loops. That move set is chosen randomly from a list of movements I defined. I designed the UI and visual 
+                    style to be as simple and responsive as possible to allow players to focus on watching the NPCs movements. Screen transitions are 
+                    fluid from one to the next concealing the seams between levels.</p>
+
+                    <div class="header-paragraph"><img src="images/UI/pointerGreen.png">REFLECTIONS</div>
+                    <p> ​I learned and grew a lot during this game jam. During game jams I tend to unintentionally leave little to no time for playtesting. 
+                        With each game jam I participate in I hold it to myself to break this habit. This time around I managed to hold a couple of 
+                        playtests halfway through and on the final day. It's not where I want it yet, but it's an improvement and something I'm excited 
+                        to keep working on.</p>
+                </div>
+
+                <!-- RIGHT GRID CELL -->
+                <div class="grid-cell">
+                    <div class="header-paragraph"><img src="images/UI/pointerGreen.png">NPC AI SYSTEMS</div>
+                    <p> The NPC behavior system is divided into three types: Preset, Random Calm, and Random Energetic. At the start of each behavior loop, 
+                        NPCs are randomly assigned one of these types, except for one NPC that always runs a predetermined moveset on a loop. NPCs using the 
+                        random behaviors make moment to moment decisions about how to move through the space, such as whether to stay on their current 
+                        platform, jump to another, or perform wall jumps. These choices are influenced by their assigned behavior type and allow them to 
+                        navigate complex geometry in a controlled but unpredictable way. For the preset behavior, the NPC executes a fixed sequence of 
+                        movements that is randomly selected from a list of authored movement patterns, giving consistency while still maintaining variation 
+                        across loops.</p>
+
+                    <div class="adjustable-spacer" style="height: 30px;"></div>
+                    <div class="art-item"><img src="images/artwork/stayInLoop/stayInLoopEngine.png"></div>
+                </div>
+                
+            </div>
+
+            <!-- LEVEL DESIGN ------------------------------------------------------------------------------------------------------>
+            <div class="header-label">LEVEL DESIGN</div>
+            <p>Levels are designed to accommodate many NPCs while allowing the player to enjoy traversal and easily and locate the target. I used a 
+                grapple point mechanic to allow players to soar over the NPCs giving them a dynamic traversal option, the choice to stay in the air, 
+                and a chance to aim for the right NPC. Grapple points were each intentionally placed based on many tests on each map to see where I 
+                might have a hard time reaching the correct NPC or avoiding the rest of them, and where they were the most fun to use.</p>
             <div class="sub-flex-container">
                 <div class = "art-item">
                     <img src = "images/levelDesigns/stayintheloop/0.png"class="thumb">
@@ -111,15 +138,147 @@
             </div>
             <button class="toggleBtn">View More</button>
 
-                <h1>GAME PAGE</h1>
-                <a></a>
-                <a href="https://mossgames0.itch.io/stayintheloop" target="_blank">
-                                <div class="contact-item">
-                                    <img src="images/buttons/itchSVG.svg" height="60px">
-                                </div>
-                            </a>
+            <!-- CODE & AI SYSTEMS ------------------------------------------------------------------------------------------------------>
+            <div class="header-label">CODE & GAME SYSTEMS</div>
 
-            <footer>&copy; 2026 Chris Hamam | Game Designer</footer>
+            <div class="tri-grid-container">
+                <!-- GRID CELL -->
+                <div class="grid-cell">
+                    <!-- CODE EXAMPLE 2 -->
+                    <div class="header-paragraph"><img src="images/UI/pointerGreen.png">PRESET NPC LOGIC</div>
+                    <p>
+                        The preset NPC behavior is determined by a list of predetermined movement patterns that I authored. Using a 2D array, 
+                        I defined each element: [movement state, state duration], and the NPC executes each movement in order for the specified 
+                        duration before looping back to the start of the list. I use a variable called npcPath to randomly assign one of these 
+                        predetermined paths to the preset NPC each loop, giving it a consistent but varied behavior each time.
+                    </p>
+                    <div class = "art-item">
+                        <img src = "images/codeExamples/stayintheloop/codeNPCDefined.png"class="thumb">
+                    </div>
+                </div>
+
+                <!-- GRID CELL -->
+                <div class="grid-cell">
+                    <!-- CODE NPC RANDOM -->
+                    <div class="header-paragraph"><img src="images/UI/pointerGreen.png">NPC DESCISION MAKING BEHAVIOUR</div>
+                    <p>
+                        Randomized NPC calm and eratic behavior is determined by a set of rules given to each type. Calm NPCs are restricted 
+                        to idleing, walking, sitting, and jumping, with curated randomization deciding range of time spent in each state. Eratic 
+                        NPCs can do all of those actions in addition to running, and all state transitions and time spent in each state is not
+                        curated to allow for a more unpredictable and chaotic behavior.
+                    </p>
+                    <div class = "art-item">
+                        <img src = "images/codeExamples/stayintheloop/codeNPCCalm.PNG"class="thumb" style="width: 100%;">
+                    </div>
+
+                    <div class = "art-item">
+                        <img src = "images/codeExamples/stayintheloop/codeNPCEratic.PNG"class="thumb" style="width: 100%;">
+                    </div>
+                </div>
+
+                <!-- GRID CELL -->
+                <div class="grid-cell">
+                    <!-- CODE NPC JUMP -->
+                    <div class="header-paragraph"><img src="images/UI/pointerGreen.png">NPC DECIDE JUMP TO PLATFORM </div>
+                    <p>Calculates and determines if NPC should jump to a platform, based on current speed, horizontal distance to platform, 
+                        and platform height relative to NPC position.</p>
+                    <div class = "art-item">
+                        <img src = "images/codeExamples/stayintheloop/codeNPCDecideJump.png"class="thumb">
+                    </div>
+
+                    <!-- CODE NPC TURN AROUND -->
+                    <div class="header-paragraph"><img src="images/UI/pointerGreen.png">NPC DECIDE TO TURN AROUND </div>
+                    <p>Calculates and determines if NPC should turn around, based on a grounded check, distance away from ledge, and a max 
+                        drop height the NPC is allowed to drop down from.
+                    </p>
+                    <div class = "art-item">
+                        <img src = "images/codeExamples/stayintheloop/codeNPCDecideTurn.png"class="thumb">
+                    </div>
+
+                    <!-- CODE NPC WALL JUMP -->
+                    <div class="header-paragraph"><img src="images/UI/pointerGreen.png">NPC DECIDE TO WALL JUMP </div>
+                    <p>Determines if NPC should wall jump, based on a check for a wall in front of the NPC, and a 50% chance of NPC 
+                        deciding to wall jump.
+                    </p>
+                    <div class = "art-item">
+                        <img src = "images/codeExamples/stayintheloop/codeNPCDecideWallJump.png"class="thumb">
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- EXTERNAL GAME PAGE ------------------------------------------------------------------------------------------------------>
+            <div class="header-label">EXTERNAL GAME PAGE</div>
+            <div class="contact-grid" style="margin-top: 50px;">
+                    <!-- PHONE -->
+                    <div class="tilt-wrapper">
+                        <div class="tilt-images">
+                            <img src="images/UI/accent2.png" alt="Image 1" class="tilt-img" data-tilt="60" data-speed="0.05">
+                            <img src="images/UI/accent3.png" alt="Image 2" class="tilt-img" data-tilt="70" data-speed="0.5">
+                        </div>
+                        <div class="contact-item" onclick="copyToClipboard(event, '(240)-401-1911')" title="Click to copy">
+                            <img src="images/contact/phoneblack.png" class="img-default">
+                            <img src="images/contact/phone.png" class="img-hover">
+                            <!-- <div class="p2">(240)-401-1911</div> -->
+                        </div>
+                    </div>
+
+                    <!-- EMAIL -->
+                    <div class="tilt-wrapper">
+                        <div class="tilt-images">
+                            <img src="images/UI/accent2.png" alt="Image 1" class="tilt-img" data-tilt="60" data-speed="0.05">
+                            <img src="images/UI/accent3.png" alt="Image 2" class="tilt-img" data-tilt="70" data-speed="0.5">
+                        </div>
+                        <div class="contact-item" onclick="copyToClipboard(event, 'chrishmets2304@gmail.com')" title="Click to copy">
+                            <img src="images/contact/mailblack.png" class="img-default">
+                            <img src="images/contact/email_561127.png" class="img-hover">
+                            <!-- <div class="p2">chrishmets2304@gmail.com</div> -->
+                        </div>
+                    </div>
+
+                    <!-- CENTER -->
+                    <div class="tilt-wrapper">
+                        
+                        <div class="contact-item">
+                            <a href="https://mossgames0.itch.io/stayintheloop" target="_blank">
+                                <img src="images/buttons/itchblack.png" class="img-default">
+                                <img src="images/buttons/itchgreen.jpg" class="img-hover">
+                            </a>
+                        </div>
+                    </div>
+                    
+
+                    <!-- LINKEDIN -->
+                    <div class="tilt-wrapper">
+                        <div class="tilt-images">
+                            <img src="images/UI/accent2.png" alt="Image 1" class="tilt-img" data-tilt="60" data-speed="0.05">
+                            <img src="images/UI/accent3.png" alt="Image 2" class="tilt-img" data-tilt="70" data-speed="0.5">
+                        </div>
+                        <div class="contact-item">
+                            <a href="https://www.linkedin.com/in/chris-hamam" target="_blank">
+                                <img src="images/contact/linkedinblack.png" class="img-default">
+                                <img src="images/contact/linkedin.png" class="img-hover">
+                                <!-- <div class="p2">LinkedIn Profile</div> -->
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- RESUME -->
+                    <div class="tilt-wrapper">
+                        <div class="tilt-images">
+                            <img src="images/UI/accent2.png" alt="Image 1" class="tilt-img" data-tilt="60" data-speed="0.05">
+                            <img src="images/UI/accent3.png" alt="Image 2" class="tilt-img" data-tilt="70" data-speed="0.5">
+                        </div>
+                        <div class="contact-item">
+                            <a href="resume.html">
+                                <img src="images/contact/resumeblack.png" class="img-default">
+                                <img src="images/contact/resume_4824445.png" class="img-hover">
+                                <!-- <div class="p2">Resume</div> -->
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <footer>&copy; 2026 Chris Hamam | Game Designer</footer>
 
             <!-- lightbox container (initially hidden) -->
             <div id="lightbox" class="lightbox" role="dialog" aria-hidden="true">
@@ -147,5 +306,11 @@
         <script src="js/lightbox.js" defer></script>
 
          <script src="js/show-more.js" defer></script>
+
+                 <!-- DECORATIVE SCROLLING IMAGES -->
+        <script src="js/deco-scroll.js" defer></script>
+    
+    <!-- TILT EFFECT -->
+        <script src="js/image-tilt-3D.js" defer></script>
     </body>
 </html>

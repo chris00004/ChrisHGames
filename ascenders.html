@@ -32,31 +32,82 @@
 
         <!-- MAIN FLEX CONTAINER -->
         <div class="nav-spacer"></div>
-        <img src="images/headerImages/ascendersheader.png" width = 100%>
+        <div class="banner"><img src="images/headerImages/ascendersheader.png"></div>
         <div class="flexbox-container">
 
-            <h1>ASCENDERS</h1>
-            <p>Ascenders is a 2D platformer where the character auto-runs, reversing on walls upon contact, and the player must take advantage of their 
-            environment to progress up a tall vertical stage. Moves like jumps, rolls, dives, and divekicks all interact with the terrain in unique ways 
-            enabling players to experiment with their movement toolkit. Camera follows character using unqiue node-based teqnique allowing for control over 
-            camera constraints and position.
-            </p>
+            <div class="header-label">ASCENDERS</div>
+            <div class="split-grid-container">
 
-            <span class="tag-large">Solo Project</span>
-            <span class="tag-large">Software: Game Maker Studio 2, Paint.NET, Audacity </span>
-            <span class="tag-large">Roles: Game Designer, Artist, Programmer, Level Designer</span>
-            <span class="tag-large">Unique Systems: Camera-Node system, Movement System</span>
-
-            <h1>PROCESS & DETAILS</h1>
-            <video class="video" autoplay muted loop playsinline>
+                <div class="grid-cell">
+                    <video class="video" autoplay muted loop playsinline>
+                    <source src="videos/ascendersvideonew.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="grid-cell">
+                   
+                        <span class="tag-large">Solo Project</span>
+                        <span class="tag-large">Software: Game Maker Studio 2, Paint.NET, Audacity </span>
+                        <span class="tag-large">Roles: Game Designer, Artist, Programmer, Level Designer</span>
+                        <span class="tag-large">Unique Systems: Camera-Node system, Movement System</span>
+                    
+                    <div class="header-paragraph"><img src="images/UI/pointerGreen.png">PROJECT OVERVIEW</div>
+                    <p>Ascenders is a 2D platformer where the character auto-runs, reversing on walls upon contact, and the player must take advantage of their 
+                    environment to progress up a tall vertical stage. Moves like jumps, rolls, dives, and divekicks all interact with the terrain in unique ways 
+                    enabling players to experiment with their movement toolkit. Camera follows character using unqiue node-based teqnique allowing for control over 
+                    camera constraints and position.
+                    </p>
+                </div>
+            </div>
+            <div class="adjustable-spacer" style="height: 30px;"></div>
+            
+            <div class="header-label">PROCESS & DETAILS</div>
+            <!-- <video class="video" autoplay muted loop playsinline>
                 <source src="videos/ascendersvideonew.mp4" type="video/mp4">
-            </video>
+            </video> -->
+            <div class="split-grid-container">
+                <!-- LEFT GRID CELL -->
+                <div class="grid-cell">
+                    <div class="header-paragraph"><img src="images/UI/pointerGreen.png">INITIAL DEVELOPMENT</div>
+                    <p>
+                        Wanting to up my programming and design skills and make a unique movement system, I began re-using a simple platformer 
+                        code I had written. After a few days of conceptualization and sketches, I landed on the idea of the action always moving 
+                        regardless of player input. By forcing the character to run automatically it makes the player think on the fly and make 
+                        quick decisions with no time to stop and take things slow. These design decisions revolving around quick decision making, 
+                        reaction, and constant flow of action felt core to where my enjoyment of video games lies.
+                    </p>
+                    <div class="header-paragraph"><img src="images/UI/pointerGreen.png">CAMERA & ACTION FRAMING</div>
+                    <p>
+                        As the environment and level design dictate the way players interact with the game, I placed a strong emphasis on the 
+                        presentation and framing of the level. To do this I thought of ways to frame the action to focus directly on a chunk of 
+                        the level to ensure players get a clear view of the space for them to work off of. To achieve this, I experimented with 
+                        various camera systems through sketching and scripting. What I settled on was a node-based camera system with a high degree 
+                        of control over framing and camera positioning.
+                    </p>
+                </div>
+                <!-- RIGHT GRID CELL -->
+                <div class="grid-cell">
+                    <div class="header-paragraph"><img src="images/UI/pointerGreen.png">REFINING IDEAS</div>
+                    <p>
+                        I kept the auto-running behavior, disabled left and right input, and made horizontal collision with walls reverse the character's 
+                        speed and direction. If I placed this character in a traditional horizontal platforming stage, it wouldn't make good use of the 
+                        wall dependent movement mechanics. I decided on designing a tall vertical stage with a mix of vertical and horizontal platforming 
+                        challenges. With that settled, I brainstormed, designed, and developed various vertical movement options to compliment the 
+                        horizontal movement in the vertical space.
+                    </p>
+                    <div class="adjustable-spacer" style="height: 30px;"></div>
+                    <div class="header-paragraph"></div>
+                    <div class = "art-item">      
+                        <img src = "images/artwork/ascenders/scrnShot.PNG">
+                    </div>
+                </div>
+            </div>
+            <div class="adjustable-spacer" style="height: 10px;"></div>
            
-            <p>
-                <!-- I began by programming a simple autorunner, then sketched ideas for level structure and gimmicks.<br><br> 
+            <!-- <p>
+                I began by programming a simple autorunner, then sketched ideas for level structure and gimmicks.<br><br> 
                  I focused on making the player feel like the environment dictates they way they approach an area. Framing the area 
                  that the player is in gives a clearer view of the environment for players to work off of. To achieve this,
-                  I expirented with various camera systems through sketches and various different scripts. -->
+                  I expirented with various camera systems through sketches and various different scripts.
                 Wanting to up my programming and design skills and make a unique movement system, I began re-using a simple platformer code I had written. 
                 I began thinking and landed on the idea of the action always moving regardless of player input. By forcing the character to run automatically 
                 it makes the player think on the fly and make quick descisions with no time to stop and take things slow. These design descsions revolving around 
@@ -73,9 +124,10 @@
                 of control over framing and camera positioning. 
                 <br><br>
                 
-            </p>
-
-            <h1>MECHANICS DESIGN</h1>
+            </p> -->
+            
+            <div class="header-label">MECHANICS DESIGN</div>
+            <div class="adjustable-spacer" style="height: 10px;"></div>
                 <div class="sub-flex-container">
                 <div class = "art-item">
                     <p>[ GROUND MOVEMENT ]</p>
@@ -123,22 +175,76 @@
                 </div>
             </div>
             <button class="toggleBtn">View More</button>
+            <div class="adjustable-spacer" style="height: 10px;"></div>
 
-            <h1>NODE CAMERA SYSTEM</h1>
-            <p>I designed and developed a node-based camera system that allows me to place node objects, each with their own unique ID, anywhere in the level.
-                Upon a collision between the character and a camera transition trigger object, depending on the direction the character is facing during collision, 
-                the ID of the next or previous node is passed to the camera. The camera then calculates the closest point to the character within the node's bounds, and 
-                smoothly transitions there. This works by checking all four sides of the node, checking whether the character's y position in within the top and bottom y 
-                position of the node and same with the x positions, if true for Y is within  From there the camera tracks the character while staying within the node's bounds. 
-                Scaling the node in the Game Maker Studio 2 room editor directly sets the node's boundaries, allowing me to change the framing of a section simply by moving and scaling that node. 
-                    </p>
-                <div class = "art-item">          
-                    <img src = "images/artwork/ascenders/diagramCam.png"class="thumb">
-                </div>
+            <div class="header-label">CODE & GAME SYSTEMS</div>
+            <div class="split-grid-container">
             
+                <!-- GRID CELL -->
+                <div class="grid-cell">
+                    <div class="header-paragraph"><img src="images/UI/pointerGreen.png">SCALABLE COLLISION SYSTEM</div>
+                    <p>​​​ To support the wall bouncing terrain-dependent movement, I programmed a scalable wall collision detection system. 
+                        This system checks for wall collisions in the direction of player movement using X and Y speed components of the player. 
+                        For example: When the player's X value + Horizontal Speed is colliding with a wall, I then loop through shifting the player 
+                        pixel by pixel until direct physical contact resulting in reversed speed. This robust system prevents getting stuck in walls 
+                        and always aligns the player perfectly with the wall.
+                    </p>    
+                    <div class = "art-item">      
+                        <img src = "images/codeExamples/ascenders/codeCollision.PNG"class="thumb">
+                    </div>
+                </div>
 
-            <h1>LEVEL DESIGN</h1>
-            <p>
+                <!-- GRID CELL -->
+                <div class="grid-cell">
+                    <div class="header-paragraph"><img src="images/UI/pointerGreen.png">NODE-CAMERA SYSTEM</div>
+                    <p>I designed and developed a node-based camera system that allows me to place node objects, each with their own unique ID, anywhere in the level.
+                    Upon a collision between the character and a camera transition trigger object, depending on the direction the character is facing during collision, 
+                    the ID of the next or previous node is passed to the camera. The camera then calculates the closest point to the character within the node's bounds, and 
+                    smoothly transitions there. This works by checking all four sides of the node, checking whether the character's y position in within the top and bottom y 
+                    position of the node and same with the x positions, if true for Y is within  From there the camera tracks the character while staying within the node's bounds. 
+                    Scaling the node in the Game Maker Studio 2 room editor directly sets the node's boundaries, allowing me to change the framing of a section simply by moving and scaling that node. 
+                    </p>    
+                    <div class = "art-item">      
+                        <img src = "images/artwork/ascenders/diagramCam.png"class="thumb">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="header-label">GAME STRUCTURE & LEVEL DESIGN</div>
+            <div class="split-grid-container">
+            
+                <!-- GRID CELL -->
+                <div class="grid-cell">
+                    <div class="header-paragraph"><img src="images/UI/pointerGreen.png">LEVEL STRUCTURE</div>
+                    <p>​​<u>​Main Stages (5 act structure)</u>
+                    <br><u>[ 1 ]</u> Begin with a linear course to get accustomed to the new environment,
+                    hazards, and gimmicks.
+                    <br><u>[ 2 ]</u> Leans into a more open structure with more pathways, exploration, and
+                    experimentation.
+                    <br><u>[ 3 ]</u> Reach a Civilization full of the region's inhabitants. This is more or less a
+                    condensed optional safe zone full of little activities and exploration to do.
+                    Complete optional missions (3-4 per biome) given by the natives to fill your
+                    travel map and to unlock that region’s inhabitant as a playable character.
+                    There is also an upgrade shop at every Civilization.
+                    <br><u>[ 4 ]</u> Continues the open structure but ups the challenge
+                    <br><u>[ 5 ]</u> Level design narrows down with a higher challenge and an end of level
+                    spectacle (chase, boss encounter, tower climb, etc.)
+                    <br>These acts are intended to be seamless behind-the-scenes style transitions
+                    rather than explicit structure changes.
+                    </p>
+                       
+                    <div class = "art-item">      
+                        <img src = "images/levelDesigns/ascenders/level design.png"class="thumb">
+                    </div>
+                </div>
+                <div class="grid-cell">
+                    <div class="header-paragraph"><img src="images/UI/pointerGreen.png">GAME STRUCTURE DOCUMENT</div>
+                    <div class="resume-container">
+                        <iframe src="PDFs/Ascenders-Game-Structure.pdf"></iframe> 
+                    </div>
+                </div>
+            </div>
+            <!-- <p>
                 Levels are structured as a series of linear, bite-sized challenges that flow together, rewarding skilled, experimental players with shortcuts and skips. I 
                 wanted to ensure levels were molded around the character's movement mechanics and level terrain to enhance each other. Using my camera system in conjucntion with 
                 Game Maker Studio 2's room editor, I was able to create a large vertical level that feels focused, takes advantage of movement mechanics, and is challenging but fair. 
@@ -146,18 +252,47 @@
                 <div class = "art-item">
                     <img src = "images/levelDesigns/ascenders/level design.png" class="thumb">
                     <p>level design: stage-01</p>
+                </div> -->
+           
+            <div class="header-label">CONCEPT ARTWORK</div>
+            <p>
+               Early concept artwork was focused on exploring the visual style and the stage themes and designs. I wanted to go for a 
+               simple style that would allow for clear readability of the terrain and character while still being visually engaging. 
+               I also wanted to explore different stage themes and mechanics to get a better idea of what I wanted the game to be.
+            </p>
+            <div class="sub-flex-container">
+                <div class = "art-item">
+                    <img src = "images/artwork/ascenders/ascendersconcept2.jpg" class="thumb">
+                    <p>Mechanic/Gimmick Exploration & City Stage Concept</p>
                 </div>
+                <div class = "art-item">
+                    <img src = "images/artwork/ascenders/ascendersconcept0.jpg" class="thumb">
+                    <p>Magma Stage Concept</p>
+                </div>
+                <div class = "art-item">
+                    <img src = "images/artwork/ascenders/ascendersconcept1.jpg" class="thumb">
+                    <p>Cosmos Castle Stage Concept</p>
+                </div>
+                <div class = "art-item">
+                    <img src = "images/artwork/ascenders/ascendersconcept4.jpg" class="thumb">
+                    <p>Cave Stage Level Layout</p>
+                </div>
+                <div class = "art-item">
+                    <img src = "images/artwork/ascenders/ascendersconcept5.jpg" class="thumb">
+                    <p>Bit Dash System logic</p>
+                </div>
+            </div>
+            <button class="toggleBtn">View More</button>
 
-
-            <h1>ARTWORK</h1>
+            <div class="header-label">SPRITE WORK</div>
             <p>
                 The artwork is focused on bouncy, responsive animations for quick feedback and simple, colorful environments to keep traversal clear and engaging. I made sure to balance 
                 clarity and visual detail by giving all foreground spritework black outlines and higher detail while all background assets are simpler using a less color values.
             </p>
             <div class="sub-flex-container">
                 <div class = "art-item">
-                    <img src = "images/artwork/ascenders/art0.png" class="thumb">
-                    <p>sprite work: character sheet</p>
+                    <img src = "images/artwork/ascenders/art7.png" class="thumb">
+                    <p>environment: snowy mountain</p>
                 </div>
                 <div class = "art-item">
                     <img src = "images/artwork/ascenders/art1.png" class="thumb">
@@ -166,6 +301,10 @@
                 <div class = "art-item">
                     <img src = "images/artwork/ascenders/art2.png" class="thumb">
                     <p>sprite work: character sheet & rails</p>
+                </div>
+                <div class = "art-item">
+                    <img src = "images/artwork/ascenders/art0.png" class="thumb">
+                    <p>sprite work: character sheet</p>
                 </div>
                 <div class = "art-item">
                     <img src = "images/artwork/ascenders/art4.png" class="thumb">
@@ -183,19 +322,89 @@
                     <img src = "images/artwork/ascenders/art6.png" class="thumb">
                     <p>environment: snowy mountain</p>
                 </div>
+                <div class = "art-item">
+                    <img src = "images/artwork/ascenders/art8.png" class="thumb">
+                    <p>sprite work: character sheet</p>
+                </div>
+                <div class = "art-item">
+                    <img src = "images/artwork/ascenders/art9.png" class="thumb">
+                    <p>sprite work: character sheet & shotgun</p>
+                </div>
             </div>
             <button class="toggleBtn">View More</button>
 
             <!-- CONTACT -->
-            <h1>GAME PAGE</h1>
-            <a></a>
-            <a href="https://mossgames0.itch.io/ascenders" target="_blank">
-                <div class="contact-item">
-                    <img src="images/buttons/itchSVG.svg" height="60px">
-                </div>
-            </a>
+            <div class="header-label">EXTERNAL GAME PAGE</div>
+                <div class="contact-grid" style="margin-top: 50px;">
+                    <!-- PHONE -->
+                    <div class="tilt-wrapper">
+                        <div class="tilt-images">
+                            <img src="images/UI/accent2.png" alt="Image 1" class="tilt-img" data-tilt="60" data-speed="0.05">
+                            <img src="images/UI/accent3.png" alt="Image 2" class="tilt-img" data-tilt="70" data-speed="0.5">
+                        </div>
+                        <div class="contact-item" onclick="copyToClipboard(event, '(240)-401-1911')" title="Click to copy">
+                            <img src="images/contact/phoneblack.png" class="img-default">
+                            <img src="images/contact/phone.png" class="img-hover">
+                            <!-- <div class="p2">(240)-401-1911</div> -->
+                        </div>
+                    </div>
 
-            <footer>&copy; 2026 Chris Hamam | Game Designer</footer>
+                    <!-- EMAIL -->
+                    <div class="tilt-wrapper">
+                        <div class="tilt-images">
+                            <img src="images/UI/accent2.png" alt="Image 1" class="tilt-img" data-tilt="60" data-speed="0.05">
+                            <img src="images/UI/accent3.png" alt="Image 2" class="tilt-img" data-tilt="70" data-speed="0.5">
+                        </div>
+                        <div class="contact-item" onclick="copyToClipboard(event, 'chrishmets2304@gmail.com')" title="Click to copy">
+                            <img src="images/contact/mailblack.png" class="img-default">
+                            <img src="images/contact/email_561127.png" class="img-hover">
+                            <!-- <div class="p2">chrishmets2304@gmail.com</div> -->
+                        </div>
+                    </div>
+
+                    <!-- CENTER -->
+                    <div class="tilt-wrapper">
+                        
+                        <div class="contact-item">
+                            <a href="https://mossgames0.itch.io/ascenders" target="_blank">
+                                <img src="images/buttons/itchblack.png" class="img-default">
+                                <img src="images/buttons/itchgreen.jpg" class="img-hover">
+                            </a>
+                        </div>
+                    </div>
+                    
+
+                    <!-- LINKEDIN -->
+                    <div class="tilt-wrapper">
+                        <div class="tilt-images">
+                            <img src="images/UI/accent2.png" alt="Image 1" class="tilt-img" data-tilt="60" data-speed="0.05">
+                            <img src="images/UI/accent3.png" alt="Image 2" class="tilt-img" data-tilt="70" data-speed="0.5">
+                        </div>
+                        <div class="contact-item">
+                            <a href="https://www.linkedin.com/in/chris-hamam" target="_blank">
+                                <img src="images/contact/linkedinblack.png" class="img-default">
+                                <img src="images/contact/linkedin.png" class="img-hover">
+                                <!-- <div class="p2">LinkedIn Profile</div> -->
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- RESUME -->
+                    <div class="tilt-wrapper">
+                        <div class="tilt-images">
+                            <img src="images/UI/accent2.png" alt="Image 1" class="tilt-img" data-tilt="60" data-speed="0.05">
+                            <img src="images/UI/accent3.png" alt="Image 2" class="tilt-img" data-tilt="70" data-speed="0.5">
+                        </div>
+                        <div class="contact-item">
+                            <a href="resume.html">
+                                <img src="images/contact/resumeblack.png" class="img-default">
+                                <img src="images/contact/resume_4824445.png" class="img-hover">
+                                <!-- <div class="p2">Resume</div> -->
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <footer>&copy; 2026 Chris Hamam | Game Designer</footer>
 
             <!-- lightbox container (initially hidden) -->
             <div id="lightbox" class="lightbox" role="dialog" aria-hidden="true">
@@ -223,6 +432,12 @@
         <script src="js/lightbox.js" defer></script>
 
         <script src="js/show-more.js" defer></script>
+
+                <!-- DECORATIVE SCROLLING IMAGES -->
+        <script src="js/deco-scroll.js" defer></script>
+    
+    <!-- TILT EFFECT -->
+        <script src="js/image-tilt-3D.js" defer></script>
 
     </body>
 </html>

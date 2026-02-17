@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width = device-width, initial-scale = 1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Chris Hamam Game Design Portfolio</title>
         <link rel="icon" href="icons/flameicon4.ico" type="image/x-icon">
         <link rel="stylesheet" href="styles/styles.css">
@@ -11,38 +11,57 @@
     
     <body>
         <!-- navbar -->
-            <nav class="navbar">
-                <div class="navbar-brand">
-                    <a href="index.html">
-                            <img src="images/icon-portfolio3.png" class="logo">
-                    </a>
-                </div>
-                <div class="navbar-links">
-                    <a href="#about">About</a>
-                    <a href="#professional-work">Professional Work</a>
-                    <a href="#personal-projects">Personal Projects</a>
-                    <a href="resume.html">Resume</a>
-                    <a href="#contact">Contact</a>
-                </div>
-                <div class="menus" onclick="toggleMenu()">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </nav>
+        <nav class="navbar">
+            <div class="navbar-brand">
+                <a href="index.html">
+                        <img src="images/icon-portfolio3.png" class="logo">
+                </a>
+            </div>
+            <div class="navbar-links">
+                <a href="#about">About</a>
+                <a href="#professional-work">Professional Work</a>
+                <a href="#personal-projects">Personal Projects</a>
+                <a href="resume.html">Resume</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="menus" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
 
-            <div class="nav-spacer"></div>
+        <div class="nav-spacer"></div>
 
-            <!--Banner-->
-            <img src="images/headerImages/bannerIndex.png" width = 100%>
+        <!--Banner-->
+        <div class="banner"><img src="images/headerImages/bannerIndex.jpg"></div>
 
         <!-- MAIN FLEX CONTAINER -->
         <div class="flexbox-container">
 
-            <div id="about">
-            <h1>ABOUT</h1>
+            <div id="about"></div>
+            <div class="header-label"></div>
 
-            <div class="text-short">
+            <h1>CHRIS HAMAM | GAME DESIGNER</h1>
+
+            <div class="adjustable-spacer" style="height: 10px;"></div>
+
+            <div class="header-paragraph home"><img src="images/UI/pointerGreen.png">ABOUT ME</div>
+                <p class="home">I’m Chris, a Game Design and Development student at RIT focused on speed, 
+                    fluid movement, and systems that reward mastery. I’m drawn to games where mechanics drive flow and replayability, 
+                    pushing players to experiment, improve, and express themselves through play.</p>
+
+            <div class="adjustable-spacer" style="height: 20px;"></div>
+
+            <div class="header-paragraph home"><img src="images/UI/pointerGreen.png">MY PROCESS</div>
+                <p class="home">Sketching is central to my process. My notebooks are where ideas explode, 
+                    visualizing movement systems, game logic, program structure, and world design before anything touches an engine. I refine 
+                    aggressively, cutting excess and reshaping the strongest ideas into a focused, cohesive experience built around player 
+                    driven creativity and control.</p>
+
+            <div class="adjustable-spacer" style="height: 120px;"></div>
+
+            <!-- <div class="text-short">
                 I’m Chris, a Game Design and Development student at RIT. I focus on speed and fluid movement, 
                 where mastering mechanics drives flow and replayability. This fuels my work refining systems, experimenting with code, and 
                 crafting games centered on player driven creativity and mastery. Sketching is at the heart of my design process, using 
@@ -59,18 +78,18 @@
                 </div>
                 
             </div>
-            <button class="toggleBtn">View More</button>
+            <button class="toggleBtn">View More</button> -->
 
             <div id="professional-work"></div>
-            <h1>PROFESSIONAL WORK</h1>
+            <h1>| PROFESSIONAL WORK |</h1>
             <!-- Professional Work SUB CONTAINER -->
             <div class="sub-flex-container">
 
                 <!-- CHANGELING -->
                     <div class="item">
                         <a href="changeling.html">
-                            <img src="images/icon-changeling.png">
-                            <div class="p2">Changeling</div>
+                            <img src="images/iconChangeling.png">
+                            <div class="p2">Changeling VR</div>
                         </a>
                         <div class="tags">
                             <span class="tag">Unreal Engine 4</span>
@@ -90,50 +109,70 @@
             </div>
 
             <div id="personal-projects"></div>
-            <h1>PERSONAL PROJECTS</h1>
+            <h1>| PERSONAL PROJECTS |</h1>
             
             <!-- Personal Projects SUB CONTAINER -->
             <div class="sub-flex-container">
 
                 <!-- GHOST FLAME -->
-                    <div class="item">
-                        <a href="ghostflame.html">
-                            <img src="images/icon-ghostflame.png">
-                            <div class="p2">GhostFlame</div>
-                        </a>
-                        <div class="tags">
-                            <span class="tag">Programmer</span>
-                            <span class="tag">Game Designer</span>
-                            <span class="tag">2D Artist</span>
-                        </div>
-                        <ul>
-                            <li>Top-down fast-paced platformer</li>
-                            <li>Movement, flow, and mastery</li>
-                            <li>Player driven progression</li>
-                            <li>Solo Project</li>
-                        </ul>
-                        <a href="ghostflame.html" class="button">Go To Project Page</a>
+                <div class="item">
+                    <a href="ghostflame.html">
+                        <img src="images/iconGhostFlame.png">
+                        <div class="p2">GhostFlame</div>
+                    </a>
+                    <div class="tags">
+                        <span class="tag">Programmer</span>
+                        <span class="tag">Game Designer</span>
+                        <span class="tag">2D Artist</span>
                     </div>
+                    <ul>
+                        <li>Top-down fast-paced platformer</li>
+                        <li>Movement, flow, and mastery</li>
+                        <li>Player driven progression</li>
+                        <li>Solo Project</li>
+                    </ul>
+                    <a href="ghostflame.html" class="button">Go To Project Page</a>
+                </div>
 
-                    <!-- STAY IN THE LOOP -->
-                    <div class="item">
-                        <a href="stayintheloop.html">
-                            <img src="images/icon-stayinloop.png">
-                            <div class="p2">Stay In The Loop</div>
-                        </a>
-                        <div class="tags">
-                            <span class="tag">Programmer</span>
-                            <span class="tag">Game Designer</span>
-                            <span class="tag">2D Artist</span>
-                        </div>
-                        <ul>
-                            <li>2D puzzle platformer</li>
-                            <li>find NPC in timeloop</li>
-                            <li>2025 GMTK Game Jam</li>
-                            <li>Solo Project</li>
-                        </ul>
-                        <a href="stayintheloop.html" class="button">Go To Project Page</a>
+                <!-- ASCENDERS -->
+                <div class="item">
+                    <a href="ascenders.html">
+                        <img src="images/iconAscenders.png">
+                        <div class="p2">Ascenders</div>
+                    </a>
+                    <div class="tags">
+                        <span class="tag">Programmer</span>
+                        <span class="tag">Level Designer</span>
+                        <span class="tag">2D Artist</span>        
                     </div>
+                    <ul>
+                        <li>2D action platformer</li>
+                        <li>Movement depends on terrain</li>
+                        <li>Ascened vertical stage</li>
+                        <li>Solo Project</li>
+                    </ul>
+                    <a href="ascenders.html" class="button">Go To Project Page</a>
+                </div>
+
+                <!-- STAY IN THE LOOP -->
+                <div class="item">
+                    <a href="stayintheloop.html">
+                        <img src="images/iconStayInTheLoop.png">
+                        <div class="p2">Stay In The Loop</div>
+                    </a>
+                    <div class="tags">
+                        <span class="tag">Programmer</span>
+                        <span class="tag">Game Designer</span>
+                        <span class="tag">2D Artist</span>
+                    </div>
+                    <ul>
+                        <li>2D puzzle platformer</li>
+                        <li>find NPC in timeloop</li>
+                        <li>2025 GMTK Game Jam</li>
+                        <li>Solo Project</li>
+                    </ul>
+                    <a href="stayintheloop.html" class="button">Go To Project Page</a>
+                </div>
 
                     <!-- PUMPKIN SLASHER 
                     <div class="item">
@@ -169,25 +208,6 @@
                         <a href="thetrench.html" class="button">Go To Project Page</a>
                     </div>-->
 
-                    <!-- ASCENDERS -->
-                    <div class="item">
-                        <a href="ascenders.html">
-                            <img src="images/icon-ascenders.png">
-                            <div class="p2">Ascenders</div>
-                        </a>
-                        <div class="tags">
-                            <span class="tag">Programmer</span>
-                            <span class="tag">Level Designer</span>
-                            <span class="tag">2D Artist</span>        
-                        </div>
-                        <ul>
-                            <li>2D action platformer</li>
-                            <li>Movement depends on terrain</li>
-                            <li>Ascened vertical stage</li>
-                            <li>Solo Project</li>
-                        </ul>
-                        <a href="ascenders.html" class="button">Go To Project Page</a>
-                    </div>
 
                     <!-- ROLL ARENA 
                     <div class="item">
@@ -223,45 +243,111 @@
                         <p>2D Sonic fan-game with three playable characters with their own tutorials, 
                             two unique stages with fully original level design, thrilling set pieces, and beautiful environments.</p>
                         <a href="sonicdiscovery.html" class="button">Go To Project Page</a>
-                    </div>-->
-
-                    
+                </div>-->
             </div>
+            <div class="adjustable-spacer" style="height: 90px;"></div>
+            <div class="header-label"></div>
             <!-- CONTACT -->
-                     <div id="contact"></div>
-                        <h1>CONTACT</h1>
-                        <div class="sub-flex-container">
-                            <div class="contact-item" onclick="copyToClipboard(event, '(240)-401-1911')" title="Click to copy">
-                                <img src="images/contact/phone.png" height="40px">
-                                <div class="p2">(240)-401-1911</div>
-                            </div>
-
-                            <div class="contact-item" onclick="copyToClipboard(event, 'chrishmets2304@gmail.com')" title="Click to copy">
-                                <img src="images/contact/email_561127.png" height="40px">
-                                <div class="p2">chrishmets2304@gmail.com</div>
-                            </div>
-
-                            <a href="resume.html">
-                                <div class="contact-item">
-                                    <img src="images/contact/resume_4824445.png" height="40px">
-                                <div class="p2">Resume</div>
-                                </div>
-                            </a>
-                            
-                            <a href="https://www.linkedin.com/in/chris-hamam" target="_blank">
-                                <div class="contact-item">
-                                    <img src="images/contact/linkedin.png" height="40px">
-                                <div class="p2">LinkedIn Profile</div>
-                                </div>
-                            </a>
+                <div id="contact"></div>
+                <h1 style="margin-top: -10px;">| CONTACT |</h1>
+                <div class="contact-grid">
+                    <!-- PHONE -->
+                    <div class="tilt-wrapper">
+                        <div class="tilt-images">
+                            <img src="images/UI/accent2.png" alt="Image 1" class="tilt-img" data-tilt="60" data-speed="0.05">
+                            <img src="images/UI/accent3.png" alt="Image 2" class="tilt-img" data-tilt="70" data-speed="0.5">
+                        </div>
+                        <div class="contact-item" onclick="copyToClipboard(event, '(240)-401-1911')" title="Click to copy">
+                            <img src="images/contact/phoneblack.png" class="img-default">
+                            <img src="images/contact/phone.png" class="img-hover">
+                            <!-- <div class="p2">(240)-401-1911</div> -->
+                        </div>
                     </div>
-                    <footer>&copy; 2026 Chris Hamam | Game Designer</footer>
+
+                    <!-- EMAIL -->
+                    <div class="tilt-wrapper">
+                        <div class="tilt-images">
+                            <img src="images/UI/accent2.png" alt="Image 1" class="tilt-img" data-tilt="60" data-speed="0.05">
+                            <img src="images/UI/accent3.png" alt="Image 2" class="tilt-img" data-tilt="70" data-speed="0.5">
+                        </div>
+                        <div class="contact-item" onclick="copyToClipboard(event, 'chrishmets2304@gmail.com')" title="Click to copy">
+                            <img src="images/contact/mailblack.png" class="img-default">
+                            <img src="images/contact/email_561127.png" class="img-hover">
+                            <!-- <div class="p2">chrishmets2304@gmail.com</div> -->
+                        </div>
+                    </div>
+
+                    <!-- CENTER -->
+                    <div class="tilt-wrapper">
+                        
+                        <div class="contact-item">
+                            <a href="https://mossgames0.itch.io/" target="_blank">
+                                <img src="images/buttons/itchblackbase.png" class="img-default">
+                                <img src="images/buttons/itchgreenbase.jpg" class="img-hover">
+                            </a>
+                        </div>
+                    </div>
+                    
+
+                    <!-- LINKEDIN -->
+                    <div class="tilt-wrapper">
+                        <div class="tilt-images">
+                            <img src="images/UI/accent2.png" alt="Image 1" class="tilt-img" data-tilt="60" data-speed="0.05">
+                            <img src="images/UI/accent3.png" alt="Image 2" class="tilt-img" data-tilt="70" data-speed="0.5">
+                        </div>
+                        <div class="contact-item">
+                            <a href="https://www.linkedin.com/in/chris-hamam" target="_blank">
+                                <img src="images/contact/linkedinblack.png" class="img-default">
+                                <img src="images/contact/linkedin.png" class="img-hover">
+                                <!-- <div class="p2">LinkedIn Profile</div> -->
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- RESUME -->
+                    <div class="tilt-wrapper">
+                        <div class="tilt-images">
+                            <img src="images/UI/accent2.png" alt="Image 1" class="tilt-img" data-tilt="60" data-speed="0.05">
+                            <img src="images/UI/accent3.png" alt="Image 2" class="tilt-img" data-tilt="70" data-speed="0.5">
+                        </div>
+                        <div class="contact-item">
+                            <a href="resume.html">
+                                <img src="images/contact/resumeblack.png" class="img-default">
+                                <img src="images/contact/resume_4824445.png" class="img-hover">
+                                <!-- <div class="p2">Resume</div> -->
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <footer>&copy; 2026 Chris Hamam | Game Designer</footer>
                 
                 <!-- Custom Cursor 
                 <div id="custom-cursor"></div>-->
 
                 <!-- Toast Notification -->
                 <div id="toast" class="toast"><p>Copied to clipboard!</p></div>
+        </div>
+
+        <!-- Left Side -->
+        <div class="deco scroll-rotate slow-L" style="left: -250px; top: 500px;">
+            <img src="images/UI/accent0.png" class="accent-XL">
+        </div>
+        <div class="deco scroll-rotate fast-R" style="left: -250px; top: 500px;">
+            <img src="images/UI/accent1.png" class="accent-L">
+        </div>
+        <div class="deco scroll-rotate faster-R" style="left: -90px; top: 325px;">
+            <img src="images/UI/accent1.png" class="accent-S">
+        </div>
+
+        <!-- Right Side -->
+         <div class="deco scroll-rotate slow-L" style="right: -250px; top: 460px;">
+            <img src="images/UI/accent0.png" class="accent-XL">
+        </div>
+        <div class="deco scroll-rotate fast-R" style="right: -250px; top: 460px;">
+            <img src="images/UI/accent1.png" class="accent-L">
+        </div>
+        <div class="deco scroll-rotate faster-L" style="right: -90px; top: 800px;">
+            <img src="images/UI/accent1.png" class="accent-S">
         </div>
         
 <!-- JAVASCRIPT ---------------------------------------------------------------------------------------------------------------------------->      
@@ -275,7 +361,13 @@
     <!-- CONTENT PROTECTION -->
         <script src="js/content-protect.js" defer></script>
 
+    <!-- SHOW MORE BUTTON -->
         <script src="js/show-more.js" defer></script>
 
+    <!-- DECORATIVE SCROLLING IMAGES -->
+        <script src="js/deco-scroll.js" defer></script>
+    
+    <!-- TILT EFFECT -->
+        <script src="js/image-tilt-3D.js" defer></script>
     </body>
 </html>
