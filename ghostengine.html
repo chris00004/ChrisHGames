@@ -1,0 +1,1777 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width = device-width, initial-scale = 1.0">
+        <title>Ghost Engine | Chris Hamam Game Design Portfolio</title>
+        <link rel="icon" href="icons/flameicon4.ico" type="image/x-icon">
+        <link rel="stylesheet" href="styles/styles.css">
+    </head>
+
+    <body>
+        <!-- navbar -->
+        <nav class="navbar">
+            <div class="navbar-brand">
+                <a href="index.html">
+                    <img src="images/icon-portfolio3.png" class="logo">
+                </a>
+            </div>
+            <div class="navbar-links">
+                <a href="index.html#about">About</a>
+                <a href="index.html#professional-work">Professional Work</a>
+                <a href="index.html#personal-projects">Personal Projects</a>
+                <a href="resume.html">Resume</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
+            <div class="menus" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+
+        <!-- MAIN FLEX CONTAINER -->
+         <div class="nav-spacer"></div>
+         <!-- <div class="banner"><img src="images/headerImages/ghostflameheader.png"></div> -->
+          <div class="adjustable-spacer" style="height: 180px;"></div>
+        <div class="flexbox-container">
+            <div class="header-label">GHOST ENGINE</div>
+            <div class="split-grid-container">
+                <!-- CELL LEFT -->
+                <div class="grid-cell">
+                    <div class="art-item-custom">
+                        <img src="images/artwork/ghostengine/asset-pak-gif.gif">
+                    </div>
+                </div>
+
+                <!-- CELL RIGHT -->
+                <div class="grid-cell">
+                    <span class="tag-large">Solo Project</span>
+                    <span class="tag-large">Software: Visual Studio, SFML 3.0.2, XInput, Draw.IO</span>
+                    <span class="tag-large">Roles: Software Engineer, Software Architect</span>
+                    <span class="tag-large">Unique Systems: Game Manager, Audio Manager, Input Manager, PAK Manager, PAK file system</span>
+                    <div class="header-paragraph"><img src="images/UI/pointerGreen.png">CONCEPTUALIZATION</div>
+                    <p>
+                        After years of learning and developing using Unity, Unreal Engine, GameMaker, and Godot, I've found myself wanting to undersatnd past 
+                        the abstraction layer and work more directly with the engine. I craved a hightened control over what code is running in what 
+                        order, what data is curently loaded in memory, and building games over top an optimized windows-based platform built around 
+                        tighter, more stylized 2D experiences.
+                    </p>
+                </div>
+            </div>
+            <div class="adjustable-spacer" style="height: 100px;"></div>
+
+
+            <!-- [ PROCESS & ARCHITECTURE ] ------------------------------------------------------------------------------------------------------------------>
+            
+            <div class="header-label">PROCESS & ARCHITECTURE</div>
+            <div class="split-grid-container">
+                <!-- CELL LEFT -->
+                <div class="grid-cell">
+                    <div class="header-paragraph"><img src="images/UI/pointerGreen.png">INITIAL DEVELOPMENT</div>
+                    <p>
+                        I began development by researching open-source libraries for graphics, audio, and gamepad input APIs. I decided on an combination 
+                        of SFML 3.0+ and Microsoft's XInput. I chose SFML due to strong but simple rendering, audio, and keyboard input polling capabilities. 
+                        And Microsoft XInput for its stronger compatibility and analog support for sticks and triggers with Xbox gamepads. From there I sketeched 
+                        out the program's structure before moving onto full diagrams using Draw.io.
+                    </p>
+                    <div class="art-item-custom">
+                        <img src="images/artwork/ghostengine/game-manager-diagram.png" class="thumb">
+                    </div>
+                </div>
+
+                <!-- CELL RIGHT -->
+                <div class="grid-cell">
+
+                    <!-- Engine Structure -->
+                    <div class="header-paragraph"><img src="images/UI/pointerGreen.png">ENGINE STRUCTURE</div>
+                    <p>
+                        Ghost Engine is organized around a central GameManager that owns and orchestrates a set of subsystem managers: 
+                        Render, Audio, Input, PAK, and Debug ( As of now ). Each manager is the single source of truth for its domain, and 
+                        GameManager is the only object that owns them outright. Any other system that needs manager access receives it as a 
+                        const&, never ownership or a mutable reference, so state can only be mutated through the owning manager. This 
+                        keeps data flow one-directional and makes it obvious where any given piece of the state actually lives.
+                    </p>
+
+                    <!-- Debugger -->
+                    <div class="header-paragraph"><img src="images/UI/pointerGreen.png">DEBUGGER</div>
+                    <p>
+                        The Debugger is the one deliberate exception to my minimal access philosophy. It holds const references to every manager, 
+                        since its job is to allow me to inspect and test. It can enumerate all currently loaded PAK assets ( textures, SFX, 
+                        fonts, text files ) and can trigger test calls into Render, Audio, and Input to validate systems live, without 
+                        ever being able to mutate them directly.
+                    </p>
+                </div>
+            </div>
+            <div class="adjustable-spacer" style="height: 20px;"></div>
+            <div class="art-item-custom" style="width: 70%;">
+                <img src="images/artwork/ghostengine/full-draw-io.png" class="thumb">
+            </div>
+            <div class="adjustable-spacer" style="height: 100px;"></div>
+  
+            <!-- [ PAK FILE SYSTEM ] ------------------------------------------------------------------------------------------------------------------>
+
+            <div class="header-label">PAK FILE SYSTEM</div>
+            
+            <div class="tri-grid-container">
+
+                <div class="grid-cell">
+                    <div class="header-paragraph"><img src="images/UI/pointerGreen.png">ASSET PAKKER TOOL</div>
+                    <p>
+                        I wrote a custom binary asset-packing tool to bundle raw assets ( sprites, audio, fonts, dialogue text ) into .pak files 
+                        for runtime loading, rather than shipping loose files. The packer reads a list of source files, filters out any that 
+                        don't resolve on disk, and writes a simple length-prefixed binary format: a file count header followed by per-entry 
+                        blocks of name length, filename, data length, and raw bytes. The tool also allows the developer to split assets into 
+                        separate paks by scope, global, stage-common, and per-stage, allowing for greater control over what content is streamed
+                        in memory during runtime.
+                    </p>
+                </div>
+
+                <div class="grid-cell">
+                    <div class = "art-item">
+                        <img src = "images/artwork/ghostengine/asset-pak-manager-draw-io.png" class="thumb">
+                    </div>
+                </div>
+
+                <div class="grid-cell">
+                    <div class = "art-item">
+                        <img src = "images/artwork/ghostengine/asset-data-types-draw-io.png" class="thumb">
+                    </div>
+                </div>
+
+                
+            </div>
+
+            <div class="split-grid-container">
+                
+                <!-- CELL LEFT -->
+                <div class="grid-cell">
+                    <div class="header-paragraph"><img src="images/UI/pointerGreen.png">ASSET PAKKER</div>
+                        <p>
+                            A standalone command line tool that serializes a list of asset files into a single custom binary pak. 
+                            It writes a [count][nameLen][name][dataLen][data] layout per entry, reading each file's raw bytes 
+                            via istreambuf_iterator and using the filename as the lookup key so Paks stay portable 
+                            across directories. It gracefully skips missing files, adjusting the written count beforehand so the 
+                            header stays accurate, and logs each packed file's size for quick sanity checks. This tool is the counterpart 
+                            to AssetPakManager, forming the write side of the engine's asset pipeline.
+                        </p>
+                        <code>
+                            // Comments removed for readability <br>
+                            // Code available on my <a href = "https://github.com/chris00004/GhostEngine/blob/main/tools/asset-pakker/assetPakker.cpp" target="_blank">GitHub</a> page<br>
+                            <br>
+                            // PAK format:<br>
+                            // [4 bytes] file count<br>
+                            // per file:<br>
+                            //   [4 bytes] name length<br>
+                            //   [N bytes] name (used as the lookup key e.g. "assets/tile.png")<br>
+                            //   [8 bytes] data length<br>
+                            //   [N bytes] raw data<br>
+                            <br>
+                            void packFiles( const std::string& outPath, const std::vector <std::string>& files ) {<br>
+                            <br>
+                            &emsp; std::ofstream out( outPath, std::ios::binary );<br>
+                            &emsp; if ( !out ) {<br>
+                            <br>
+                            &emsp; &emsp; std::cerr << "Failed to create: " << outPath << "\n";<br>
+                            &emsp; &emsp; return;<br>
+                            &emsp; }<br>
+                            <br>
+                            &emsp; uint32_t count = static_cast <uint32_t> ( files.size() );<br>
+                            <br>
+                            &emsp; for ( const auto& path : files ) {<br>
+                            <br>
+                            &emsp; &emsp; std::ifstream in ( path, std::ios::binary );<br>
+                            &emsp; &emsp; if ( !in ) { <br>
+                            <br>
+                            &emsp; &emsp; &emsp; count --;<br>
+                            &emsp; &emsp; } <br>
+                            &emsp; }<br>
+                            <br>
+                            &emsp; out.write( reinterpret_cast<char*>( &count ), sizeof( count ) );<br>
+                            <br>
+                            &emsp; for ( const auto& path : files ) {<br>
+                            <br>
+                            &emsp; &emsp; std::ifstream in( path, std::ios::binary );<br>
+                            &emsp; &emsp; if ( !in ) {<br>
+                            <br>
+                            &emsp; &emsp; &emsp; std::cerr << "Skipping (not found): " << path << "\n";<br>
+                            &emsp; &emsp; &emsp; continue;<br>
+                            &emsp; &emsp; }<br>
+                            <br>
+                            &emsp; &emsp; std::vector<char> data {<br>
+                            <br>
+                            &emsp; &emsp; &emsp; std::istreambuf_iterator <char> ( in ),<br>
+                            &emsp; &emsp; &emsp; std::istreambuf_iterator <char> ()<br>
+                            &emsp; &emsp; };<br>
+                            <br>
+                            &emsp; &emsp; std::filesystem::path fsPath ( path );<br>
+                            &emsp; &emsp; std::string fileName = fsPath.filename().string();<br>
+                            &emsp; &emsp; uint32_t nameLen = static_cast<uint32_t> ( fileName.size() );<br>
+                            <br>
+                            &emsp; &emsp; out.write( reinterpret_cast<char*> ( &nameLen ), sizeof ( nameLen ) );<br>
+                            &emsp; &emsp; out.write( fileName.data(), nameLen );<br>
+                            <br>
+                            &emsp; &emsp; uint64_t dataLen = static_cast<uint64_t>( data.size() );<br>
+                            <br>
+                            &emsp; &emsp; out.write( reinterpret_cast<char*> ( &dataLen ) , sizeof ( dataLen ) );<br>
+                            &emsp; &emsp; out.write( data.data(), dataLen );<br>
+                            <br>
+                            &emsp; &emsp; std::cout << "Packed: " << path << " ( " << dataLen << " bytes )\n";<br>
+                            &emsp; }<br>
+                            <br>
+                            &emsp; std::cout << "\nDone -> " << outPath << "\nCount: " << count;<br>
+                            }
+                        </code>
+                        <button class="expandCode"></button>
+
+                        <code>
+                            // Example Pakker program : creating 3 pak files<br>
+                            // Comments removed for readability <br>
+                            // Code available on my <a href = "https://github.com/chris00004/GhostEngine/blob/main/tools/asset-pakker/assetPakker.cpp" target="_blank">GitHub</a> page<br>
+                            <br>
+                            int main() {<br>
+                            <br>
+                            &emsp; packFiles("../../build/global-test.pak", <br>
+                            &emsp; {<br>
+                            &emsp; &emsp; "../../assets-test/graphics/sprite-sheets/test.png",<br>
+                            &emsp; &emsp; "../../assets-test/audio/sfx/test.wav",<br>
+                            &emsp; &emsp; "../../assets-test/fonts/test.otf",<br>
+                            &emsp; &emsp; "../../assets-test/dialogues/test.txt",<br>
+                            &emsp; &emsp; "../../assets-test/nonExistant.png",<br>
+                            &emsp; &emsp; "../../assets-test/graphics/sprite-sheets/sprite-sheet.png",<br>
+                            &emsp; &emsp; "../../assets-test/audio/sfx/sfx.wav",<br>
+                            &emsp; &emsp; "../../assets-test/dialogues/intro.txt",<br>
+                            &emsp; &emsp; "../../assets-test/dialogues/stage1.txt"<br>
+                            &emsp; } );<br>
+                            <br>
+                            <br>
+                            &emsp; packFiles("../../build/stage-common-test.pak", <br>
+                            &emsp; {<br>
+                            &emsp; &emsp; "../../assets-test/graphics/sprite-sheets/test.png",<br>
+                            &emsp; &emsp; "../../assets-test/audio/sfx/test.wav",<br>
+                            &emsp; &emsp; "../../assets-test/fonts/test.otf",<br>
+                            &emsp; &emsp; "../../assets-test/dialogues/test.txt",<br>
+                            &emsp; &emsp; "../../assets-test/nonExistant.png"<br>
+                            &emsp; } );<br>
+                            <br>
+                            <br>
+                            &emsp; packFiles("../../build/stage-0-test.pak", <br>
+                            &emsp; {<br>
+                            &emsp; &emsp; "../../assets-test/graphics/sprite-sheets/test.png",<br>
+                            &emsp; &emsp; "../../assets-test/audio/sfx/test.wav",<br>
+                            &emsp; &emsp; "../../assets-test/fonts/test.otf",<br>
+                            &emsp; &emsp; "../../assets-test/dialogues/test.txt",<br>
+                            &emsp; &emsp; "../../assets-test/dialogues/intro.txt",<br>
+                            &emsp; &emsp; "../../assets-test/dialogues/stage1.txt",<br>
+                            &emsp; &emsp; "../../assets-test/graphics/stamp.jpg",<br>
+                            &emsp; &emsp; "../../assets-test/graphics/cher.jpg",<br>
+                            &emsp; &emsp; "../../assets-test/graphics/wifi.jpg",<br>
+                            &emsp; &emsp; "../../assets-test/graphics/folder.jpg"<br>
+                            &emsp; } );<br>
+                            <br>
+                            &emsp; std::cout << "\nPress enter to close\n";<br>
+                            &emsp; std::cin.get();<br>
+                            }
+                        </code>
+                </div>
+
+                <!-- CELL RIGHT -->
+                <div class="grid-cell">
+                    <div class="header-paragraph"><img src="images/UI/pointerGreen.png">ASSET PAK MANAGER ( LOADER )</div>
+                        <p>
+                            A runtime asset pipeline that loads packed binary files into memory and rebuilds them into typed engine objects. 
+                            The load() function streams a custom binary pak format into a raw byte buffer keyed by filename, while the 
+                            buildObjects() function sorts 
+                            those entries by extension and constructs SFML textures, sound buffers, fonts, and parsed dialogue arrays directly 
+                            from the in-memory data. Fonts get special handling, keeping a persistent raw buffer alive in the Pak struct since 
+                            sf::Font doesn't own its source data. The result is a clean separation between raw pak I/O and typed asset 
+                            construction, letting the engine load and unload entire paks at runtime without touching the filesystem again.
+                        </p>
+                        <code>
+                            // Comments removed for readability <br>
+                            // Code available on my <a href = "https://github.com/chris00004/GhostEngine/blob/main/source/managers/assetPakManager.cpp" target="_blank">GitHub</a> page<br>
+                            <br>
+                            AssetPakManager::AssetPakManager()<br>
+                            {}<br>
+                            <br>
+                            /* --- [ Overview ] ---------------------------------<br>
+                            <br>
+                            &emsp; [ void load ] takes in a string path, if pak file -> load all byte data into entries unordered map<br>
+                            <br>
+                            &emsp; [ void buildObjects ] takes in a pak struct -> writes the data in entries as C++ and SFML <br>
+                            &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; objects organized into the pak struct's unordered maps<br>
+                            <br>
+                            &emsp; [ entries ] unordered map holding all currently loaded pak file byte data<br>
+                            <br>
+                            --------------------------------------------------*/<br>
+                            <br>
+                            <br>
+                            void AssetPakManager::load( const std::string& pakPath ) {<br>
+                            <br>
+                            &emsp; std::cout << "CWD: " << std::filesystem::current_path() << std::flush;<br>
+                            &emsp; std::cout << "Opening pak: " << pakPath << std::flush;<br>
+                            &emsp; std::ifstream in( pakPath, std::ios::binary );<br>
+                            <br>
+                            &emsp; if ( !in ) {<br>
+                                    <br>
+                            &emsp; &emsp; std::cout << " -> FAILED TO OPEN" << std::flush;<br>
+                            &emsp; &emsp; throw std::runtime_error( "Cannot open pak: " + pakPath );<br>
+                            &emsp; }<br>
+                                <br>
+                            &emsp; uint32_t count = 0;<br>
+                            &emsp; in.read( reinterpret_cast<char*>( &count ), sizeof( count ) );<br>
+                                <br>
+                            &emsp; for ( uint32_t i = 0; i < count; i++ ) {<br>
+                                    <br>
+                            &emsp; &emsp; uint32_t nameLen = 0;<br>
+                            &emsp; &emsp; in.read( reinterpret_cast<char*>( &nameLen ), sizeof( nameLen ) );<br>
+                                    <br>
+                            &emsp; &emsp; std::string name(nameLen, '\0');<br>
+                            &emsp; &emsp; in.read(name.data(), nameLen);<br>
+                                    <br>
+                            &emsp; &emsp; uint64_t dataLen = 0;<br>
+                            &emsp; &emsp; in.read( reinterpret_cast<char*>( &dataLen ), sizeof( dataLen ) );<br>
+                                    <br>
+                            &emsp; &emsp; std::vector<char> data( dataLen );<br>
+                            &emsp; &emsp; in.read( data.data(), dataLen );<br>
+                                    <br>
+                            &emsp; &emsp; entries[name] = { std::move( data ) };<br>
+                            &emsp; }<br>
+                            }<br>
+                            <br>
+                            void AssetPakManager::buildObjects( Pak& pak ) {<br>
+                                <br>
+                            &emsp; pak.textures.clear();<br>
+                            &emsp; pak.sounds.clear();<br>
+                            &emsp; pak.fonts.clear();<br>
+                            &emsp; pak.dialogues.clear();<br>
+                                <br>
+                            &emsp; auto endsWith = []( const std::string& str, const std::string& suffix ) {<br>
+                            <br>
+                            &emsp; &emsp; return str.size() >= suffix.size() &&<br>
+                            &emsp; &emsp; str.compare( str.size() - suffix.size(), suffix.size(), suffix ) == 0;<br>
+                            &emsp; };<br>
+                                <br>
+                            &emsp; for ( const auto& [name, entry] : entries ) {<br>
+                                    <br>
+                            &emsp; &emsp; const void* ptr = entry.data.data();<br>
+                            &emsp; &emsp; size_t size = entry.data.size();<br>
+                                    <br>
+                            &emsp; &emsp; if ( endsWith( name, ".png" ) || endsWith( name, ".jpg" ) ) {<br>
+                                        <br>
+                            &emsp; &emsp; &emsp; sf::Texture tex( ptr, size );<br>
+                            &emsp; &emsp; &emsp; pak.textures[ name ] = std::move( tex );<br>
+                            &emsp; &emsp; &emsp; std::cout << "Added " << name << " to textures map." << std::endl;<br>
+                                        <br>
+                            &emsp; &emsp; } else if ( endsWith( name, ".wav" ) || endsWith( name, ".ogg" ) ) {<br>
+                                        <br>
+                            &emsp; &emsp; &emsp; sf::SoundBuffer buf( ptr, size );<br>
+                            &emsp; &emsp; &emsp; pak.sounds[ name ] = std::move( buf );<br>
+                                    <br>
+                            &emsp; &emsp; } else if ( endsWith( name, ".ttf" ) || endsWith( name, ".otf" ) ) {<br>
+                                    <br>
+                            &emsp; &emsp; &emsp; pak.rawFontBuffers[ name ] = entry.data;<br>
+                                    <br>
+                            &emsp; &emsp; &emsp; const void* ptr = pak.rawFontBuffers[ name ].data();<br>
+                            &emsp; &emsp; &emsp; size_t size = pak.rawFontBuffers[ name ].size();<br>
+                                    <br>
+                            &emsp; &emsp; &emsp; sf::Font font( ptr, size );<br>
+                            &emsp; &emsp; &emsp; font.setSmooth( false );<br>
+                            &emsp; &emsp; &emsp; pak.fonts[ name ] = std::move( font );<br>
+                            &emsp; &emsp; &emsp; std::cout << "Added " << name << " to fonts map." << std::endl;<br>
+                                    <br>
+                            &emsp; &emsp; } else if ( endsWith( name, ".txt" ) ) {<br>
+                                        <br>
+                            &emsp; &emsp; &emsp; std::vector<std::string> dialogueEntry;<br>
+                                    <br>
+                            &emsp; &emsp; &emsp; std::string rawText( entry.data.begin(), entry.data.end() );<br>
+                            &emsp; &emsp; &emsp; std::istringstream stream( rawText );<br>
+                                    <br>
+                            &emsp; &emsp; &emsp; std::string line;<br>
+                            &emsp; &emsp; &emsp; while ( std::getline( stream, line ) ) {<br>
+                                        <br>
+                            &emsp; &emsp; &emsp; &emsp; if ( !line.empty() && line.back() == '\r' ) {<br>
+                                                <br>
+                            &emsp; &emsp; &emsp; &emsp; &emsp; line.pop_back();<br>
+                            &emsp; &emsp; &emsp; &emsp; }<br>
+                                            <br>
+                            &emsp; &emsp; &emsp; &emsp; if ( !line.empty() ) { <br>
+                                                <br>
+                            &emsp; &emsp; &emsp; &emsp; &emsp; dialogueEntry.push_back( std::move( line ) );
+                            &emsp; &emsp; &emsp; &emsp; }<br>
+                            &emsp; &emsp; &emsp; }<br>
+                                        <br>
+                            &emsp; &emsp; &emsp; pak.dialogues[ name ] = std::move( dialogueEntry );<br>
+                            &emsp; &emsp; std::cout << "Added " << name << " to dialogue map." << std::endl;<br>
+                            &emsp; &emsp; }<br>
+                            &emsp; }<br>
+                                <br>
+                            &emsp; entries.clear();<br>
+                            }<br>
+                            <br>
+                            <br>
+                            const AssetPakManager::Entry& AssetPakManager::get( const std::string& name ) const {<br>
+                            &emsp; auto entry = entries.find( name );<br>
+                            &emsp; if ( entry == entries.end() ) {<br>
+                                    <br>
+                            &emsp; &emsp; throw std::runtime_error( "Asset not found in pak: " + name );<br>
+                            &emsp; }<br>
+                                <br>
+                            &emsp; return entry -> second;<br>
+                            }<br>
+                            <br>
+                            <br>
+                            bool AssetPakManager::has( const std::string& name ) const {<br>
+                                <br>
+                            &emsp; return entries.count( name ) > 0;<br>
+                            }<br>
+                        </code>
+                        <button class="expandCode"></button>
+                    </div>
+                </div>
+            </div>
+            <div class="adjustable-spacer" style="height: 100px;"></div>
+
+            <!-- [ AUDIO SYSTEM ] ------------------------------------------------------------------------------------------------------------------>
+
+            <div class="header-label">AUDIO SYSTEM</div>
+            
+            <div class="split-grid-container">
+
+                <div class="grid-cell">
+                    <div class="header-paragraph"><img src="images/UI/pointerGreen.png">POOL BASED AUDIO SYSTEM</div>
+                    <p>
+                        I built a pool-based spatial audio system on top of SFML 3 that avoids runtime allocation entirely. 
+                        A fixed pool of SoundContainer objects gets reused for every sound played, with self-return to 
+                        the pool once playback finishes, so there's no manual lifecycle management and no allocation spikes 
+                        during high-frequency gameplay audio like footsteps or pickup chimes. Sound identity is resolved 
+                        through a two-stage lookup: filenames from the pak system map to a stable SoundID enum at compile 
+                        time, and that ID separately maps to whatever buffer and tuning data is currently loaded.
+                    </p>
+
+                    <p>
+                        SoundContainer wraps a single sf::Sound instance and manages its own readiness state. It tracks whether 
+                        it's currently playing, whether it's in 3D or 2D mode, and whether it's looping, and only pushes state 
+                        changes down into SFML when the requested state actually differs from what's already set, avoiding redundant 
+                        calls into the audio backend. Once a sound finishes playing, the container flags itself as ready again on 
+                        the next update, making reuse automatic rather than something the caller has to manage.
+                    </p>
+                </div>
+
+                <div class="grid-cell">
+                    <div class = "art-item">
+                        <img src = "images/artwork/ghostengine/audio-manager-draw-io.png" class="thumb">
+                    </div>
+                </div>
+
+                
+            </div>
+
+            <div class="split-grid-container">
+                
+                <!-- CELL LEFT -->
+                <div class="grid-cell">
+                    <div class="header-paragraph"><img src="images/UI/pointerGreen.png">AUDIO MANAGER CLASS</div>
+                        <code>
+                            // Comments removed for readability <br>
+                            // Code available on my <a href = "https://github.com/chris00004/GhostEngine/blob/main/source/managers/audioManager.cpp" target="_blank">GitHub</a> page<br>
+                            <br>
+                            AudioManager::AudioManager( const PakData& pakData, const float& dt, const Input& input ) 
+                            &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; : dt ( dt ),<br>
+                            &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; pakData ( pakData ),<br>
+                            &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; input ( input )<br>
+                            {}<br>
+                            <br>
+                            void AudioManager::init() { <br>
+                            <br>
+                            &emsp; stringToSoundIDMap.insert ( { "test.wav", SoundID::TEST } );<br>
+                            &emsp; SoundProperties testSoundProperties;<br>
+                            &emsp; testSoundProperties.name = "Test Sound";<br>
+                            <br>
+                            &emsp; soundIdToPropertiesMap.insert ( { SoundID::TEST, testSoundProperties } );<br>
+                            &emsp; loadSoundData( pakData.global );<br>
+                            <br>
+                            &emsp; sf::Listener::setUpVector( { 0, 0, -1 } );<br>
+                            &emsp; sf::Listener::setDirection( { 0, 1, 0 } );<br>
+                                <br>
+                            &emsp; const sf::SoundBuffer* tempBufferPtr = findMapObject ( pakData.global.sounds, "test.wav" );<br>
+                            &emsp; if ( !tempBufferPtr ) { return; }<br>
+                                <br>
+                            &emsp; poolSize = soundArray.size();<br>
+                                <br>
+                            &emsp; for ( int i = 0; i < poolSize; i++ ) {<br>
+                                <br>
+                            &emsp; &emsp; SoundContainer& soundContainer = soundArray[ i ]; <br>
+                            &emsp; &emsp; soundContainer.init( tempBufferPtr, i );<br>
+                            &emsp; }<br>
+                            }<br>
+                            <br>
+                            <br>
+
+                            SoundContainer* AudioManager::setupAndRetriveNewSound ( SoundID soundId ) { <br>
+                            <br>
+                            &emsp; for ( int i = 0; i < poolSize; i++ ) {<br>
+                            <br>
+                            &emsp; &emsp; SoundContainer* soundContainerPtr = &soundArray[ i ]; <br>
+                            &emsp; &emsp; if ( !soundContainerPtr ) { return nullptr; }<br>
+                            <br>
+                            &emsp; &emsp; if ( soundContainerPtr -> getIsReady() ) { <br>
+                            <br>
+                            &emsp; &emsp; &emsp; const sf::SoundBuffer* newBufferPtr = *findMapObject ( soundIdToBufferPtrMap, soundId );<br>
+                            &emsp; &emsp; &emsp; if ( newBufferPtr ) { soundContainerPtr -> setBuffer ( newBufferPtr ); }<br>
+                            &emsp; &emsp; &emsp; else { return nullptr; } <br>
+                            <br>
+                            &emsp; &emsp; &emsp; const SoundProperties* newPropertiesPtr = findMapObject ( soundIdToPropertiesMap, <br> 
+                            &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; 
+                            &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; 
+                            &emsp; &emsp; &emsp; &emsp; soundId );<br>
+                            &emsp; &emsp; &emsp; if ( newPropertiesPtr ) { soundContainerPtr -> setProperties ( newPropertiesPtr ); }<br>
+                            &emsp; &emsp; &emsp; else { return nullptr; }<br>
+                            <br>
+                            &emsp; &emsp; &emsp; return soundContainerPtr; <br>
+                            &emsp; &emsp; } <br>
+                            &emsp; } <br>
+                            <br>
+                            &emsp; return nullptr; <br>
+                            } <br>
+                            <br>
+                            <br>
+
+                            void AudioManager::playSound2D( SoundID soundId, bool isLooping ) { <br>
+                            <br>
+                            &emsp; SoundContainer* soundContainerPtr = setupAndRetriveNewSound ( soundId );<br>
+                            &emsp; if ( !soundContainerPtr ) { return; } <br>
+                            <br>
+                            &emsp; soundContainerPtr -> setAudio3D ( false );<br>
+                            &emsp; soundContainerPtr -> setLooping ( isLooping );<br>
+                            &emsp; soundContainerPtr -> playSound ();<br>
+                            }<br>
+                            <br>
+                            <br>
+
+                            void AudioManager::update(){<br>
+                            <br>
+                            &emsp; for ( int i = 0; i < poolSize; i++ )<br>
+                            &emsp; {<br>
+                            <br>
+                            &emsp; &emsp; soundArray[ i ].update();<br>
+                            &emsp; }<br>
+                            }<br>
+                            <br>
+                            <br>
+
+                            void AudioManager::loadSoundData ( const Pak& pak ) { <br>
+                            <br>
+                            &emsp; for ( const auto &pair : pak.sounds ) <br>
+                            &emsp; { <br>
+                                <br>
+                            &emsp; &emsp; const std::string name = pair.first;<br>
+                            &emsp; &emsp; const sf::SoundBuffer* bufferPtr = &pair.second;<br>
+                                <br>
+                            &emsp; &emsp; SoundID* soundIDPtr = findMapObject ( stringToSoundIDMap, name );<br>
+                                <br>
+                            &emsp; &emsp; if ( !soundIDPtr ) { continue; }<br>
+                                <br>
+                            &emsp; &emsp; soundIdToBufferPtrMap.insert ( { *soundIDPtr, bufferPtr } );<br>
+                            &emsp; }<br>
+                            }<br>
+                            <br>
+                            <br>
+
+                            void AudioManager::removeSoundData ( const Pak& pak ) {<br>
+                            <br>
+                            &emsp; for ( const auto &pair : pak.sounds ) {<br>
+                            <br>
+                            &emsp; &emsp; std::string name = pair.first;<br>
+                            <br>
+                            &emsp; &emsp; SoundID* soundIDPtr = findMapObject ( stringToSoundIDMap, name );<br>
+                            <br>
+                            &emsp; &emsp; if ( !soundIDPtr ) { continue; }<br>
+                            <br>
+                            &emsp; &emsp; soundIdToBufferPtrMap.erase ( *soundIDPtr );<br>
+                            &emsp; }<br>
+                            }<br>
+                        </code>
+                        <button class="expandCode"></button>
+                        <div class="adjustable-spacer" style="height: 20px;"></div>
+                </div>
+
+                <!-- CELL RIGHT -->
+                <div class="grid-cell">
+                    <div class="header-paragraph"><img src="images/UI/pointerGreen.png">SOUND CONTAINER CLASS</div>
+                        <code>
+                            // Comments removed for readability <br>
+                            // Code available on my <a href = "https://github.com/chris00004/GhostEngine/blob/main/source/soundContainer.cpp" target="_blank">GitHub</a> page<br>
+                            <br>
+                            SoundContainer::SoundContainer() : isReady ( false ),<br>
+                            &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; is3D ( false ),<br>
+                            &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; isMoving ( false ),<br>
+                            &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; isLooping ( false ),<br>
+                            &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; isDoppler ( false ),<br>
+                            &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; position ( nullptr ),<br>
+                            &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; speed ( nullptr ),<br>
+                            &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; name ( "Null Sound" )<br>
+                            {}<br><br>
+
+                            void SoundContainer::init( const sf::SoundBuffer* tempBufferPtr, int containerId ) {<br>
+                            <br>
+                            &emsp; if ( tempBufferPtr ) {<br>
+                            <br>
+                            &emsp; &emsp; sound.emplace( *tempBufferPtr );<br>
+                            &emsp; &emsp; this -> containerId = containerId;<br>
+                            &emsp; }<br>
+                            }<br>
+                            <br>
+                            void SoundContainer::update() {<br>
+                            <br>
+                            &emsp; if ( sound -> getStatus() == sf::Sound::Status::Stopped && !isReady ) {<br>
+                            <br>
+                            &emsp; &emsp; isReady = true;<br>
+                            &emsp; }<br>
+                            }<br>
+                            <br>
+                            void SoundContainer::setBuffer ( const sf::SoundBuffer* bufferPtr ) {<br>
+                            <br>
+                            &emsp; sound -> setBuffer( *bufferPtr );<br>
+                            }<br>
+                            <br>
+                            void SoundContainer::setProperties ( const SoundProperties* propertiesPtr ) {<br>
+                            <br>
+                            &emsp; name = propertiesPtr -> name;<br>
+                            &emsp; sound -> setVolume( propertiesPtr -> volume );<br>
+                            &emsp; sound -> setPitch( propertiesPtr -> pitch );<br>
+                            &emsp; sound -> setDopplerFactor( propertiesPtr -> dopplerFactor );<br>
+                            &emsp; sound -> setMinDistance( propertiesPtr -> minDistance );<br>
+                            &emsp; sound -> setMaxDistance( propertiesPtr -> maxDistance );<br>
+                            &emsp; sound -> setAttenuation( propertiesPtr -> attenuation );<br>
+                            }<br>
+                            <br>
+                            void SoundContainer::setLooping ( bool isTrue ) {<br>
+                            <br>
+                            &emsp; if ( sound ) {<br>
+                            <br>
+                            &emsp; &emsp; if ( sound -> isLooping() != isTrue ) {<br>
+                            <br>
+                            &emsp; &emsp; &emsp; isLooping = isTrue;<br>
+                            &emsp; &emsp; &emsp; sound -> setLooping ( isLooping );<br>
+                            &emsp; &emsp; }<br>
+                            &emsp; }<br>
+                            }<br>
+                            <br>
+                            void SoundContainer::setAudio3D( bool isTrue ){<br>
+                            <br>
+                            &emsp; if ( sound ){<br>
+                            <br>
+                            &emsp; &emsp; if ( sound -> isSpatializationEnabled() != isTrue ){<br>
+                            <br>
+                             &emsp; &emsp; is3D = isTrue;<br>
+                            &emsp; &emsp; sound -> setSpatializationEnabled ( is3D );<br>
+                            &emsp; &emsp; }<br>
+                            &emsp; }<br>
+                            }<br>
+                            <br>
+                            void SoundContainer::playSound(){<br>
+                            <br>
+                            &emsp; if ( isReady ) {<br>
+                            <br>
+                            &emsp; &emsp; sound -> play();<br>
+                            &emsp; &emsp; isReady = false;<br>
+                            &emsp; }<br>
+                            }<br>
+                            <br>
+                            const bool SoundContainer::getIsReady() { return isReady; } <br>
+                            <br>
+                            const std::string SoundContainer::getName() { return name; } <br>
+                        </code>
+                        <button class="expandCode"></button>
+                        <div class="adjustable-spacer" style="height: 20px;"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="adjustable-spacer" style="height: 100px;"></div>
+
+            <!-- [ INPUT SYSTEM ] ------------------------------------------------------------------------------------------------------------------>
+
+            <div class="header-label">INPUT SYSTEM</div>
+            <div class="adjustable-spacer" style="height: 20px;"></div>
+            
+            <div class="split-grid-container">
+
+                <div class="grid-cell">
+                    <div class="header-paragraph"><img src="images/UI/pointerGreen.png">ADVANCED INPUT POLLING</div>
+                    <p>
+                        I built a pool-based spatial audio system on top of SFML 3 that avoids runtime allocation entirely. 
+                        A fixed pool of SoundContainer objects gets reused for every sound played, with self-return to 
+                        the pool once playback finishes, so there's no manual lifecycle management and no allocation spikes 
+                        during high-frequency gameplay audio like footsteps or pickup chimes. Sound identity is resolved 
+                        through a two-stage lookup: filenames from the pak system map to a stable SoundID enum at compile 
+                        time, and that ID separately maps to whatever buffer and tuning data is currently loaded.
+                    </p>
+                    
+                    
+                    
+                </div>
+
+                <div class="grid-cell">
+                    <div class = "art-item">
+                        <img src = "images/artwork/ghostengine/input-manager-gif.gif" class="thumb">
+                    </div>
+                </div>
+            </div>
+
+            <div class="split-grid-container">
+                <div class="grid-cell">
+                    <div class="header-paragraph"><img src="images/UI/pointerGreen.png">INPUT MANAGER CLASS</div>
+                    <code>
+                        // Comments removed for readability <br>
+                        // Code available on my <a href = "https://github.com/chris00004/GhostEngine/blob/main/source/managers/inputManager.cpp" target="_blank">GitHub</a> page<br>
+                        <br>
+                        InputManager::InputManager( Input& input, const float& dt ) : dt( dt ),<br>
+                        &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; input( input ),<br>
+                        &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; isActive ( false )<br>
+                        {<br>
+                            <br>
+                        &emsp; inputNames = {<br>
+                            <br>
+                        &emsp; &emsp; { &input.dirPadLeft, "Left" },<br>
+                        &emsp; &emsp; { &input.dirPadUp, "Up" },<br>
+                        &emsp; &emsp; { &input.dirPadRight, "Right" },<br>
+                        &emsp; &emsp; { &input.dirPadDown, "Down" },<br>
+                        &emsp; &emsp; { &input.actionA, "Action A" },<br>
+                        &emsp; &emsp; { &input.actionB, "Action B" },<br>
+                        &emsp; &emsp; { &input.actionX, "Action X" },<br>
+                        &emsp; &emsp; { &input.actionY, "Action Y" },<br>
+                        &emsp; &emsp; { &input.actionLB, "Action LB" },<br>
+                        &emsp; &emsp; { &input.actionRB, "Action RB" },<br>
+                        &emsp; &emsp; { &input.actionLT, "Action LT" },<br>
+                        &emsp; &emsp; { &input.actionRT, "Action RT" },<br>
+                        &emsp; &emsp; { &input.actionStart, "Start" },<br>
+                        &emsp; &emsp; { &input.actionSelect, "Select" }<br>
+                        &emsp; };<br>
+                        <br>
+                        &emsp; std::cout << "\nInputMgr Constructed." << std::flush;<br>
+                        }<br>
+                        <br>
+                        <br>
+                        void InputManager::init() {<br>
+                            <br>
+                        &emsp; isActive = true;<br>
+                        }<br>
+                        <br>
+                        <br>
+                        void InputManager::update() {<br>
+                                <br>
+                        &emsp; if ( !isActive ) return;<br>
+                                <br>
+                        &emsp; xInputConnected = XInputGetState( 0, &xInputState ) == ERROR_SUCCESS;<br>
+                                <br>
+                        &emsp; if ( !xInputConnected ) {<br>
+                                <br>
+                        &emsp; &emsp; mapGp = {};<br>
+                        &emsp; }<br>
+                        <br>
+                        &emsp; else {<br>
+                        &emsp;     <br>
+                        &emsp; &emsp; updateGamepadInputMap();<br>
+                        &emsp; }<br>
+                        &emsp; <br>
+                        &emsp; updateKeyboardInputMap();<br>
+                        &emsp; processInputs();<br>
+                        &emsp; calculateInputDir( input );<br>
+                        }<br>
+                        <br>
+                        <br>
+                        void InputManager::resetInputBuffer( InputState& inputState ) {<br>
+                            <br>
+                        &emsp; inputState.alarmBuffer.current = inputState.alarmBuffer.base;<br>
+                        &emsp; inputState.bufferActive = false;<br>
+                        }<br>
+                        <br>
+                        <br>
+                        void InputManager::updateInputState( InputState& inputState, bool isDownNow ) {<br>
+                            <br>
+                        &emsp; inputState.prevHeld = inputState.held; <br>   
+                        &emsp; inputState.held = isDownNow; <br>
+                        &emsp; inputState.pressed = inputState.held && !inputState.prevHeld; <br>
+                        &emsp; inputState.released = !inputState.held && inputState.prevHeld;<br>
+                        <br>
+                        &emsp; if ( inputState.pressed ) {<br>
+                        &emsp;     <br>
+                        &emsp; &emsp; inputState.alarmBuffer.current = inputState.alarmBuffer.base;<br>
+                        &emsp; &emsp; inputState.bufferActive = true;<br>
+                        &emsp; }<br>
+                        &emsp; <br>
+                        &emsp; if ( inputState.bufferActive ) {<br>
+                        &emsp; &emsp; <br>
+                        &emsp; &emsp; inputState.alarmBuffer.current -= dt;<br>
+                        &emsp; &emsp; if ( inputState.alarmBuffer.current <= 0 ) {<br>
+                        &emsp; &emsp;     <br>
+                        &emsp; &emsp; &emsp; inputState.alarmBuffer.current = 0.0f;<br>
+                        &emsp; &emsp; &emsp; inputState.bufferActive = false;<br>
+                        &emsp; &emsp; }<br>
+                        &emsp; }<br>
+                        }<br>
+                        <br>
+                        <br>
+                        void InputManager::calculateInputDir( Input& input ) {<br>
+                        &emsp; <br>
+                        &emsp; if ( input.isJoystickUsed ) { <br>
+                        &emsp;     <br>
+                        &emsp; &emsp; input.direction = std::atan2( input.joystickAxisY, input.joystickAxisX );<br>
+                        &emsp; }<br>
+                        &emsp; <br>
+                        &emsp; else {  <br>
+                        &emsp; &emsp; <br>
+                        &emsp; &emsp; int dirInputX = ( input.dirPadRight.held ) - ( input.dirPadLeft.held );<br>
+                        &emsp; &emsp; int dirInputY = ( input.dirPadDown.held ) - ( input.dirPadUp.held );<br>
+                        &emsp; &emsp; <br>
+                        &emsp; &emsp; if ( dirInputX != 0 || dirInputY != 0 ) {<br>
+                        &emsp; &emsp;     <br>
+                        &emsp; &emsp; &emsp; input.direction = std::atan2( dirInputY, dirInputX );<br>
+                        &emsp; &emsp; }<br>
+                        &emsp; }<br>
+                        }<br>
+                        <br>
+                        const std::string InputManager::getInputName( InputState* key ) { <br>
+                        &emsp; <br>
+                        &emsp; auto name = inputNames.find( key );<br>
+                        &emsp; if ( name != inputNames.end() ) {<br>
+                        &emsp;     <br>
+                        &emsp; &emsp; return name -> second;<br>
+                        &emsp; }<br>
+                        &emsp; return "Null Input";<br>
+                        }<br>
+                        <br>
+                        <br>
+                        void InputManager::updateGamepadInputMap() {<br>
+                        &emsp; <br>
+                        &emsp; mapGp.actionA = ( xInputState.Gamepad.wButtons & XINPUT_GAMEPAD_A );<br>
+                        &emsp; mapGp.actionB = ( xInputState.Gamepad.wButtons & XINPUT_GAMEPAD_B );<br>
+                        &emsp; mapGp.actionX = ( xInputState.Gamepad.wButtons & XINPUT_GAMEPAD_X );<br>
+                        &emsp; mapGp.actionY = ( xInputState.Gamepad.wButtons & XINPUT_GAMEPAD_Y );<br>
+                        &emsp; <br>
+                        &emsp; mapGp.actionLB = ( xInputState.Gamepad.wButtons & XINPUT_GAMEPAD_LEFT_SHOULDER );<br>
+                        &emsp; mapGp.actionRB = ( xInputState.Gamepad.wButtons & XINPUT_GAMEPAD_RIGHT_SHOULDER );<br>
+                        &emsp; <br>
+                        &emsp; float ltThreshold  = xInputState.Gamepad.bLeftTrigger / 255.0f;<br>
+                        &emsp; float rtThreshold = xInputState.Gamepad.bRightTrigger / 255.0f;<br>
+                        &emsp; <br>
+                        &emsp; mapGp.actionLT = ( ltThreshold > input.deadzoneTrigger );<br>
+                        &emsp; mapGp.actionRT = ( rtThreshold > input.deadzoneTrigger );<br>
+                        &emsp; <br>
+                        &emsp; mapGp.dirPadLeft = ( xInputState.Gamepad.wButtons & XINPUT_GAMEPAD_DPAD_LEFT );<br>
+                        &emsp; mapGp.dirPadUp = ( xInputState.Gamepad.wButtons & XINPUT_GAMEPAD_DPAD_UP );<br>
+                        &emsp; mapGp.dirPadRight = ( xInputState.Gamepad.wButtons & XINPUT_GAMEPAD_DPAD_RIGHT );<br>
+                        &emsp; mapGp.dirPadDown = ( xInputState.Gamepad.wButtons & XINPUT_GAMEPAD_DPAD_DOWN );<br>
+                        &emsp; <br>
+                        &emsp; mapGp.actionStart = ( xInputState.Gamepad.wButtons & XINPUT_GAMEPAD_START );<br>
+                        &emsp; mapGp.actionSelect = ( xInputState.Gamepad.wButtons & XINPUT_GAMEPAD_BACK );<br>
+                        }<br>
+                        <br>
+                        <br>
+                        void InputManager::updateKeyboardInputMap() {<br>
+                        &emsp; <br>
+                        &emsp; mapKb.actionA = sf::Keyboard::isKeyPressed( sf::Keyboard::Key::Space );<br>
+                        &emsp; mapKb.actionB = sf::Keyboard::isKeyPressed( sf::Keyboard::Key::L );<br>
+                        &emsp; mapKb.actionX = sf::Keyboard::isKeyPressed( sf::Keyboard::Key::J );<br>
+                        &emsp; mapKb.actionY = sf::Keyboard::isKeyPressed( sf::Keyboard::Key::I );<br>
+                        &emsp; <br>
+                        &emsp; mapKb.actionLB = sf::Keyboard::isKeyPressed( sf::Keyboard::Key::Q );<br>
+                        &emsp; mapKb.actionRB = sf::Keyboard::isKeyPressed( sf::Keyboard::Key::E );<br>
+                        &emsp; mapKb.actionLT = sf::Keyboard::isKeyPressed( sf::Keyboard::Key::LControl );<br>
+                        &emsp; mapKb.actionRT = sf::Keyboard::isKeyPressed( sf::Keyboard::Key::LShift );<br>
+                        &emsp; <br>
+                        &emsp; mapKb.dirPadLeft = sf::Keyboard::isKeyPressed( sf::Keyboard::Key::A );<br>
+                        &emsp; mapKb.dirPadUp = sf::Keyboard::isKeyPressed( sf::Keyboard::Key::W );<br>
+                        &emsp; mapKb.dirPadRight = sf::Keyboard::isKeyPressed( sf::Keyboard::Key::D );<br>
+                        &emsp; mapKb.dirPadDown = sf::Keyboard::isKeyPressed( sf::Keyboard::Key::S );<br>
+                        &emsp; <br>
+                        &emsp; mapKb.actionStart = sf::Keyboard::isKeyPressed( sf::Keyboard::Key::Escape )<br>
+                        &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; || sf::Keyboard::isKeyPressed( sf::Keyboard::Key::Enter );<br>
+                        &emsp; mapKb.actionSelect = sf::Keyboard::isKeyPressed( sf::Keyboard::Key::Tab );<br>
+                        }<br>
+                        <br>
+                        <br>
+                        void InputManager::processInputs() {<br>
+                        &emsp; <br>
+                        &emsp; input.joystickAxisX = xInputState.Gamepad.sThumbLX / 32767.0f;<br>
+                        &emsp; input.joystickAxisY = xInputState.Gamepad.sThumbLY / 32767.0f;<br>
+                        &emsp; <br>
+                        &emsp; input.isJoystickUsed = std::abs(input.joystickAxisX) > input.deadzoneStick <br>
+                        &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; || std::abs( input.joystickAxisY ) > input.deadzoneStick;<br>
+                        &emsp; <br>
+                        &emsp; updateInputState( input.actionA, mapGp.actionA || mapKb.actionA );<br>
+                        &emsp; updateInputState( input.actionB, mapGp.actionB || mapKb.actionB );<br>
+                        &emsp; updateInputState( input.actionX, mapGp.actionX || mapKb.actionX );<br>
+                        &emsp; updateInputState( input.actionY, mapGp.actionY || mapKb.actionY );<br>
+                        &emsp; <br>
+                        &emsp; updateInputState( input.actionLB, mapGp.actionLB || mapKb.actionLB );<br>
+                        &emsp; updateInputState( input.actionRB, mapGp.actionRB || mapKb.actionRB );<br>
+                        &emsp; updateInputState( input.actionLT, mapGp.actionLT || mapKb.actionLT );<br>
+                        &emsp; updateInputState( input.actionRT, mapGp.actionRT || mapKb.actionRT );<br>
+                        &emsp; <br>
+                        &emsp; updateInputState( input.dirPadLeft, mapGp.dirPadLeft || mapKb.dirPadLeft );<br>
+                        &emsp; updateInputState( input.dirPadUp, mapGp.dirPadUp || mapKb.dirPadUp );<br>
+                        &emsp; updateInputState( input.dirPadRight, mapGp.dirPadRight || mapKb.dirPadRight );<br>
+                        &emsp; updateInputState( input.dirPadDown, mapGp.dirPadDown || mapKb.dirPadDown );<br>
+                        &emsp; <br>
+                        &emsp; updateInputState( input.actionStart, mapGp.actionStart || mapKb.actionStart );<br>
+                        &emsp; updateInputState( input.actionSelect, mapGp.actionSelect || mapKb.actionSelect );<br>
+                        }
+
+                    </code>
+                    <button class="expandCode"></button>
+                </div>
+                <div class="grid-cell">
+                    <div class="adjustable-spacer" style="height: 30px;"></div>
+                    <div class = "art-item">
+                        <img src = "images/artwork/ghostengine/input-combined.png" class="thumb">
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="adjustable-spacer" style="height: 100px;"></div>
+
+            <!-- [ DEBUGGER ] ------------------------------------------------------------------------------------------------------------------>
+            
+            <div class="header-label">DEBUGGER</div>
+            <div class="split-grid-container">
+
+                <!-- CELL LEFT -->
+                <div class="grid-cell">
+                    <div class="header-paragraph"><img src="images/UI/pointerGreen.png">DEBUGGING</div>
+                    <p>
+                        I began development by researching open-source libraries for graphics, audio, and gamepad input APIs. I decided on an combination 
+                        of SFML 3.0+ and Microsoft's XInput. I chose SFML due to strong but simple rendering, audio, and keyboard input polling capabilities. 
+                        And Microsoft XInput for its stronger compatibility and analog support for sticks and triggers with Xbox gamepads. From there I sketeched 
+                        out the program's structure before moving onto full diagrams using Draw.io.
+                    </p>
+
+                    <code>
+                        // Comments removed for readability <br>
+                        // Code available on my <a href = "https://github.com/chris00004/GhostEngine/blob/main/source/managers/debugger.cpp" target="_blank">GitHub</a> page<br>
+                        <br>
+                        #include "debugger.h"<br>
+                        #include "commonTypes.h"<br>
+                        <br>
+                        Debugger::Debugger( Input& input, PakData& pakData, GameData& gameData, const float& dt, <br>
+                        &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; const float& fps, InputManager& inputMgr ) <br>
+                        &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; : isActive ( false ),<br>
+                        &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; debugState( DebugState::ENUM_START ),<br>
+                        &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; input ( input ),<br>
+                        &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; pakData ( pakData ),<br>
+                        &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; selectedPak ( nullptr ),<br>
+                        &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; isPakSwapped ( false ),<br>
+                        &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; gameData ( gameData ),<br>
+                        &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; dt ( dt ),<br>
+                        &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; fps ( fps ),<br>
+                        &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; inputMgr ( inputMgr ) {<br>
+                        <br>
+                            std::cout << "\nDebugMgr Constructed." << std::flush;<br>
+                        }<br>
+                        <br>
+                        <br>
+                        void Debugger::init() {<br>
+                        <br>
+                        &emsp;    vecIndex = 0;<br>
+                        &emsp;    <br>
+                        &emsp;    debugStateNames = {<br>
+                        &emsp;        <br>
+                        &emsp;        { DebugState::ENUM_START, "Enum Start" },<br>
+                        &emsp;        { DebugState::INPUT_TEST, "Input Test" },<br>
+                        &emsp;        { DebugState::SOUND_TEST, "Sound Test" },<br>
+                        &emsp;        { DebugState::GAMEDATA_VIEW, "Game Data View" },<br>
+                        &emsp;        { DebugState::TEXTURES_VIEW, "Textures View" },<br>
+                        &emsp;        { DebugState::STAGEDATA_VIEW, "Stage Data View" },<br>
+                        &emsp;        { DebugState::DIALOGUES_VIEW, "Dialogues View" },<br>
+                        &emsp;        { DebugState::ENUM_END, "Enum End" }<br>
+                        &emsp;    };<br>
+                        &emsp;    <br>
+                        &emsp;    selectPakStruct ( pakData.global );<br>
+                        &emsp;    <br>
+                        &emsp;    posJoystickDraw = { 180.0f, 180.0f };<br>
+                        &emsp;    joystickEmbedRadius = 24.0f;<br>
+                        &emsp;    joystickRadius = 3.0f;<br>
+                        &emsp;    deadzoneRadius = input.deadzoneStick * joystickEmbedRadius;<br>
+                        &emsp;    <br>
+                        &emsp;    colorJoystickActive = sf::Color ( 180, 180, 180 );<br>
+                        &emsp;    colorJoystickInactive = sf::Color ( 160, 30, 30 );<br>
+                        &emsp;    <br>
+                        &emsp;    circleJoystickEmbed.emplace( joystickEmbedRadius, 24 );<br>
+                        &emsp;    circleDeadzone.emplace( joystickEmbedRadius, 24 );<br>
+                        &emsp;    circleJoystick.emplace( joystickRadius, 8 );<br>
+                        &emsp;    <br>
+                        &emsp;    circleJoystickEmbed -> setFillColor ( sf::Color ( 60, 60, 60 ) );<br>
+                        &emsp;    circleJoystickEmbed -> setOrigin ( { joystickEmbedRadius, joystickEmbedRadius } );<br>
+                        &emsp;    circleJoystickEmbed -> setPosition ( posJoystickDraw );<br>
+                        &emsp;    <br>
+                        &emsp;    circleJoystick -> setFillColor ( sf::Color ( 255, 255, 255 ) );<br>
+                        &emsp;    circleJoystick -> setOrigin ( { joystickRadius, joystickRadius } );<br>
+                        &emsp;    circleJoystick -> setPosition ( posJoystickDraw );<br>
+                        &emsp;    <br>
+                        &emsp;    circleDeadzone -> setRadius ( deadzoneRadius );<br>
+                        &emsp;    circleDeadzone -> setFillColor ( sf::Color ( 30, 30, 30 ) );<br>
+                        &emsp;    circleDeadzone -> setOrigin ( { deadzoneRadius , deadzoneRadius } );<br>
+                        &emsp;    circleDeadzone -> setPosition ( posJoystickDraw );<br>
+                        &emsp;    <br>
+                        &emsp;    sf::Font* tempFontPtr = findMapObject( selectedPak -> fonts, "test.otf" );<br>
+                        &emsp;    if (tempFontPtr) {<br>
+                        &emsp;        <br>
+                        &emsp; &emsp; bodyText.emplace( *tempFontPtr, "...");<br>
+                        &emsp; &emsp; fpsText.emplace( *tempFontPtr, "...");<br>
+                        &emsp; &emsp; debugMenuText.emplace( *tempFontPtr, "...");<br>
+                        &emsp; &emsp; popUpText.emplace( *tempFontPtr, "...");<br>
+                        &emsp; &emsp; <br>
+                        &emsp; &emsp; bodyText -> setFillColor( sf::Color ( 0, 255, 0 ) );<br>
+                        &emsp; &emsp; bodyText -> setPosition( { 12.0f, 12.0f } );<br>
+                        &emsp; &emsp; bodyText -> setScale( { 0.2f, 0.2f } );<br>
+                        &emsp; &emsp; <br>
+                        &emsp; &emsp; fpsText -> setFillColor( sf::Color ( 0, 255, 0 ) );<br>
+                        &emsp; &emsp; fpsText -> setPosition( { 12.0f, 340.0f } );<br>
+                        &emsp; &emsp; fpsText -> setScale( { 0.2f, 0.2f } );<br>
+                        &emsp; &emsp; <br>
+                        &emsp; &emsp; debugMenuText -> setFillColor( sf::Color ( 0, 255, 0 ) );<br>
+                        &emsp; &emsp; debugMenuText -> setPosition( { 128.0f, 55.0f } );<br>
+                        &emsp; &emsp; debugMenuText -> setScale( { 0.2f, 0.2f } );<br>
+                        &emsp; &emsp; <br>
+                        &emsp; &emsp; popUpText -> setFillColor( sf::Color ( 255, 0, 255 ) );<br>
+                        &emsp; &emsp; popUpText -> setPosition( { 450.0f, 40.0f } );<br>
+                        &emsp; &emsp; popUpText -> setScale( { 0.2f, 0.2f } );<br>
+                        &emsp;    }<br>
+                        &emsp;    else {<br>
+                        &emsp;        <br>
+                        &emsp; &emsp; std::cout << "tempFontPtr is Null" << "\n";<br>
+                        &emsp;    }<br>
+                        &emsp;    <br>
+                        &emsp;    sf::SoundBuffer* tempSoundPtr = findMapObject( selectedPak -> sounds, "test.wav" ); <br>
+                        &emsp;    if ( tempSoundPtr ) {<br>
+                        &emsp;        <br>
+                        &emsp; &emsp; debugSound.emplace( *tempSoundPtr );<br>
+                        &emsp;    }<br>
+                        &emsp;    else {<br>
+                        &emsp;        <br>
+                        &emsp; &emsp; std::cout << "tempSountPtr is Null" << "\n";<br>
+                        &emsp;    }<br>
+                        &emsp;    <br>
+                        &emsp;    sf::Texture* tempTexturePtr = findMapObject ( selectedPak -> textures, "test.png" );<br>
+                        &emsp;    if ( tempTexturePtr ) {<br>
+                        &emsp;    <br>
+                        &emsp; &emsp; debugSprite.emplace( *tempTexturePtr );<br>
+                        &emsp; &emsp; debugSprite -> setPosition ( { 160.0f, 70.0f} );<br>
+                        &emsp; &emsp; textureSize = sf::Vector2i( tempTexturePtr -> getSize() );<br>
+                        &emsp;    }<br>
+                        &emsp;    else {<br>
+                        &emsp;        <br>
+                        &emsp;    &emsp;     std::cout << "tempTexturePtr is Null" << "\n";<br>
+                        &emsp;    }<br>
+                        &emsp;    <br>
+                        &emsp;    keyBindString = "[ Enable/Disable ] \\    [ Accpet ] R-Shift    [ Next / Prev ] Arrows: Left / Right     [ Traverse Menu ] Arrows: Up / Down";<br>
+                        &emsp;    keyBindString += "\n[ Pak Global ] P + 1    [ Pak Stage Common ]   P + 2    [ Pak Stage Current ]   P + 3";<br>
+                        &emsp;    <br>
+                        &emsp;    timerPopUpText = { 1.5, 1.5 };<br>
+                        &emsp;    <br>
+                        &emsp;    setState ( DebugState::INPUT_TEST );<br>
+                        &emsp;    std::cout << "\nDebugMgr Initialized." << std::flush;<br>
+                        }<br>
+                        <br>
+                        <br>
+                        void Debugger::update(){<br>
+                            <br>
+                        &emsp;updateDebugInputState( inputActivate, sf::Keyboard::isKeyPressed( sf::Keyboard::Key::Backslash ) );
+                        &emsp;<br>
+                        &emsp;if ( inputActivate.pressed ) {<br>
+                        &emsp;    <br>
+                        &emsp; &emsp; isActive = !isActive;<br>
+                        &emsp; }<br>
+                        &emsp; <br>
+                        &emsp;if ( !isActive ) {<br>
+                        &emsp;    <br>
+                        &emsp; &emsp; return;<br>
+                        &emsp;}<br>
+                        &emsp;<br>
+                        &emsp;updateDebugInput();<br>
+                        &emsp;<br>
+                        &emsp;if ( inputNextState.pressed ) { <br>
+                        &emsp;    <br>
+                        &emsp; &emsp; setState ( ( DebugState )( enumToInt( debugState ) + 1 ) ); <br>
+                        &emsp;}<br>
+                        &emsp;<br>
+                        &emsp;else if ( inputPrevState.pressed ) { <br>
+                        &emsp;    <br>
+                        &emsp; &emsp; setState ( ( DebugState )( enumToInt( debugState ) - 1 ) ); <br>
+                        &emsp;}<br>
+                        &emsp;<br>
+                        &emsp;if ( !isPakLoaded ) { <br>
+                        &emsp;    <br>
+                        &emsp; &emsp; return; <br>
+                        &emsp;}<br>
+                        &emsp;<br>
+                        &emsp;if ( isPakSwapped ) {<br>
+                        &emsp;    <br>
+                        &emsp; &emsp; timerUpdate ( timerPopUpText, dt );<br>
+                        &emsp; &emsp; if ( timerIsDone ( timerPopUpText ) ) {<br>
+                        &emsp; &emsp;     <br>
+                        &emsp; &emsp; &emsp; isPakSwapped = false;<br>
+                        &emsp; &emsp; }<br>
+                        &emsp;}<br>
+                        &emsp;<br>
+                        &emsp;switch(debugState) {<br>
+                        &emsp;    <br>
+                        &emsp; case DebugState::ENUM_START: { <br>
+                        &emsp;     <br>
+                        &emsp; &emsp; setState( ( DebugState ) ( enumToInt( DebugState::ENUM_END ) - 1 ) );  <br>
+                        &emsp; break; }<br>
+                        &emsp; <br>
+                        &emsp; case DebugState::INPUT_TEST: {<br>
+                        &emsp;     <br>
+                        &emsp; &emsp; if ( input.isJoystickUsed && circleJoystick -> getFillColor() != colorJoystickActive  ) { <br>
+                        &emsp; &emsp;     <br>
+                        &emsp; &emsp; &emsp; circleJoystick  -> setFillColor ( colorJoystickActive );
+                        &emsp; &emsp; }<br>
+                        &emsp; &emsp; else if ( !input.isJoystickUsed && circleJoystick -> getFillColor() != colorJoystickInactive ) {<br>
+                        &emsp; &emsp;     <br>
+                        &emsp; &emsp; &emsp; circleJoystick -> setFillColor ( colorJoystickInactive );<br>
+                        &emsp; &emsp; }<br>
+                        &emsp; &emsp; <br>
+                        &emsp; &emsp; circleJoystick -> setPosition ( { posJoystickDraw.x + input.joystickAxisX * 24.0f<br>
+                        &emsp; &emsp;                             , posJoystickDraw.y - input.joystickAxisY * 24.0f } );<br>
+                        &emsp; &emsp; <br>
+                        &emsp; &emsp; buildString ();<br>
+                        &emsp; break; }<br>
+                        &emsp; <br>
+                        &emsp; case DebugState::SOUND_TEST: {<br>
+                        &emsp; <br>
+                        &emsp; &emsp; if ( soundsNames.empty() ) { break; }<br>
+                        &emsp; &emsp; <br>
+                        &emsp; &emsp; allowVectorControls( soundsNames.size() - 1 );<br>
+                        &emsp; &emsp; <br>
+                        &emsp; &emsp; sf::SoundBuffer* tempSoundPtr = findMapObject ( selectedPak -> sounds, soundsNames [ vecIndex ] );<br>
+                        &emsp; &emsp; <br>
+                        &emsp; &emsp; if (tempSoundPtr) {<br>
+                        &emsp; &emsp; &emsp; <br>
+                        &emsp; &emsp; &emsp; if ( inputDown.pressed || inputUp.pressed || isStateChanged ) {<br>
+                        &emsp; &emsp; &emsp;     <br>
+                        &emsp; &emsp; &emsp; &emsp; debugSound -> setBuffer ( *tempSoundPtr );  <br>
+                        &emsp; &emsp; &emsp;     <br>
+                        &emsp; &emsp; &emsp; &emsp; buildString ();<br>
+                        &emsp; &emsp; &emsp; } <br>
+                        &emsp; &emsp; &emsp; else if ( inputAccept.pressed ) {<br>
+                        &emsp; &emsp; &emsp; <br>
+                        &emsp; &emsp; &emsp;     debugSound -> play();<br>
+                        &emsp; &emsp; &emsp; }<br>
+                        &emsp; &emsp; }<br>
+                        &emsp; break; }<br>
+                        &emsp; <br>
+                        &emsp; case DebugState::GAMEDATA_VIEW: { <br>
+                        &emsp;     <br>
+                        &emsp; &emsp; break; }<br>
+                        &emsp; <br>
+                        &emsp; case DebugState::TEXTURES_VIEW: {<br>
+                        &emsp; <br>
+                        &emsp; &emsp; if ( texturesNames.empty() ) break;<br>
+                        &emsp; &emsp; <br>
+                        &emsp; &emsp; allowVectorControls( texturesNames.size() - 1 );<br>
+                        &emsp; &emsp; <br>
+                        &emsp; &emsp; if ( inputDown.pressed || inputUp.pressed || isStateChanged ) {<br>
+                        &emsp; &emsp;     <br>
+                        &emsp; &emsp; &emsp; sf::Texture* tempTexturePtr = findMapObject ( selectedPak -> textures, texturesNames [ vecIndex ] );<br>
+                        &emsp; &emsp; &emsp; if (tempTexturePtr) {<br>
+                        &emsp; &emsp; &emsp;     <br>
+                        &emsp; &emsp; &emsp; &emsp; textureSize = sf::Vector2i( tempTexturePtr -> getSize() );<br>
+                        &emsp; &emsp; &emsp; &emsp; <br>
+                        &emsp; &emsp; &emsp; &emsp; debugSprite -> setTexture ( *tempTexturePtr );<br>
+                        &emsp; &emsp; &emsp; &emsp; debugSprite -> setTextureRect( sf::IntRect( { 0, 0 }, textureSize ) );<br>
+                        &emsp; &emsp; &emsp; &emsp; <br>
+                        &emsp; &emsp; &emsp; &emsp; buildString ();<br>
+                        &emsp; &emsp; &emsp; }<br>
+                        &emsp; &emsp; }<br>
+                        &emsp; break; }<br>
+                        &emsp; <br>
+                        &emsp; case DebugState::STAGEDATA_VIEW: {<br>
+                        &emsp; <br>
+                        &emsp; &emsp; if ( gameData.stages.empty() ) break;<br>
+                        &emsp; &emsp; <br>
+                        &emsp; &emsp; allowVectorControls( gameData.stages.size() - 1 );<br>
+                        &emsp; &emsp; <br>
+                        &emsp; &emsp; if ( inputDown.pressed || inputUp.pressed || isStateChanged ) {<br>
+                        &emsp; &emsp;     <br>
+                        &emsp; &emsp; &emsp; buildString ();<br>
+                        &emsp; &emsp; }<br>
+                        &emsp; break; }<br>
+                        &emsp; <br>
+                        &emsp; case DebugState::DIALOGUES_VIEW: {<br>
+                        &emsp; <br>
+                        &emsp; &emsp; if ( dialoguesNames.empty() ) break;<br>
+                        &emsp; &emsp; <br>
+                        &emsp; &emsp; allowVectorControls( dialoguesNames.size() - 1 );<br>
+                        &emsp; &emsp; <br>
+                        &emsp; &emsp; if ( inputDown.pressed || inputUp.pressed || isStateChanged ) {<br>
+                        &emsp; &emsp;     <br>
+                        &emsp; &emsp; &emsp; std::vector< std::string >* tempStringVecPtr = findMapObject ( selectedPak -> dialogues, dialoguesNames [ vecIndex ] );<br>
+                        &emsp; &emsp; &emsp; if (tempStringVecPtr) {<br>
+                        &emsp; &emsp; &emsp;     <br>
+                        &emsp; &emsp; &emsp; &emsp; dialogueEntry = *tempStringVecPtr;<br>
+                        &emsp; &emsp; &emsp;     <br>
+                        &emsp; &emsp; &emsp; &emsp; buildString ();<br>
+                        &emsp; &emsp; &emsp; }<br>
+                        &emsp; &emsp; }<br>
+                        &emsp; <br>
+                        &emsp; break; }<br>
+                        &emsp; <br>
+                        &emsp; case DebugState::ENUM_END: { <br>
+                <br>    &emsp;         
+                <br>    &emsp; &emsp; &emsp; setState( ( DebugState ) ( enumToInt( DebugState::ENUM_START ) + 1 ) ); 
+                <br>    &emsp; &emsp; break; }
+                <br>    &emsp; }
+<br>&emsp;
+                <br>    &emsp; fpsText -> setString ( std::to_string( fps ) );
+<br>&emsp;
+                <br>    &emsp; if ( isStateChanged ) {
+                <br>    &emsp;     
+                <br>    &emsp; &emsp; isStateChanged = false;
+                <br>    &emsp; }
+<br>&emsp;
+                <br>    &emsp; //switch selected pak struct, after state changes check so string rebuild triggers
+                <br>    &emsp; if ( sf::Keyboard::isKeyPressed( sf::Keyboard::Key::P ) ) {
+<br>&emsp;
+                <br>    &emsp; &emsp; if ( inputNum1.pressed ) { 
+<br>&emsp;&emsp; 
+                <br>    &emsp; &emsp; &emsp; selectPakStruct( pakData.global );
+                <br>    &emsp; &emsp; &emsp; isPakSwapped = true;
+                <br>    &emsp; &emsp; &emsp; timerReset ( timerPopUpText );
+                <br>    &emsp; &emsp; &emsp; popUpText -> setString( "NOTICE -> Loaded Pak : GLOBAL" );
+                <br>    &emsp; &emsp; }
+<br>&emsp; &emsp; 
+                <br>    &emsp; &emsp; else if ( inputNum2.pressed ) { 
+<br>&emsp; &emsp; 
+                <br>    &emsp; &emsp; &emsp; selectPakStruct( pakData.stageCommon );
+                <br>    &emsp; &emsp; &emsp; isPakSwapped = true;
+                <br>    &emsp; &emsp; &emsp; timerReset ( timerPopUpText );
+                <br>    &emsp; &emsp; &emsp; popUpText -> setString( "NOTICE -> Loaded Pak : STAGE COMMON" );
+                <br>    &emsp; &emsp; }
+<br>&emsp; &emsp; 
+                <br>    &emsp; &emsp; else if ( inputNum3.pressed ) { 
+<br>&emsp; &emsp; 
+                <br>    &emsp; &emsp; &emsp; selectPakStruct( pakData.stageCurrent );
+                <br>    &emsp; &emsp; &emsp; isPakSwapped = true;
+                <br>    &emsp; &emsp; &emsp; timerReset ( timerPopUpText );
+                <br>    &emsp; &emsp; &emsp; popUpText -> setString( "NOTICE -> Loaded Pak : STAGE CURRENT" );
+                <br>    &emsp; &emsp; }
+                <br>    &emsp; }
+                <br>    } 
+<br>
+<br>
+<br>
+                <br>        // DRAW 
+<br>
+                <br>        void Debugger::draw( sf::RenderWindow& window ) {
+                <br>        &emsp; 
+                <br>        &emsp; if ( !isActive ) return;
+<br>&emsp; 
+                <br>        &emsp; window.draw( *bodyText );
+                <br>        &emsp; window.draw( *fpsText );
+<br>&emsp; 
+                <br>        &emsp; if ( isPakSwapped ) {
+                <br>        &emsp;     window.draw( *popUpText );
+                <br>        &emsp; }
+<br>&emsp; 
+                <br>        &emsp; switch(debugState) {
+<br>&emsp; 
+                <br>        &emsp; &emsp; case DebugState::ENUM_START:
+                <br>        &emsp; &emsp; break;
+<br>&emsp; &emsp; 
+                <br>        &emsp; &emsp; case DebugState::INPUT_TEST:
+<br>&emsp; &emsp; 
+                <br>        &emsp; &emsp; &emsp; window.draw ( *circleJoystickEmbed );
+                <br>        &emsp; &emsp; &emsp; window.draw ( *circleDeadzone );
+                <br>        &emsp; &emsp; &emsp; window.draw ( *circleJoystick );
+                <br>        &emsp; &emsp; break;
+<br>&emsp; &emsp; 
+                <br>        &emsp; &emsp; case DebugState::SOUND_TEST:
+                <br>        &emsp; &emsp; break;
+<br>&emsp; &emsp; 
+                <br>        &emsp; &emsp; case DebugState::TEXTURES_VIEW:
+<br>&emsp; &emsp; 
+                <br>        &emsp; &emsp; &emsp; window.draw ( *debugMenuText );
+                <br>        &emsp; &emsp; &emsp; window.draw ( *debugSprite );
+                <br>        &emsp; &emsp; break;
+<br>&emsp; &emsp; 
+                <br>        &emsp; &emsp; case DebugState::GAMEDATA_VIEW:
+                <br>        &emsp; &emsp; break;
+<br>&emsp; &emsp; 
+                <br>        &emsp; &emsp; case DebugState::STAGEDATA_VIEW:
+<br>&emsp; &emsp; 
+                <br>        &emsp; &emsp; &emsp; window.draw ( *debugMenuText );
+                <br>        &emsp; &emsp; break;
+<br>&emsp; &emsp; 
+                <br>        &emsp; &emsp; case DebugState::DIALOGUES_VIEW:
+<br>&emsp; &emsp; 
+                <br>        &emsp; &emsp; &emsp; window.draw ( *debugMenuText );
+                <br>        &emsp; &emsp; break;
+<br>&emsp; &emsp; 
+                <br>        &emsp; &emsp; case DebugState::ENUM_END:
+                <br>        &emsp; &emsp; break;
+                <br>        &emsp; }           
+                <br>        }
+<br>
+<br>
+                <br>        // UPDATE INPUT STATE
+<br>
+                <br>        void Debugger::updateDebugInputState( InputState& inputState, bool isDownNow )
+                <br>        {
+                <br>        &emsp; inputState.prevHeld = inputState.held;   
+                <br>        &emsp; inputState.held = isDownNow;
+                <br>        &emsp; inputState.pressed  = inputState.held && !inputState.prevHeld;
+                <br>        &emsp; inputState.released = !inputState.held && inputState.prevHeld;
+                <br>        }
+<br>
+                <br>        // UPDATE ALL DEBUG MENU INPUTS
+<br>
+                <br>        void Debugger::updateDebugInput() {
+<br>
+                <br>        &emsp; updateDebugInputState( inputAccept, sf::Keyboard::isKeyPressed( sf::Keyboard::Key::RShift ) );
+                <br>        &emsp; updateDebugInputState( inputBack, sf::Keyboard::isKeyPressed( sf::Keyboard::Key::RControl ) );
+                <br>        &emsp; updateDebugInputState( inputNextState, sf::Keyboard::isKeyPressed( sf::Keyboard::Key::Right ) );
+                <br>        &emsp; updateDebugInputState( inputPrevState, sf::Keyboard::isKeyPressed( sf::Keyboard::Key::Left ) );
+                <br>        &emsp; updateDebugInputState( inputUp, sf::Keyboard::isKeyPressed( sf::Keyboard::Key::Up ) );
+                <br>        &emsp; updateDebugInputState( inputDown, sf::Keyboard::isKeyPressed( sf::Keyboard::Key::Down ) );
+                <br>        &emsp; updateDebugInputState( inputNum1, sf::Keyboard::isKeyPressed( sf::Keyboard::Key::Num1 ) );
+                <br>        &emsp; updateDebugInputState( inputNum2, sf::Keyboard::isKeyPressed( sf::Keyboard::Key::Num2 ) );
+                <br>        &emsp; updateDebugInputState( inputNum3, sf::Keyboard::isKeyPressed( sf::Keyboard::Key::Num3 ) );
+                <br>        }
+<br>
+                <br>        // CREATE INPUT STRING
+<br>
+                <br>        std::string Debugger::createInputString ( InputState& inputState )
+                <br>        {
+                <br>        &emsp; return "\n[ "+ inputMgr.getInputName( &inputState ) + " ]"
+                <br>        &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; + " Held:" + std::to_string(inputState.held)
+                <br>        &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; + ", Pressed:" + std::to_string(inputState.pressed)
+                <br>        &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; + ", Released:" + std::to_string(inputState.released)
+                <br>        &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; + ", Buffer_Active:" + std::to_string(inputState.bufferActive);
+                <br>        }
+<br>
+                <br>        // ENABLE MENU CONTROLS
+<br>
+                <br>        void Debugger::allowVectorControls( int endVal )
+                <br>        {
+                <br>        &emsp; if (inputDown.pressed) vecIndex ++;
+                <br>        &emsp; if (inputUp.pressed) vecIndex --;
+<br>&emsp; 
+                <br>        &emsp; if ( vecIndex < 0 ) vecIndex = endVal;
+                <br>        &emsp; if ( vecIndex > endVal ) vecIndex = 0;
+                <br>        }
+<br>
+                <br>        // SELECT PAK STRUCT
+<br>
+                <br>        void Debugger::selectPakStruct( Pak& pak )
+                <br>        {
+                <br>        &emsp; isPakLoaded = false;
+<br>&emsp; 
+                <br>        &emsp; std::cout << "\nSelecting new pak." << std::flush;
+                <br>        &emsp; selectedPak = &pak;
+                <br>        &emsp; std::cout << "\nNew pak selected" << std::flush;
+<br>&emsp; 
+                <br>        &emsp; std::cout << "\nClearing all names vectors" << std::flush;
+                <br>        &emsp; //claer all vectors
+                <br>        &emsp; texturesNames.clear();
+                <br>        &emsp; soundsNames.clear();
+                <br>        &emsp; fontsNames.clear();
+                <br>        &emsp; dialoguesNames.clear();
+                <br>        &emsp; std::cout << "\nName vectors cleared." << std::flush;
+                <br>        &emsp;                 
+                <br>        &emsp; std::cout << "\nLoad pak data names into names vectors." << std::flush;
+                <br>        &emsp;                 
+                <br>        &emsp; if ( !pak.textures.empty() ) for ( const auto& pair : pak.textures ) { 
+                <br>        &emsp; 
+                <br>        &emsp; &emsp; texturesNames.push_back( pair.first ); 
+                <br>        &emsp; }
+                <br>        &emsp; else { 
+                <br>        &emsp; 
+                <br>        &emsp; &emsp; std::cout << "\npak.textures empty." << std::flush;
+                <br>        &emsp; }
+                <br>        &emsp;     
+                <br>        &emsp; if ( !pak.sounds.empty() ) for ( const auto& pair : pak.sounds ) { 
+                <br>        &emsp; 
+                <br>        &emsp; &emsp; soundsNames.push_back( pair.first ); 
+                <br>        &emsp; }
+                <br>        &emsp; else { 
+                <br>        &emsp; 
+                <br>        &emsp; &emsp; std::cout << "\npak.sounds empty." << std::flush;
+                <br>        &emsp; }
+                <br>        &emsp; 
+                <br>        &emsp; if ( !pak.fonts.empty() ) for ( const auto& pair : pak.fonts ) { 
+                <br>        &emsp; 
+                <br>        &emsp; &emsp; fontsNames.push_back( pair.first ); 
+                <br>        &emsp; }
+                <br>        &emsp; else { 
+                <br>        &emsp; 
+                <br>        &emsp; &emsp; std::cout << "\npak.fonts empty." << std::flush;
+                <br>        &emsp; }
+                <br>        &emsp; 
+                <br>        &emsp; if ( !pak.dialogues.empty() ) { 
+                <br>        &emsp; 
+                <br>        &emsp; &emsp; for ( const auto& pair : pak.dialogues ) { 
+                <br>        &emsp; &emsp;     
+                <br>        &emsp; &emsp; &emsp; dialoguesNames.push_back( pair.first ); 
+                <br>        &emsp; &emsp; }
+                <br>        &emsp; }
+                <br>        &emsp; else { 
+                <br>        &emsp; 
+                <br>        &emsp; &emsp; std::cout << "\npak.dialogues empty." << std::flush;
+                <br>        &emsp; }
+                <br>        &emsp; 
+                <br>        &emsp; std::cout << "\nPak data names loaded into names vectors" << std::flush;
+                <br>        &emsp; 
+                <br>        &emsp; std::cout << "\nCompleting pak loading." << std::flush;
+                <br>        &emsp; isPakLoaded = true;
+                <br>        &emsp; std::cout << "\nPak loading complete." << std::flush;
+                <br>        &emsp; isStateChanged = true;
+                <br>        }
+<br>
+                <br>            
+<br>
+                <br>        void Debugger::setState( DebugState debugState )
+                <br>        {
+                <br>        &emsp; this -> debugState = debugState;
+                <br>        &emsp; vecIndex = 0;
+                <br>        &emsp; isStateChanged = true;
+                <br>        &emsp; buildString ();
+                <br>        }
+<br>
+<br>
+                <br>        void Debugger::buildString()
+                <br>        {
+                <br>        &emsp; //setup body string 
+                <br>        &emsp; bodyString = keyBindString + "\n\n"
+                <br>        &emsp; &emsp; &emsp; &emsp; &emsp; + "Menu: " + debugStateNames.find( debugState ) -> second + "\n";
+<br>&emsp; 
+                <br>        &emsp; switch( debugState )
+                <br>        &emsp; {
+                <br>        &emsp; &emsp; case DebugState::INPUT_TEST: {
+<br>&emsp; &emsp; 
+                <br>        &emsp; &emsp; &emsp; bodyString += 
+                <br>        &emsp; &emsp; &emsp; &emsp; createInputString( input.actionA )
+                <br>        &emsp; &emsp; &emsp; &emsp; + createInputString( input.actionB )
+                <br>        &emsp; &emsp; &emsp; &emsp; + createInputString( input.actionX )
+                <br>        &emsp; &emsp; &emsp; &emsp; + createInputString( input.actionY )
+                <br>        &emsp; &emsp; &emsp; &emsp; + createInputString( input.actionLB )
+                <br>        &emsp; &emsp; &emsp; &emsp; + createInputString( input.actionRB )
+                <br>        &emsp; &emsp; &emsp; &emsp; + createInputString( input.actionLT )
+                <br>        &emsp; &emsp; &emsp; &emsp; + createInputString( input.actionRT )
+                <br>        &emsp; &emsp; &emsp; &emsp; + createInputString( input.dirPadLeft )
+                <br>        &emsp; &emsp; &emsp; &emsp; + createInputString( input.dirPadUp )
+                <br>        &emsp; &emsp; &emsp; &emsp; + createInputString( input.dirPadRight )
+                <br>        &emsp; &emsp; &emsp; &emsp; + createInputString( input.dirPadDown )
+                <br>        &emsp; &emsp; &emsp; &emsp; + "\n\n\n Joystick Active: " + std::to_string( input.isJoystickUsed )
+                <br>        &emsp; &emsp; &emsp; &emsp; + "\n[ Left-Stick ]\nX:" 
+                <br>        &emsp; &emsp; &emsp; &emsp; &emsp; + std::to_string( input.joystickAxisX )
+                <br>        &emsp; &emsp; &emsp; &emsp; &emsp; + "\nY:" + std::to_string( input.joystickAxisY )
+                <br>        &emsp; &emsp; &emsp; &emsp; + "\nInputDirection: " + std::to_string( input.direction );
+                <br>        &emsp; &emsp; break; }
+<br>&emsp; &emsp; 
+                <br>        &emsp; &emsp; case DebugState::SOUND_TEST:{
+<br>&emsp; &emsp; 
+                <br>        &emsp; &emsp; &emsp; if ( soundsNames.empty() ) {
+<br>&emsp; &emsp; &emsp; 
+                <br>        &emsp; &emsp; &emsp; &emsp; bodyString += "\nNo Sounds Data.";
+                <br>        &emsp; &emsp; &emsp; &emsp; break;
+                <br>        &emsp; &emsp; &emsp; }
+                <br>        &emsp; &emsp; &emsp; 
+                <br>        &emsp; &emsp; &emsp; for ( int i = 0; i < soundsNames.size(); i++ ) {
+<br>&emsp; &emsp; &emsp; 
+                <br>        &emsp; &emsp; &emsp; &emsp; if ( i == vecIndex ) bodyString += "\n->" + soundsNames[i];
+                <br>        &emsp; &emsp; &emsp; &emsp; else bodyString += "\n" + soundsNames[i];
+                <br>        &emsp; &emsp; &emsp; }
+<br>&emsp; &emsp; 
+                <br>        &emsp; &emsp; break;}
+<br>&emsp; &emsp; 
+                <br>        &emsp; &emsp; case DebugState::TEXTURES_VIEW:{
+<br>&emsp; &emsp; 
+                <br>        &emsp; &emsp; &emsp; if ( texturesNames.empty() ){
+                <br>
+                <br>        &emsp; &emsp; &emsp; &emsp; bodyString += "\nNo Textures Data.";
+                <br>        &emsp; &emsp; &emsp; &emsp; break;
+                <br>        &emsp; &emsp; &emsp; }
+<br>&emsp; &emsp; &emsp; 
+                <br>        &emsp; &emsp; &emsp; for ( int i = 0; i < texturesNames.size(); i++ ) {
+<br>&emsp; &emsp; &emsp; 
+                <br>        &emsp; &emsp; &emsp; &emsp; if (i == vecIndex) bodyString += "\n->" + texturesNames[i];
+                <br>        &emsp; &emsp; &emsp; &emsp; else bodyString += "\n" + texturesNames[i];
+                <br>        &emsp; &emsp; &emsp; }
+                <br>        &emsp; &emsp; &emsp; debugMenuString = "Texture Size: { " + std::to_string( textureSize.x ) + ", " + std::to_string( textureSize.y ) + " }";
+<br>&emsp; &emsp; 
+                <br>        &emsp; &emsp; break;}
+<br>&emsp; &emsp; 
+                <br>        &emsp; &emsp; case DebugState::GAMEDATA_VIEW: {
+                <br>        &emsp; &emsp; &emsp; bodyString += 
+                <br>        &emsp; &emsp; &emsp; &emsp; "\n [firstLaunch] " + std::to_string( gameData.firstLaunch )
+                <br>        &emsp; &emsp; &emsp; &emsp; + "\n [totalHFuel] " + std::to_string( gameData.totalHFuel)
+                <br>        &emsp; &emsp; &emsp; &emsp; + "\n\n [resolutionX] " + std::to_string( gameData.settings.display.x )
+                <br>        &emsp; &emsp; &emsp; &emsp; + "\n [resolutionY] " + std::to_string( gameData.settings.display.y )
+                <br>        &emsp; &emsp; &emsp; &emsp; + "\n [windowTitle] " + gameData.settings.display.windowTitle
+                <br>        &emsp; &emsp; &emsp; &emsp; + "\n\n [volumeMaster] " + std::to_string( gameData.settings.volume.master )
+                <br>        &emsp; &emsp; &emsp; &emsp; + "\n [volumeMusic] " + std::to_string( gameData.settings.volume.music )
+                <br>        &emsp; &emsp; &emsp; &emsp; + "\n [volumeSfx] " + std::to_string( gameData.settings.volume.sfx )
+                <br>        &emsp; &emsp; &emsp; &emsp; ;
+                <br>        &emsp; &emsp; break;}
+<br>&emsp; &emsp; 
+                <br>        &emsp; &emsp; case DebugState::STAGEDATA_VIEW: {
+<br>&emsp; &emsp; 
+                <br>        &emsp; &emsp; &emsp; if ( gameData.stages.empty() ) {
+                <br>
+                <br>        &emsp; &emsp; &emsp; &emsp; bodyString += "\nNo Stage Data.";
+                <br>        &emsp; &emsp; &emsp; &emsp; break;
+                <br>        &emsp; &emsp; &emsp; }
+<br>&emsp; &emsp; &emsp; 
+                <br>        &emsp; &emsp; &emsp; for ( int i = 0; i < gameData.stages.size(); i++ ) {
+<br>&emsp; &emsp; &emsp; 
+                <br>        &emsp; &emsp; &emsp; &emsp; if (i == vecIndex) { 
+                <br>                                        
+                <br>        &emsp; &emsp; &emsp; &emsp; &emsp; bodyString += "\n -> " + gameData.stages[i].name;
+                <br>        &emsp; &emsp; &emsp; &emsp; }
+                <br>        &emsp; &emsp; &emsp; &emsp; else bodyString += "\n" + gameData.stages[i].name;
+                <br>        &emsp; &emsp; &emsp; }
+<br>&emsp; &emsp; &emsp; 
+                <br>        &emsp; &emsp; &emsp; StageData stage = gameData.stages[ vecIndex ];
+<br>&emsp; &emsp; &emsp; 
+                <br>        &emsp; &emsp; &emsp; debugMenuString = 
+                <br>        &emsp; &emsp; &emsp; &emsp; "[ Unlocked ]  " + std::to_string ( stage.unlocked )
+                <br>        &emsp; &emsp; &emsp; &emsp; + "\n[ Best Time ]  " + std::to_string( stage.bestTime ) 
+                <br>        &emsp; &emsp; &emsp; &emsp; + "\n[ Best Checkpoint Times ]  "; 
+                <br>        &emsp; &emsp; &emsp;     
+                <br>        &emsp; &emsp; &emsp; if ( stage.bestCheckPointTimes.empty() ) {
+<br>&emsp; &emsp; &emsp; 
+                <br>        &emsp; &emsp; &emsp; &emsp; for ( int i = 0; i < stage.bestCheckPointTimes.size(); i++ ) {
+<br>&emsp; &emsp; &emsp; &emsp; 
+                <br>        &emsp; &emsp; &emsp; &emsp; &emsp; debugMenuString += "\n\t" + std::to_string( stage.bestCheckPointTimes[ i ] );
+                <br>        &emsp; &emsp; &emsp; &emsp; }
+                <br>        &emsp; &emsp; &emsp; }
+                <br>        &emsp; &emsp; &emsp; else debugMenuString += "\n\tN/A";
+<br>&emsp; &emsp; &emsp; 
+                <br>        &emsp; &emsp; &emsp; debugMenuString += "\n[ Highest Rank ]  " + std::to_string( static_cast<int>( stage.rank ) )
+                <br>        &emsp; &emsp; &emsp;                 + "\n[ Rank Time Requirements ]  ";
+<br>&emsp; &emsp; &emsp; 
+                <br>        &emsp; &emsp; &emsp; stageRanksCount = sizeof ( stage.rankTimeRequirements )
+                <br>        &emsp; &emsp; &emsp;                     / sizeof ( stage.rankTimeRequirements[0] );
+<br>&emsp; &emsp; &emsp; 
+                <br>        &emsp; &emsp; &emsp; for ( int i = 0; i < stageRanksCount; i++ ) {
+<br>&emsp; &emsp; &emsp; 
+                <br>        &emsp; &emsp; &emsp; &emsp; debugMenuString += "\n\tRank " + std::to_string( i )
+                <br>        &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; + " - " + std::to_string( stage.rankTimeRequirements[i] );
+                <br>        &emsp; &emsp; &emsp; }
+                <br>        &emsp; &emsp;     
+<br>&emsp; &emsp; 
+                <br>        &emsp; &emsp; break;}
+<br>&emsp; &emsp; 
+                <br>        &emsp; &emsp; case DebugState::DIALOGUES_VIEW:{
+<br>&emsp; &emsp; 
+                <br>        &emsp; &emsp; &emsp; // SAFETY GUARD
+                <br>        &emsp; &emsp; &emsp; if ( dialoguesNames.empty() ) {
+<br>&emsp; &emsp; &emsp; 
+                <br>        &emsp; &emsp; &emsp; &emsp; bodyString += "\nNo Dialogues Data.";
+                <br>        &emsp; &emsp; &emsp; &emsp; break;
+                <br>        &emsp; &emsp; &emsp; }
+                <br>        &emsp; &emsp; &emsp; 
+                <br>        &emsp; &emsp; &emsp; for ( int i = 0; i < dialoguesNames.size(); i++ ) {
+<br>&emsp; &emsp; &emsp; 
+                <br>        &emsp; &emsp; &emsp; &emsp; if (i == vecIndex) bodyString += "\n -> " + dialoguesNames[i];
+                <br>        &emsp; &emsp; &emsp; &emsp; else bodyString += "\n" + dialoguesNames[i];
+                <br>        &emsp; &emsp; &emsp; }
+<br>&emsp; &emsp; &emsp; 
+                <br>        &emsp; &emsp; &emsp; debugMenuString = "";
+                <br>        &emsp; &emsp; &emsp; for ( int i = 0; i < dialogueEntry.size(); i++ ) {
+<br>&emsp; &emsp; &emsp; 
+                <br>        &emsp; &emsp; &emsp; &emsp; debugMenuString += "\n" + std::to_string(i) + ". " + dialogueEntry[ i ];
+                <br>        &emsp; &emsp; &emsp; }
+<br>&emsp; &emsp; 
+                <br>        &emsp; &emsp; break;}
+                <br>        &emsp; }
+<br>&emsp; 
+                <br>        &emsp; if ( bodyText ) {
+                <br>        &emsp;     
+                <br>        &emsp; &emsp; bodyText -> setString( bodyString );
+                <br>        &emsp; }
+<br>&emsp; 
+                <br>        &emsp; if ( debugMenuText ) {
+                <br>        &emsp;     
+                <br>        &emsp; &emsp; debugMenuText -> setString ( debugMenuString );
+                <br>        &emsp; }
+<br>&emsp; 
+                <br>        &emsp; std::string* tempStateString = &debugStateNames.find( debugState ) -> second;
+<br>&emsp; 
+                <br>        &emsp; if ( tempStateString ) {
+                <br>        &emsp;     
+                <br>        &emsp; &emsp; std::cout << "body string updated: " << *tempStateString << std::endl;
+                <br>        &emsp; }
+                <br>    }
+
+                    </code>
+                    <button class="expandCode"></button>
+                </div>
+
+                <!-- CELL RIGHT -->
+                <div class="grid-cell">
+                    <div class="art-item" > 
+                        <img src="images/artwork/ghostengine/debugger-draw-io.png" class ="thumb">
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="adjustable-spacer" style="height: 100px;"></div>
+
+            <div class="header-label">OUTCOME & FUTURE WORK</div>
+
+                <div class="adjustable-spacer" style="height: 10px;"></div>
+                <p>
+                    Ghost Engine is a custom C++ game engine built from scratch, using SFML for low-level rendering, audio, and input primitives while 
+                    every higher-level system, asset packing, audio management, input handling, and debugging tools, is designed and implemented 
+                    independently. Each system was built to solve a specific problem encountered during development, with an emphasis on clarity 
+                    and maintainability alongside performance.
+                    <br><br>
+                    Developing an engine from the ground up requires taking direct ownership of problems that are normally abstracted away: memory 
+                    layout, timing-sensitive input, and asset lifecycle management. The project is under active development, with new systems added 
+                    regularly. The full source is publicly available on GitHub, including a working in-engine debugger that can be used to inspect 
+                    these systems directly.
+                </p>
+
+                <div class="sub-flex-container">
+                    <div class="header-paragraph"><img src="images/UI/pointerGreen.png">GAME OBJECT FAMILY HIERARCHY</div>
+                    <div class="art-item-custom style=" style="width: 75%;">
+                            <img src="images/artwork/ghostengine/game-object-inheritance-architecture.png" class="thumb">
+                    </div>
+                </div>
+
+                <div class="adjustable-spacer" style="height: 40px;"></div>
+                <div class="sub-flex-container">
+                    <div class="header-paragraph"><img src="images/UI/pointerGreen.png">ADITIONAL CLASS DIAGRAMS</div>
+                </div>
+                <div class="adjustable-spacer" style="height: 30px;"></div>
+                <div class="sub-flex-container"> 
+                    <div class="art-item">
+                        <img src="images/artwork/ghostengine/render-manager+types-draw-io.png" class="thumb">
+                        <p>Render Manager Structure</p>
+                    </div>
+                    <div class="art-item">
+                        <img src="images/artwork/ghostengine/render-manager+types-draw-io.png" class="thumb">
+                        <p>Menu Structure & Example Code Workflow</p>
+                    </div>
+                    <div class="art-item">
+                        <img src="images/artwork/ghostengine/game-data-manager-draw-io.png" class="thumb">
+                        <p>Menu Structure & Example Code Workflow</p>
+                    </div>
+                </div>
+                
+                <div class="adjustable-spacer" style="height: 100px;"></div>
+         <!-- CONTACT -->
+            <div class="header-label">EXTERNAL GAME PAGE</div>
+            <div class="contact-grid" style="margin-top: 50px;">
+                    <!-- PHONE -->
+                    <div class="tilt-wrapper">
+                        <div class="tilt-images">
+                            <img src="images/UI/accent2.png" alt="Image 1" class="tilt-img" data-tilt="60" data-speed="0.05">
+                            <img src="images/UI/accent3.png" alt="Image 2" class="tilt-img" data-tilt="70" data-speed="0.5">
+                        </div>
+                        <div class="contact-item" onclick="copyToClipboard(event, '(240)-401-1911')" title="Click to copy">
+                            <img src="images/contact/phoneblack.png" class="img-default">
+                            <img src="images/contact/phone.png" class="img-hover">
+                            <!-- <div class="p2">(240)-401-1911</div> -->
+                        </div>
+                    </div>
+
+                    <!-- EMAIL -->
+                    <div class="tilt-wrapper">
+                        <div class="tilt-images">
+                            <img src="images/UI/accent2.png" alt="Image 1" class="tilt-img" data-tilt="60" data-speed="0.05">
+                            <img src="images/UI/accent3.png" alt="Image 2" class="tilt-img" data-tilt="70" data-speed="0.5">
+                        </div>
+                        <div class="contact-item" onclick="copyToClipboard(event, 'chrishmets2304@gmail.com')" title="Click to copy">
+                            <img src="images/contact/mailblack.png" class="img-default">
+                            <img src="images/contact/email_561127.png" class="img-hover">
+                            <!-- <div class="p2">chrishmets2304@gmail.com</div> -->
+                        </div>
+                    </div>
+
+                    <!-- CENTER -->
+                    <div class="tilt-wrapper">
+                        
+                        <!-- GitHub -->
+                        <div class="contact-item">
+                            <a href="https://github.com/chris00004/GhostEngine" target="_blank">
+                                <img src="images/buttons/githubblack.jpg" class="img-default">
+                                <img src="images/buttons/githubgreen.jpg" class="img-hover">
+                            </a>
+                        </div>
+                    </div>
+                    
+
+                    <!-- LINKEDIN -->
+                    <div class="tilt-wrapper">
+                        <div class="tilt-images">
+                            <img src="images/UI/accent2.png" alt="Image 1" class="tilt-img" data-tilt="60" data-speed="0.05">
+                            <img src="images/UI/accent3.png" alt="Image 2" class="tilt-img" data-tilt="70" data-speed="0.5">
+                        </div>
+                        <div class="contact-item">
+                            <a href="https://www.linkedin.com/in/chris-hamam" target="_blank">
+                                <img src="images/contact/linkedinblack.png" class="img-default">
+                                <img src="images/contact/linkedin.png" class="img-hover">
+                                <!-- <div class="p2">LinkedIn Profile</div> -->
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- RESUME -->
+                    <div class="tilt-wrapper">
+                        <div class="tilt-images">
+                            <img src="images/UI/accent2.png" alt="Image 1" class="tilt-img" data-tilt="60" data-speed="0.05">
+                            <img src="images/UI/accent3.png" alt="Image 2" class="tilt-img" data-tilt="70" data-speed="0.5">
+                        </div>
+                        <div class="contact-item">
+                            <a href="resume.html">
+                                <img src="images/contact/resumeblack.png" class="img-default">
+                                <img src="images/contact/resume_4824445.png" class="img-hover">
+                                <!-- <div class="p2">Resume</div> -->
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <footer>&copy; 2026 Chris Hamam | Game Designer</footer>
+
+            <!-- lightbox container (initially hidden) -->
+            <div id="lightbox" class="lightbox" role="dialog" aria-hidden="true">
+            <button class="close" aria-label="Close">&times;</button>
+            <img class="lightbox-img" alt="">
+            </div>
+
+            <!-- Toast Notification -->
+            <div id="toast" class="toast">COPIED TO CLIPBOARD</div>
+
+        </div>
+
+<!-- JAVASCRIPT ---------------------------------------------------------------------------------------------------------------------------->        
+
+    <!-- TOAST -->
+        <script src="js/toast.js" defer></script>
+
+    <!-- NAVBAR -->
+        <script src="js/navbar.js" defer></script>
+
+    <!-- CONTENT PROTECTION -->
+        <script src="js/content-protect.js" defer></script>
+
+    <!-- LIGHTBOX -->
+        <script src="js/lightbox.js" defer></script>
+
+        <script src="js/show-more.js" defer></script>
+
+        <script src="js/expand-code.js" defer></script>
+
+        <!-- DECORATIVE SCROLLING IMAGES -->
+        <script src="js/deco-scroll.js" defer></script>
+    
+    <!-- TILT EFFECT -->
+        <script src="js/image-tilt-3D.js" defer></script>
+    </body>
+</html>
