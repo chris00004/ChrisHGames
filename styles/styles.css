@@ -227,8 +227,8 @@ code.expanded {
   background: #c5ff00;
   color: #000000;
   border: 1px solid #c5ff00;
-  letter-spacing: 3px;
-  transform: scaleX(1.05);
+  letter-spacing: 1.2px;
+  transform: scaleX(1.02);
 }
 
 a {
@@ -333,7 +333,7 @@ footer{
 }
 
 .logo:hover{
-    transform: scale(1.05);
+    transform: scale(1.02);
 }
 
 .flexbox-container{
@@ -400,6 +400,15 @@ footer{
 .grid-cell .header-paragraph{
   padding-left: 0px;
   padding-right: 0px;
+}
+
+.grid-cell ul{
+  padding-left: 50px;
+  padding-right: 0px;
+}
+
+.grid-cell ul li{
+    font-size: 0.9rem;
 }
 
 .art-item {
@@ -475,7 +484,7 @@ footer{
 }
 
 .item img:hover {
-    transform: scale(1.05);
+    transform: scale(1.025);
 }
 
 
@@ -484,7 +493,8 @@ footer{
     text-align: left;
    /* border-radius: 2px;*/
     /* background-color: #71b1ff; */
-    width: 900px;
+    width: 60%;
+    justify-content: center;
     
     margin-left: 10px;
     margin-right: 10px;
@@ -494,7 +504,9 @@ footer{
 }
 
 .item-featured p {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
+    padding-left: 0%;
+    padding-right: 0%;
 }
 
 .item-featured .video {
@@ -510,10 +522,13 @@ footer{
 }
 
 .item-featured ul{
-    font-size: 0.9rem;
     text-align: left;
-    padding-left: 0px;
+    padding-left: 15px;
     padding-right: 0px;
+}
+
+.item-featured ul li{
+    font-size: 1.0rem;
 }
 
 .contact-container{
@@ -681,6 +696,7 @@ footer{
 
 .button{
     display: inline-block;
+    text-align: center;
   font-size: 1rem;         /* slightly smaller, more "label-like" */
   font-weight: 450;          /* a bit bolder for readability */
   width: 240px;
@@ -700,8 +716,8 @@ footer{
     color: #000000;
     background-color: #c5ff00;
     border: 1px solid #c5ff00;
-    letter-spacing: 2px;
-    transform: scaleX(1.05);
+    letter-spacing: 1.2px;
+    transform: scaleX(1.02);
 }
 
 .button a :hover{
@@ -751,7 +767,7 @@ footer{
   color: #000000;
     background-color: #c5ff00;
     border: #C5FF00 solid 1.2px;
-    letter-spacing: 3px;
+    letter-spacing: 1.3px;
 }
 
 h1{
